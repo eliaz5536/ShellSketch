@@ -4,10 +4,11 @@
 Bash script template for ease of development & implementation for script development.
 
 ## Usage
+```
+<insert usage script over here>
+```
 
-## Requirements
-
-## Installation
-
-## Demo
-
+## Examples
+```
+<insert example over here>
+```
