@@ -1,5 +1,5 @@
 # Bash Script Template
-Bash script template for implementing simple core functions
+Bash script template for ease of development & implementation for script development.
 
 ## Usage
 
