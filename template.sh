@@ -287,22 +287,7 @@ DIRECTORY_LOCATION="" # Specify the location of the directory folder
 #     None
 #================================================================
 append_license() {
-	OPTIONS=(
-		"Apache-2.0" "Apache License 2.0" ON
-		"GPL-3.0" "GNU General Public License v3.0" OFF 
-		"MIT" "MIT License" OFF 
-		"BSD-2-Clause" "BSD 2-clause 'Simplfied' license" OFF 
-		"BSD-3-Clause" "BSD 3-clause 'New' or 'Revised' license" OFF 
-		"BSL-1.0" "Boost Software License 1.0" OFF 
-		"CC0-1.0" "Creative Commons Zero v1.0 Universal" OFF 
-		"EPL-2.0" "Eclipse Public License 2.0" OFF 
-		"AGPL-3.0" "GNU Affero General Public License v3.0" OFF 
-		"LGPL-2.1" "GNU Lesser General Public License v2.1" OFF 
-		"MPL-2.0" "Mozilla Public License 2.0" OFF 
-		"Unlicense" "The Unlicense" OFF
-	)
-
-	local CHOICES = $1
+	local CHOICES=$1
 	IFS=" " read -r -a SELECTED_OPTIONS <<< "$CHOICES"
 
 	for OPTION in "${SELECTED_OPTIONS[@]}"; do
@@ -346,10 +331,6 @@ append_license() {
 
 		esac
 	done
-
-
-	
-
 }
 
 #================================================================
@@ -362,7 +343,7 @@ append_license() {
 #     None
 #================================================================
 append_color() {
-	local CHOICES = $1
+	local CHOICES=$1
 	IFS=" " read -r -a SELECTED_OPTIONS <<< "$CHOICES"
 
 	for OPTION in "${SELECTED_OPTIONS[@]}"; do
@@ -434,7 +415,6 @@ append_color() {
 		esac
 	done
 
-	# Ensure that you finish implementing color text to move forward	
 	echo 'ENDCOLOR="\e[0m"' >> $SCRIPT_NAME.sh
 }
 
@@ -449,33 +429,75 @@ append_color() {
 #================================================================
 append_bold_color() {
 	echo "# Bold" >> $SCRIPT_NAME.sh
-	echo 'BOLD_BLACK="\e[1;30m"' >> $SCRIPT_NAME.sh
-	echo 'BOLD_RED="\e[1;31m"' >> $SCRIPT_NAME.sh
-	echo 'BOLD_GREEN="\e[1;32m"' >> $SCRIPT_NAME.sh
-	echo 'BOLD_YELLOW="\e[1;33m"' >> $SCRIPT_NAME.sh
-	echo 'BOLD_BLUE="\e[1;34m"' >> $SCRIPT_NAME.sh
-	echo 'BOLD_MAGENTA="\e[1;35m"' >> $SCRIPT_NAME.sh
-	echo 'BOLD_CYAN="\e[1;36m"' >> $SCRIPT_NAME.sh
-	echo 'BOLD_LIGHT_GRAY="\e[1;37m"' >> $SCRIPT_NAME.sh
-	echo 'BOLD_GRAY="\e[1;90m"' >> $SCRIPT_NAME.sh
-	echo 'BOLD_LIGHT_RED="\e[1;91m"' >> $SCRIPT_NAME.sh
-	echo 'BOLD_LIGHT_GREEN="\e[1;92m"' >> $SCRIPT_NAME.sh
-	echo 'BOLD_LIGHT_YELLOW="\e[1;93m"' >> $SCRIPT_NAME.sh
-	echo 'BOLD_LIGHT_BLUE="\e[1;94m"' >> $SCRIPT_NAME.sh
-	echo 'BOLD_LIGHT_MAGENTA="\e[1;95m"' >> $SCRIPT_NAME.sh
-	echo 'BOLD_LIGHT_CYAN="\e[1;96m"' >> $SCRIPT_NAME.sh
-	echo 'BOLD_WHITE="\e[1;97m"' >> $SCRIPT_NAME.sh
 
-	OPTIONS=( 
-		
-	)
-
-	local CHOICES = $1
+	local CHOICES=$1
 	IFS=" " read -r -a SELECTED_OPTIONS <<< "$CHOICES"
 
 	for OPTION in "${SELECTED_OPTIONS[@]}"; do
 		case $OPTION in
-			"Test")
+			"BOLD_BLACK")
+				info "Adding Bold Black ANSI color code to $SCRIPT_NAME.sh"
+				echo 'BOLD_BLACK="\e[1;30m"' >> $SCRIPT_NAME.sh
+				;;
+			"BOLD_RED")
+				info "Adding Bold Red ANSI color code to $SCRIPT_NAME.sh"
+				echo 'BOLD_RED="\e[1;31m"' >> $SCRIPT_NAME.sh
+				;;
+			"BOLD_GREEN")
+				info "Adding Bold Green ANSI color code to $SCRIPT_NAME.sh"
+				echo 'BOLD_GREEN="\e[1;32m"' >> $SCRIPT_NAME.sh
+				;;
+			"BOLD_YELLOW")
+				info "Adding Bold Yellow ANSI color code to $SCRIPT_NAME.sh"
+				echo 'BOLD_YELLOW="\e[1;33m"' >> $SCRIPT_NAME.sh
+				;;
+			"BOLD_BLUE")
+				info "Adding Bold Blue ANSI color code to $SCRIPT_NAME.sh"
+				echo 'BOLD_BLUE="\e[1;34m"' >> $SCRIPT_NAME.sh
+				;;
+			"BOLD_MAGENTA")
+				info "Adding Bold Magenta ANSI color code to $SCRIPT_NAME.sh"
+				echo 'BOLD_MAGENTA="\e[1;35m"' >> $SCRIPT_NAME.sh
+				;;
+			"BOLD_CYAN")
+				info "Adding Bold Cyan ANSI color code to $SCRIPT_NAME.sh"
+				echo 'BOLD_CYAN="\e[1;36m"' >> $SCRIPT_NAME.sh
+				;;
+			"BOLD_LIGHT_GRAY")
+				info "Adding Bold Light Gray ANSI color code to $SCRIPT_NAME.sh"
+				echo 'BOLD_LIGHT_GRAY="\e[1;37m"' >> $SCRIPT_NAME.sh
+				;;
+			"BOLD_GRAY")
+				info "Adding Bold Gray ANSI color code to $SCRIPT_NAME.sh"
+				echo 'BOLD_GRAY="\e[1;90m"' >> $SCRIPT_NAME.sh
+				;;
+			"BOLD_LIGHT_RED")
+				info "Adding Bold Light Red ANSI color code to $SCRIPT_NAME.sh"
+				echo 'BOLD_LIGHT_RED="\e[1;91m"' >> $SCRIPT_NAME.sh
+				;;
+			"BOLD_LIGHT_GREEN")
+				info "Adding Bold Light Green ANSI color code to $SCRIPT_NAME.sh"
+				echo 'BOLD_LIGHT_GREEN="\e[1;92m"' >> $SCRIPT_NAME.sh
+				;;
+			"BOLD_LIGHT_YELLOW")
+				info "Adding Bold Light Yellow ANSI color code to $SCRIPT_NAME.sh"
+				echo 'BOLD_LIGHT_YELLOW="\e[1;93m"' >> $SCRIPT_NAME.sh
+				;;
+			"BOLD_LIGHT_BLUE")
+				info "Adding Bold Light Blue ANSI color code to $SCRIPT_NAME.sh"
+				echo 'BOLD_LIGHT_BLUE="\e[1;94m"' >> $SCRIPT_NAME.sh
+				;;
+			"BOLD_LIGHT_MAGENTA")
+				info "Adding Bold Light Magenta ANSI color code to $SCRIPT_NAME.sh"
+				echo 'BOLD_LIGHT_MAGENTA="\e[1;95m"' >> $SCRIPT_NAME.sh
+				;;
+			"BOLD_LIGHT_CYAN")
+				info "Adding Bold Light Cyan ANSI color code to $SCRIPT_NAME.sh"
+				echo 'BOLD_LIGHT_CYAN="\e[1;96m"' >> $SCRIPT_NAME.sh
+				;;
+			"BOLD_WHITE")
+				info "Adding Bold White ANSI color code to $SCRIPT_NAME.sh"
+				echo 'BOLD_WHITE="\e[1;97m"' >> $SCRIPT_NAME.sh
 				;;
 		esac
 	done
@@ -496,7 +518,7 @@ append_bold_color() {
 append_font_style() {
 	echo "# Styles" >> $SCRIPT_NAME.sh
 
-	local CHOICES = $1
+	local CHOICES=$1
 	IFS=" " read -r -a SELECTED_OPTIONS <<< "$CHOICES"
 
 	for OPTION in "${SELECTED_OPTIONS[@]}"; do
@@ -516,8 +538,6 @@ append_font_style() {
 	echo 'ENDCOLOR="\e[0m"' >> $SCRIPT_NAME.sh
 }
 
-
-
 #================================================================
 # FUNCTION: append_italic_colors
 # DESCRIPTION:
@@ -528,10 +548,9 @@ append_font_style() {
 #     None
 #================================================================
 append_italic_colors() {
-
 	echo "# Italic" >> $SCRIPT_NAME.sh
 
-	local CHOICES = $1
+	local CHOICES=$1
 	IFS=" " read -r -a SELECTED_OPTIONS <<< "$CHOICES"
 
 	for OPTION in "${SELECTED_OPTIONS[@]}"; do
@@ -618,7 +637,7 @@ append_italic_colors() {
 append_background_color() {
 	echo "# Background Color" >> $SCRIPT_NAME.sh
 
-	local CHOICES = $1
+	local CHOICES=$1
 	IFS=" " read -r -a SELECTED_OPTIONS <<< "$CHOICES"
 
 	for OPTION in "${SELECTED_OPTIONS[@]}"; do
@@ -655,8 +674,6 @@ append_background_color() {
 				info "Adding White Background ANSI Color code escape sequence to $SCRIPT_NAME.sh"
 				echo 'WHITE_BG="\e[47m"' >> $SCRIPT_NAME.sh
 				;;
-
-
 		esac
 	done
 
@@ -1305,7 +1322,7 @@ display_messages() {
 }
 
 #================================================================
-# FUNCTION: display_messages
+# FUNCTION: append_messages
 # DESCRIPTION:
 #     Appends all types of messages to a shell script.
 # PARAMETERS:
@@ -1439,6 +1456,138 @@ append_messages() {
 	success "Completed writing all types of messages to $SCRIPT_NAME.sh"
 }
 
+
+#================================================================
+# FUNCTION: append_message_types
+# DESCRIPTION:
+#     Appends selected types of messages to a shell script by the user.
+# PARAMETERS:
+#     None
+# RETURNS:
+#     None
+#================================================================
+append_message_types() {
+	local CHOICES=$1
+	IFS=" " read -r -a SELECTED_OPTIONS <<< "$CHOICES"
+
+	for OPTION in "${SELECTED_OPTIONS[@]}"; do
+		case $OPTION in
+			"Info")
+				info "Adding Info message function to $SCRIPT_NAME.sh"
+				echo "#================================================================" >> $SCRIPT_NAME.sh
+				echo "# FUNCTION: info" >> $SCRIPT_NAME.sh
+				echo "# DESCRIPTION:" >> $SCRIPT_NAME.sh
+				echo "#     Prints info message using the provided parameter." >> $SCRIPT_NAME.sh
+				echo "# PARAMETERS:" >> $SCRIPT_NAME.sh
+				echo "#     $1 - A message" >> $SCRIPT_NAME.sh
+				echo "# RETURNS:" >> $SCRIPT_NAME.sh
+				echo "#     None" >> $SCRIPT_NAME.sh
+				echo "#================================================================" >> $SCRIPT_NAME.sh
+				echo "info() {" >> $SCRIPT_NAME.sh
+				echo "	local message=$1" >> $SCRIPT_NAME.sh
+				echo '	printf "${WHITE}[${ENDCOLOR}${CYAN}$current_time${ENDCOLOR}${WHITE}]${ENDCOLOR} ${WHITE}[${ENDCOLOR}${GREEN}INFO${ENDCOLOR}${WHITE}]${ENDCOLOR} ${WHITE}$1${ENDCOLOR}\n' >> $SCRIPT_NAME.sh
+				echo "}" >> $SCRIPT_NAME.sh
+				echo "" >> $SCRIPT_NAME.sh
+				info "Adding Important Info message function to $SCRIPT_NAME.sh"
+				echo "#================================================================" >> $SCRIPT_NAME.sh
+				echo "# FUNCTION: important_info" >> $SCRIPT_NAME.sh
+				echo "# DESCRIPTION:" >> $SCRIPT_NAME.sh
+				echo "#     Prints important info message using the provided parameter." >> $SCRIPT_NAME.sh
+				echo "# PARAMETERS:" >> $SCRIPT_NAME.sh
+				echo "#     $1 - A message" >> $SCRIPT_NAME.sh
+				echo "# RETURNS:" >> $SCRIPT_NAME.sh
+				echo "#     None" >> $SCRIPT_NAME.sh
+				echo "#================================================================" >> $SCRIPT_NAME.sh
+				echo "important_info() {" >> $SCRIPT_NAME.sh
+				echo "	local message=$1" >> $SCRIPT_NAME.sh
+				echo '	printf "${WHITE}[${ENDCOLOR}${CYAN}$current_time${ENDCOLOR}${WHITE}]${ENDCOLOR} ${WHITE}[${ENDCOLOR}${BOLD_GREEN}INFO${ENDCOLOR}${WHITE}]${ENDCOLOR} ${BOLD_WHITE}$1${ENDCOLOR}\n"' >> $SCRIPT_NAME.sh
+				echo "}" >> $SCRIPT_NAME.sh
+				;;
+			"Success")
+				info "Adding success message function to $SCRIPT_NAME.sh"
+				echo "#================================================================" >> $SCRIPT_NAME.sh
+				echo "# FUNCTION: success" >> $SCRIPT_NAME.sh
+				echo "# DESCRIPTION:" >> $SCRIPT_NAME.sh
+				echo "#     Prints success message using the provided parameter." >> $SCRIPT_NAME.sh
+				echo "# PARAMETERS:" >> $SCRIPT_NAME.sh
+				echo "#     $1 - A message" >> $SCRIPT_NAME.sh
+				echo "# RETURNS:" >> $SCRIPT_NAME.sh
+				echo "#     None" >> $SCRIPT_NAME.sh
+				echo "#================================================================" >> $SCRIPT_NAME.sh
+				echo "success() {" >> $SCRIPT_NAME.sh
+				echo "	local message=$1" >> $SCRIPT_NAME.sh
+				echo '	printf "${WHITE}[${ENDCOLOR}${CYAN}$current_time${ENDCOLOR}${WHITE}]${ENDCOLOR} ${WHITE}[${ENDCOLOR}${BOLD_GREEN}SUCCESS${ENDCOLOR}${WHITE}]${ENDCOLOR} ${BOLD_WHITE}$1${ENDCOLOR}\n' >> $SCRIPT_NAME.sh
+				echo "}" >> $SCRIPT_NAME.sh
+				;;
+			"Warning")
+				info "Adding warning message function to $SCRIPT_NAME.sh"
+				echo "#================================================================" >> $SCRIPT_NAME.sh
+				echo "# FUNCTION: warning" >> $SCRIPT_NAME.sh
+				echo "# DESCRIPTION:" >> $SCRIPT_NAME.sh
+				echo "#     Prints warning message using the provided parameter." >> $SCRIPT_NAME.sh
+				echo "# PARAMETERS:" >> $SCRIPT_NAME.sh
+				echo "#     $1 - A message" >> $SCRIPT_NAME.sh
+				echo "# RETURNS:" >> $SCRIPT_NAME.sh
+				echo "#     None" >> $SCRIPT_NAME.sh
+				echo "#================================================================" >> $SCRIPT_NAME.sh
+				echo "warning() {" >> $SCRIPT_NAME.sh
+				echo "	local message=$1" >> $SCRIPT_NAME.sh
+				echo '	printf "${WHITE}[${ENDCOLOR}${CYAN}$current_time${ENDCOLOR}${WHITE}]${ENDCOLOR} ${WHITE}[${ENDCOLOR}${YELLOW}WARNING${ENDCOLOR}${WHITE}]${ENDCOLOR} ${WHITE}$1${ENDCOLOR}\n"' >> $SCRIPT_NAME.sh
+				echo "}" >> $SCRIPT_NAME.sh
+				echo "" >> $SCRIPT_NAME.sh
+				info "Adding important warning message function to $SCRIPT_NAME.sh"
+				echo "#================================================================" >> $SCRIPT_NAME.sh
+				echo "# FUNCTION: important_warning" >> $SCRIPT_NAME.sh
+				echo "# DESCRIPTION:" >> $SCRIPT_NAME.sh
+				echo "#     Prints important warning message using the provided parameter." >> $SCRIPT_NAME.sh
+				echo "# PARAMETERS:" >> $SCRIPT_NAME.sh
+				echo "#     $1 - A message" >> $SCRIPT_NAME.sh
+				echo "# RETURNS:" >> $SCRIPT_NAME.sh
+				echo "#     None" >> $SCRIPT_NAME.sh
+				echo "#================================================================" >> $SCRIPT_NAME.sh
+				echo "important_warning() {" >> $SCRIPT_NAME.sh
+				echo "	local message=$1" >> $SCRIPT_NAME.sh
+				echo ' 	printf "${WHITE}[${ENDCOLOR}${CYAN}$current_time${ENDCOLOR}${WHITE}]${ENDCOLOR} ${WHITE}[${ENDCOLOR}${BOLD_YELLOW}WARNING${ENDCOLOR}${WHITE}]${ENDCOLOR} ${BOLD_WHITE}$1${ENDCOLOR}\n"' >> $SCRIPT_NAME.sh
+				echo "}" >> $SCRIPT_NAME.sh
+				echo "" >> $SCRIPT_NAME.sh
+				;;
+			"Error")
+				info "Adding error message function to $SCRIPT_NAME.sh"
+				echo "#================================================================" >> $SCRIPT_NAME.sh
+				echo "# FUNCTION: error" >> $SCRIPT_NAME.sh
+				echo "# DESCRIPTION:" >> $SCRIPT_NAME.sh
+				echo "#     Prints error message using the provided parameter." >> $SCRIPT_NAME.sh
+				echo "# PARAMETERS:" >> $SCRIPT_NAME.sh
+				echo "#     $1 - A message" >> $SCRIPT_NAME.sh
+				echo "# RETURNS:" >> $SCRIPT_NAME.sh
+				echo "#     None" >> $SCRIPT_NAME.sh
+				echo "#================================================================" >> $SCRIPT_NAME.sh
+				echo "error() {" >> $SCRIPT_NAME.sh	
+				echo "	local message=$1" >> $SCRIPT_NAME.sh
+				echo '	printf "${WHITE}[${ENDCOLOR}${CYAN}$current_time${ENDCOLOR}${WHITE}]${ENDCOLOR} ${WHITE}[${ENDCOLOR}${RED}ERROR${ENDCOLOR}${WHITE}]${ENDCOLOR} ${WHITE}$1${ENDCOLOR}\n"' >> $SCRIPT_NAME.sh
+				echo "}" >> $SCRIPT_NAME.sh
+				echo "" >> $SCRIPT_NAME.sh
+				info "Adding error message function to $SCRIPT_NAME.sh"
+				echo "#================================================================" >> $SCRIPT_NAME.sh
+				echo "# FUNCTION: important_error" >> $SCRIPT_NAME.sh
+				echo "# DESCRIPTION:" >> $SCRIPT_NAME.sh
+				echo "#     Prints important error message using the provided parameter." >> $SCRIPT_NAME.sh
+				echo "# PARAMETERS:" >> $SCRIPT_NAME.sh
+				echo "#     $1 - A message" >> $SCRIPT_NAME.sh
+				echo "# RETURNS:" >> $SCRIPT_NAME.sh
+				echo "#     None" >> $SCRIPT_NAME.sh
+				echo "#================================================================" >> $SCRIPT_NAME.sh
+				echo "important_error() {" >> $SCRIPT_NAME.sh	
+				echo "	local message=$1" >> $SCRIPT_NAME.sh
+				echo '	printf "${WHITE}[${ENDCOLOR}${CYAN}$current_time${ENDCOLOR}${WHITE}]${ENDCOLOR} ${WHITE}[${ENDCOLOR}${BOLD_RED}ERROR${ENDCOLOR}${WHITE}]${ENDCOLOR} ${BOLD_WHITE}$1${ENDCOLOR}\n"' >> $SCRIPT_NAME.sh
+				echo "}" >> $SCRIPT_NAME.sh
+				echo "" >> $SCRIPT_NAME.sh
+				;;
+
+		esac
+	done
+}
+
 #================================================================
 # FUNCTION: input_check
 # DESCRIPTION:
@@ -1533,8 +1682,6 @@ gui() {
 		exit 1
 	fi	
 
-
-
 	SCRIPT_NAME=$(whiptail --inputbox "Enter the name of the script" 8 39 --title "Script Name" 3>&1 1>&2 2>&3)
 	exitstatus=$?
 	if [ $exitstatus -eq 1 ] || [ -z "$SCRIPT_NAME" ]; then
@@ -1543,7 +1690,6 @@ gui() {
 	else
 		info "Script name: $SCRIPT_NAME"			
 	fi	
-
 
 	AUTHOR=$(whiptail --inputbox "Enter the name of the author" 8 39 --title "Author Name")
 	exitstatus=$?
@@ -1642,34 +1788,47 @@ gui() {
 				echo "You choice:" $CHOICES
 				append_colors $CHOICES
 			else
-				echo "You choice Canccel."
+				echo "You choice Cancel."
 			fi
 		fi	
 
-		if [[ "" == "false" ]]; then
+		if [[ "$ALL_BG_COLORS" == "false" ]]; then
+			echo "# Background Color" >> $SCRIPT_NAME.sh
+			echo 'BLACK_BG="\e[40m"' >> $SCRIPT_NAME.sh
+			echo 'RED_BG="\e[41m"' >> $SCRIPT_NAME.sh
+			echo 'GREEN_BG="\e[42m"' >> $SCRIPT_NAME.sh
+			echo 'YELLOW_BG="\e[43m"' >> $SCRIPT_NAME.sh
+			echo 'BLUE_BG="\e[44m"' >> $SCRIPT_NAME.sh
+			echo 'MAGENTA_BG="\e[45m"' >> $SCRIPT_NAME.sh
+			echo 'CYAN_BG="\e[46m"' >> $SCRIPT_NAME.sh
+			echo 'WHITE_BG="\e[47m"' >> $SCRIPT_NAME.sh
 
+			OPTIONS=(
+				"BLACK_BG" "" ON	
+				"RED_BG" "" OFF
+				"GREEN_BG" "" OFF
+				"YELLOW_BG" "" OFF
+				"BLUE_BG" "" OFF
+				"MAGENTA_BG" "" OFF
+				"CYAN_BG" "" OFF
+				"WHITE_BG" "" OFF
+			)
 
+			CHOICES=$(whiptail --title "ANSI Color Code Escape Sequences" --checklist \
+			"Select Background ANSI text color code escape sequences" 20 78 12 \
+			"${OPTIONS[@]}" 3>&1 1>&2 2>&3)
+
+			EXIT_STATUS=$?
+
+			if [[ $EXIT_STATUS = 0 ]]; then
+				echo "You choice:" $CHOICES
+				append_background_colors $CHOICES
+			else
+				echo "You choice Cancel."
+			fi
 		fi
 
-		if [[ "" == "false" ]]; then
-		
-
-		fi
-
-	fi
-
-	if [[ "$ALL" == "false" ]]; then
-		MESSAGE=false
-		if whiptail --title "Message Dialog Option" --yesno "Would you like to use customized message dialogs on your script?" 8 78; then
-			MESSAGE=true
-			info "Enabled usage of message dialogs"
-			echo "User selected Yes, exit status was $?."
-		else
-			info "Diabled usage of message dialogs"
-			echo "User selected No, exit status was $?."
-		fi
-
-		if [[ "$MESSAGE" == "true" ]]; then
+		if [[ "$ALL_FONT_STYLES" == "false" ]]; then
 			# ==========================================================================
 			# Font style options
 			# ==========================================================================
@@ -1691,7 +1850,21 @@ gui() {
 			else
 				echo "You choice Cancel."
 			fi
+		fi
+	fi
 
+	if [[ "$ALL" == "false" ]]; then
+		MESSAGE=false
+		if whiptail --title "Message Dialog Option" --yesno "Would you like to use customized message dialogs on your script?" 8 78; then
+			MESSAGE=true
+			info "Enabled usage of message dialogs"
+			echo "User selected Yes, exit status was $?."
+		else
+			info "Diabled usage of message dialogs"
+			echo "User selected No, exit status was $?."
+		fi
+
+		if [[ "$MESSAGE" == "true" ]]; then
 			# ==========================================================================
 			# Message Type Options
 			# ==========================================================================
@@ -1701,7 +1874,6 @@ gui() {
 				"Success" "Allow success messages" OFF
 				"Warning" "Allow warning messages" OFF 
 				"Error" "Allow error messages" OFF 
-				"All" "Allow all dialog messagess" OFF
 			)
 			
 			CHOICES=$(whiptail --title "Message Types" --checklist \
@@ -1741,6 +1913,7 @@ gui() {
 
 	if [[ $EXIT_STATUS = 0 ]]; then
 		echo "You choice:" $CHOICES
+		append_license_type $CHOICES
 	else
 		echo "You choice Cancel."
 	fi
