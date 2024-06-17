@@ -3,8 +3,8 @@
 # HEADER
 #================================================================
 # Script Name   : template.sh
-# Description   : This script generates shell scripts for 
-# 		  shell scripting development
+# Description   : This script generates shell scripts for shell 
+# 		: scripting development
 # Author        : Eliaz Simon
 # Date          : 2024-06-09
 # Version       : 1.0
@@ -265,20 +265,32 @@ file_check() {
 }
 
 # ---------------------------------------------------------------
-# Global Variables
+# Global Variables - Options for Shell Development
 # ---------------------------------------------------------------
-SCRIPT_NAME="" # Provide the name of the script.
+SCRIPT_NAME="" # Provide the file name of the script.
+SCRIPT_TITLE="" # Provide the official title of your script.
 AUTHOR="" # Provide the name of the script.
+DESCRIPTION="" # Provide basic description of your script
+NOTES="" # Provide important notice on your script
+DEPENDENCIES="" # Ensure you list installed requirements for your script
 LICENSE="" # License type must be selected (MIT License, GPL 3 and etc).
 ALL=false
 COLOR=false # Add ANSI Colour Code escape sequences on the top for displaying banner.
+COLORS="" # List of colors to use
 ALL_COLORS=false
+BG_COLORS="" # List of background colors to use
 ALL_BG_COLORS=false
+FONT_STYLES="" # List of font styles to use
 ALL_FONT_STYLES=false
+BOLD_COLORS="" # List of bold colors to choose from
 ALL_BOLD_COLORS=false
+ITALIC_COLORS="" # List of italic colors to choose from
 ALL_ITALIC_COLORS=false
 MESSAGE=false # Option to add message functions to script
 MESSAGE_TYPES="" # Types of messages to use for script that can be implemented 
+USAGE=false # Option to add usage option
+HELP=false # 
+CL_ARGUMENTS=false # Command line arguments
 
 #################################################################
 # Help & Usage                                               	# 
@@ -564,12 +576,8 @@ append_license() {
 #     None
 #================================================================
 append_escape_sequences() {
-	local CHOICES=$1
-	local OPTION=$2
-
-	if [ "$OPTION" == "color" ]; then 
-		IFS=" " read -r -a SELECTED_OPTIONS <<< "$CHOICES"
-
+	if [[ -n "$COLORS" ]]; then
+		IFS="," read -r -a SELECTED_OPTIONS <<< "$COLORS"
 		for OPTION in "${SELECTED_OPTIONS[@]}"; do
 			case $OPTION in
 				"BLACK")
@@ -640,9 +648,8 @@ append_escape_sequences() {
 		done
 	fi
 
-	if [ "$OPTION" == "bg" ]; then 
-		IFS=" " read -r -a SELECTED_OPTIONS <<< "$CHOICES"
-
+	if [[ -n "$BG_COLORS" ]]; then
+		IFS="," read -r -a SELECTED_OPTIONS <<< "$BG_COLORS"
 		for OPTION in "${SELECTED_OPTIONS[@]}"; do
 			case $OPTION in
 				"BLACK_BG")
@@ -681,11 +688,9 @@ append_escape_sequences() {
 		done
 	fi
 
-	if [ "$OPTION" == "bold" ]; then 
+	if [[ -n "$BOLD_COLORS" ]]; then
 		echo "# Bold" >> $SCRIPT_NAME.sh
-
-		IFS=" " read -r -a SELECTED_OPTIONS <<< "$CHOICES"
-
+		IFS="," read -r -a SELECTED_OPTIONS <<< "$BOLD_COLORS"
 		for OPTION in "${SELECTED_OPTIONS[@]}"; do
 			case $OPTION in
 				"BOLD_BLACK")
@@ -754,14 +759,11 @@ append_escape_sequences() {
 					;;
 			esac
 		done
-
 	fi
 
-	if [ "$OPTION" == "italic" ]; then 
+	if [[ -n "$ITALIC_COLORS" ]]; then
 		echo "# Italic" >> $SCRIPT_NAME.sh
-
-		IFS=" " read -r -a SELECTED_OPTIONS <<< "$CHOICES"
-
+		IFS="," read -r -a SELECTED_OPTIONS <<< "$ITALIC_COLORS"
 		for OPTION in "${SELECTED_OPTIONS[@]}"; do
 			case $OPTION in
 				"ITALIC_BLACK")
@@ -830,15 +832,11 @@ append_escape_sequences() {
 					;;
 			esac
 		done
-
 	fi
 
-	if [ "$OPTION" == "styles" ]; then
+	if [[ -n "$FONT_STYLES" ]]; then
 		echo "# Styles" >> $SCRIPT_NAME.sh
-
-		local CHOICES=$1
-		IFS=" " read -r -a SELECTED_OPTIONS <<< "$CHOICES"
-
+		IFS="," read -r -a SELECTED_OPTIONS <<< "$FONT_STYLES"
 		for OPTION in "${SELECTED_OPTIONS[@]}"; do
 			case $OPTION in
 				"BOLD")
@@ -858,7 +856,7 @@ append_escape_sequences() {
 }
 
 #================================================================
-# FUNCTION: append_command_line_argument_parsing
+# FUNCTION: append_cl_argument_parsing
 # DESCRIPTION:
 #     Generates basic input arguments, options (also known as flags),
 #     help and usage message to guide the user how to use the script. 
@@ -866,129 +864,81 @@ append_escape_sequences() {
 #     the command line, allowing users to customize the behaviour of
 #     the script by specifying different parameters when they run it.
 # PARAMETERS:
-#     $1 - Selected option
+#     None
 # RETURNS:
 #     None
 #================================================================
-append_command_line_parsing() {
-	local OPTION=$1
+append_cl_argument_parsing() {
+	if [ "$USAGE" == "true" ]; then
+		echo "#================================================================" >> $SCRIPT_NAME.sh
+		echo "# FUNCTION: usage" >> $SCRIPT_NAME.sh
+		echo "# DESCRIPTION:" >> $SCRIPT_NAME.sh
+		echo "#     Prints default usage information." >> $SCRIPT_NAME.sh
+		echo "# PARAMETERS:" >> $SCRIPT_NAME.sh
+		echo "#     None" >> $SCRIPT_NAME.sh
+		echo "# RETURNS:" >> $SCRIPT_NAME.sh
+		echo "#     None" >> $SCRIPT_NAME.sh
+		echo "#================================================================" >> $SCRIPT_NAME.sh
+		echo "usage() {" >> $SCRIPT_NAME.sh
 
-	if [ "$OPTION" == "usage" ]; then
+		if [ -z "$SCRIPT_TITLE"] || [ "$SCRIPT_TITLE" == " "]; then
+			echo "	echo \"$SCRIPT_NAME\"" >> $SCRIPT_NAME.sh
+		else 
+			echo "	echo \"$SCRIPT_TITLE\"" >> $SCRIPT_NAME.sh
+		fi
 
-
-
+		echo "  echo \" \"" >> $SCRIPT_NAME.sh
+		echo "	echo \"Usage: ./$SCRIPT_NAME.sh [options]\"" >> $SCRIPT_NAME.sh
+	        echo "	exit 0" >> $SCRIPT_NAME.sh
+		echo "}" >> $SCRIPT_NAME.sh
 	fi
 
+	if [ "$HELP" == "true" ]; then
+		echo "#================================================================" >> $SCRIPT_NAME.sh
+		echo "# FUNCTION: help" >> $SCRIPT_NAME.sh
+		echo "# DESCRIPTION:" >> $SCRIPT_NAME.sh
+		echo "#     Prints default help information." >> $SCRIPT_NAME.sh
+		echo "# PARAMETERS:" >> $SCRIPT_NAME.sh
+		echo "#     None" >> $SCRIPT_NAME.sh
+		echo "# RETURNS:" >> $SCRIPT_NAME.sh
+		echo "#     None" >> $SCRIPT_NAME.sh
+		echo "#================================================================" >> $SCRIPT_NAME.sh
+		echo "help() {" >> $SCRIPT_NAME.sh
 
-	if [ "$OPTION" == "help" ]; then
+		if [ -z "$SCRIPT_TITLE"] || [ "$SCRIPT_TITLE" == " "]; then
+			echo "	echo \"$SCRIPT_NAME\"" >> $SCRIPT_NAME.sh
+		else 
+			echo "	echo \"$SCRIPT_TITLE\"" >> $SCRIPT_NAME.sh
+		fi
 
-
-
+		echo "	echo \" \"" >> $SCRIPT_NAME.sh
+		echo "	echo \"Usage: ./$SCRIPT_NAME.sh [options]\"" >> $SCRIPT_NAME.sh
+		echo "	echo \" \"" >> $SCRIPT_NAME.sh
+		echo "	echo \"Options:\"" >> $SCRIPT_NAME.sh
+	        echo "  printf \"  ${BOLD}--usage${ENDCOLOR}						Show usage information\n\"" >> $SCRIPT_NAME.sh
+	        echo "	printf \"  ${BOLD}-h, --help${ENDCOLOR}						Show help message\n\"" >> $SCRIPT_NAME.sh
+	        echo "	printf \"  ${BOLD}--value${ENDCOLOR}						Show list of license types\n\"" >> $SCRIPT_NAME.sh
+	        echo "	printf \"  ${BOLD}--boolean${ENDCOLOR}						Show list of license types\n\"" >> $SCRIPT_NAME.sh
+	        echo "	echo \" \"" >> $SCRIPT_NAME.sh
+		echo "	exit 0" >> $SCRIPT_NAME.sh
+		echo "}" >> $SCRIPT_NAME.sh
 	fi
 
+	if [ "$MENU" == "true" ]; then
+		echo "VARIABLE=\"\"" >> $SCRIPT_NAME.sh
+		echo "BOOLEAN=false" >> $SCRIPT_NAME.sh
 
-	if [ "$OPTION" == "menu" ]; then
-
-
-
+		echo "while [[ \"$#\" -gt 0 ]]; do" >> $SCRIPT_NAME.sh
+	        echo "	case $1 in" >> $SCRIPT_NAME.sh
+		echo "		-u|--usage) usage ;;" >> $SCRIPT_NAME.sh
+		echo "		-h|--help) help ;;" >> $SCRIPT_NAME.sh
+		echo "		-v|--value) VALUE=\"$2\"; shift ;;" >> $SCRIPT_NAME.sh
+		echo "		--boolean) BOOLEAN=true ;;" >> $SCRIPT_NAME.sh
+		echo "		*) error \"Unknown parameter passed: $1\"; exit 1 ;;" >> $SCRIPT_NAME.sh
+		echo "	esac" >> $SCRIPT_NAME.sh
+		echo "	shift" >> $SCRIPT_NAME.sh
+		echo "done" >> $SCRIPT_NAME.sh
 	fi
-
-	#================================================================
-	# FUNCTION: help
-	# DESCRIPTION:
-	#     Prints default help information.
-	# PARAMETERS:
-	#     None
-	# RETURNS:
-	#     None
-	#================================================================
-	help() {
-		echo "Shell Script Template"
-		echo " "
-		echo "Usage: ./template.sh [options]"
-		echo " "
-		echo "Options:"
-		printf "  ${BOLD}--usage${ENDCOLOR}						Show usage information\n"
-		printf "  ${BOLD}-h, --help${ENDCOLOR}						Show help message\n"
-		printf "  ${BOLD}-n, --name${ENDCOLOR}						Specify script name\n"
-		printf "  ${BOLD}-a, --author${ENDCOLOR}						Specify name of the author\n"
-		printf "  ${BOLD}-l, --license${ENDCOLOR}						Specify license type\n"
-		printf "  ${BOLD}-c, --color${ENDCOLOR}						Enable ANSI Color Code Escape Sequences\n"
-		printf "  ${BOLD}-m, --message${ENDCOLOR}						Enable Message functions from ANSI Color Code Escape Sequences\n"
-		printf "  ${BOLD}--licenses${ENDCOLOR}						Show list of license types\n"
-		printf "  ${BOLD}-gui, --graphical-interface${ENDCOLOR}						Display Graphical Interface for this script\n"
-		echo " "
-		echo "Message & Color Option (Color and message should be enabled as a requirement):"
-		printf "  ${BOLD}--all${ENDCOLOR}						Append all ANSI Color Escape Sequences & Message functions\n"
-		echo " "
-		echo "Color Options (Enabling color is a requirement):"
-		printf "  ${BOLD}--all-colors${ENDCOLOR}						Append all ANSI Color Code Escape Sequences\n"
-		printf "  ${BOLD}--all-bg-colors${ENDCOLOR}						Append all ANSI Background Color Code Escape Sequences\n"
-		printf "  ${BOLD}--all-font-styles${ENDCOLOR}						Append all ANSI Font Style Escape Sequences\n"
-		printf "  ${BOLD}--colors${ENDCOLOR}						Display all ANSI Color Code Escape Sequences\n"
-		echo " "
-		echo "Message Options (Enabling message is a requirement):"
-		printf "  ${BOLD}--messages${ENDCOLOR}						Display a list of messages as functions to use in script\n"
-		printf "  ${BOLD}--types <TYPES>${ENDCOLOR}						Specify types of message to use on your script\n"
-		echo " "
-		echo "Usage Options:"
-		printf "  ${BOLD}-ua, --usage-all${ENDCOLOR}						Append all usage selection menu at the bottom of the script\n"
-		printf "  ${BOLD}-u${ENDCOLOR}						Append usage selection menu at the bottom of the script\n"
-		echo " "
-		exit 0
-	}
-
-
-	# Usage	
-	#================================================================
-	# FUNCTION: usage
-	# DESCRIPTION:
-	#     Prints default usage information.
-	# PARAMETERS:
-	#     None
-	# RETURNS:
-	#     None
-	#================================================================
-	usage() {
-		echo "Shell Script Template"
-		echo " "
-		echo "Usage: ./template [options]"
-		exit 0
-	}
-
-
-
-
-	# Default usage information over here
-	# Options
-	
-	# ---------------------------------------------------------------
-	# Global Variables
-	# ---------------------------------------------------------------
-	SCRIPT_NAME="" # Provide the name of the script.
-	AUTHOR="" # Provide the name of the script.
-	LICENSE="" # License type must be selected (MIT License, GPL 3 and etc).
-	ALL=false
-	COLOR=false # Add ANSI Colour Code escape sequences on the top for displaying banner.
-	ALL_COLORS=false
-	ALL_BG_COLORS=false
-	ALL_FONT_STYLES=false
-	ALL_BOLD_COLORS=false
-	ALL_ITALIC_COLORS=false
-	MESSAGE=false # Option to add message functions to script
-	MESSAGE_TYPES="" # Types of messages to use for script that can be implemented 
-
-	while [[ "$#" -gt 0 ]]; do
-		case $1 in
-			-u|--usage) usage ;;
-			-h|--help) help ;;
-			-l|--license) LICENSE="$2"; shift ;;
-			--all) ALL=true ;;
-			-ms|--messages) display_messages ;;
-			*) error "Unknown parameter passed: $1"; exit 1 ;;
-		esac
-		shift
-	done
 }
 
 #================================================================
@@ -1008,13 +958,13 @@ generate_script() {
 	echo "# HEADER " >> $SCRIPT_NAME.sh
 	echo "#================================================================" >> $SCRIPT_NAME.sh
 	echo "# Script Name    : $SCRIPT_NAME.sh" >> $SCRIPT_NAME.sh
-	echo "# Description    : " >> $SCRIPT_NAME.sh
+	append_description "Description" "$DESCRIPTION"
 	echo "# Author         : $AUTHOR" >> $SCRIPT_NAME.sh
 	echo "# Date           : $current_date" >> $SCRIPT_NAME.sh
 	echo "# Version        : 1.0" >> $SCRIPT_NAME.sh
 	echo "# Usage          : ./$SCRIPT_NAME.sh" >> $SCRIPT_NAME.sh
-	echo "# Notes          : " >> $SCRIPT_NAME.sh
-	echo "# Dependencies   : " >> $SCRIPT_NAME.sh
+	append_description "Notes" "$NOTES"
+	append_description "Dependencies" "$DEPENDENCIES"
 	echo "#================================================================" >> $SCRIPT_NAME.sh
 
 	append_license "$LICENSE"
@@ -1025,7 +975,11 @@ generate_script() {
 
 	append_ansi
 
+	append_escape_sequences
+	
 	append_messages
+
+	append_cl_argument_parsing
 }
 
 #################################################################
@@ -1064,7 +1018,8 @@ help() {
         echo "Options:"
        	printf "  ${BOLD}--usage${ENDCOLOR}						Show usage information\n"
         printf "  ${BOLD}-h, --help${ENDCOLOR}						Show help message\n"
-        printf "  ${BOLD}-n, --name${ENDCOLOR}						Specify script name\n"
+        printf "  ${BOLD}-n, --name${ENDCOLOR}						Specify script file name\n"
+        printf "  ${BOLD}-t, --title${ENDCOLOR}						Specify official title of the script\n"
         printf "  ${BOLD}-a, --author${ENDCOLOR}						Specify name of the author\n"
         printf "  ${BOLD}-l, --license${ENDCOLOR}						Specify license type\n"
         printf "  ${BOLD}-c, --color${ENDCOLOR}						Enable ANSI Color Code Escape Sequences\n"
@@ -1090,6 +1045,64 @@ help() {
        	printf "  ${BOLD}-u${ENDCOLOR}						Append usage selection menu at the bottom of the script\n"
         echo " "
 	exit 0
+}
+
+#================================================================
+# FUNCTION: append_description
+# DESCRIPTION:
+#     Appends specified description (notes, dependencies & description) 
+#     on the header formatted properly to ensure it can be displayed
+#     and formatted properly to demonstrate the purpose of the 
+#     script
+# PARAMETERS:
+#     None
+# RETURNS:
+#     None
+#================================================================
+append_description() {
+	local OPTION_TYPE="$1"
+	local DESCRIPTION="$2"
+
+	char_length=${#DESCRIPTION}
+	if [ "$char_length" -ge 48 ]; then
+		folded_text=$(echo "$DESCRIPTION" | fold -sw 48)
+		first_line=$(echo "$folded_text" | head -n 1)
+		rest_lines=$(echo "$folded_text" | tail -n +2)
+
+		# formatted_first_line=$(echo "# $OPTION_TYPE    : $first_line")
+		# echo "# Description    : " >> $SCRIPT_NAME.sh
+
+		if [ "$OPTION_TYPE" == "Description" ]; then
+			formatted_first_line=$(echo "# Description    : $first_line")
+		fi
+
+		if [ "$OPTION_TYPE" == "Notes" ]; then
+			formatted_first_line=$(echo "# Notes          : $first_line")
+		fi
+
+		if [ "$OPTION_TYPE" == "Dependencies" ]; then
+			formatted_first_line=$(echo "# Dependencies   : $first_line")
+		fi
+
+		formatted_rest_lines=$(echo "$rest_lines" | sed 's/^/# 		 : /')
+
+		echo "$formatted_first_line" >> $SCRIPT_NAME.sh
+		echo "$formatted_rest_lines" >> $SCRIPT_NAME.sh
+	else 
+		# echo "# $OPTION_TYPE    : $DESCRIPTION" >> $SCRIPT_NAME.sh
+
+		if [ "$OPTION_TYPE" == "Description" ]; then
+			echo "# Description    : $DESCRIPTION" >> $SCRIPT_NAME.sh
+		fi
+
+		if [ "$OPTION_TYPE" == "Notes" ]; then
+			echo "# Notes          : $DESCRIPTION" >> $SCRIPT_NAME.sh
+		fi
+
+		if [ "$OPTION_TYPE" == "Dependencies" ]; then
+			echo "# Dependencies   : $DESCRIPTION" >> $SCRIPT_NAME.sh
+		fi
+	fi
 }
 
 #================================================================
@@ -1119,7 +1132,6 @@ display_licenses() {
         echo " "
 	exit 0
 }
-
 
 #================================================================
 # ANSI Color Code Escape Sequences
@@ -1412,6 +1424,27 @@ input_check() {
 	info "Author: $AUTHOR"
 
 	# ---------------------------------------------------------------------------
+	# Description
+	# ---------------------------------------------------------------------------
+	if [ -n "$DESCRIPTION" ]; then
+		info "Description: $DESCRIPTION"
+	fi
+
+	# ---------------------------------------------------------------------------
+	# Notes
+	# ---------------------------------------------------------------------------
+	if [ -n "$NOTES" ]; then
+		info "Notes: $NOTES"
+	fi
+
+	# ---------------------------------------------------------------------------
+	# Dependencies
+	# ---------------------------------------------------------------------------
+	if [ -n "$DEPENDENCIES" ]; then
+		info "Dependencies: $DEPENDENCIES"
+	fi
+
+	# ---------------------------------------------------------------------------
 	# LICENSE
 	# ---------------------------------------------------------------------------
 	if [ -n "$LICENSE" ]; then
@@ -1548,7 +1581,7 @@ input_check() {
 #     None
 #================================================================
 gui() {
-	info "Displaying graphical interface in Bash"
+	info "Graphical User Interface mode Enabled in Bash"
 
 	# Resets all global options by user here
 	COLOR=false
@@ -1571,32 +1604,49 @@ gui() {
 
 	# Script name
 	while true; do
-		SCRIPT_NAME=$(whiptail --inputbox "Enter the name of the script" 8 39 --title "[!] Script Name" 3>&1 1>&2 2>&3)
+		SCRIPT_NAME=$(whiptail --inputbox "Please enter the file name of the script" 8 75 --title "[!] Set up file name" 3>&1 1>&2 2>&3)
 
 		EXIT_STATUS=$?
 
 		if [ $EXIT_STATUS -ne 0 ]; then
 			# If the user pressed "Cancel" or closed the dialog, exit the script
 			echo "Operation cancelled by the user."
-			exit 1
+			# exit 1
 		elif [ -z "$SCRIPT_NAME" ]; then
 			whiptail --title "[!!] Warning" --msgbox "You must provide a name for your script." 8 78
 		else
 			break
 		fi	
 	done
-	info "Script name: $SCRIPT_NAME"			
+	info "File Name: $SCRIPT_NAME"			
+
+	# Script Title
+	SCRIPT_TITLE=$(whiptail --inputbox "Please enter the title of the script" 8 75 --title "[!] Set up script title" 3>&1 1>&2 2>&3)
+
+	EXIT_STATUS=$?
+
+	if [ $EXIT_STATUS -ne 0 ]; then
+		# If the user pressed "Cancel" or closed the dialog, exit the script
+		echo "Operation cancelled by the user."
+		# exit 1
+	elif [ -z "$SCRIPT_NAME" ]; then
+		whiptail --title "[!!] Warning" --msgbox "You must provide a name for your script." 8 78
+	else
+		break
+	fi	
+	info "Title: $SCRIPT_TITLE"
 
 	# Author
 	while true; do
-		AUTHOR=$(whiptail --inputbox "Enter the name of the author" 8 39 --title "[!] Author Name" 3>&1 1>&2 2>&3)
+		# AUTHOR=$(whiptail --inputbox "Please enter the name of the author of the script" 8 39 --title "[!] Set up author name" 3>&1 1>&2 2>&3)
+		AUTHOR=$(whiptail --inputbox "Please enter the name of the author of the script" 8 75 --title "[!] Set up author name" 3>&1 1>&2 2>&3)
 
 		EXIT_STATUS=$?
 
 		if [ $EXIT_STATUS -ne 0 ]; then
 			# If the user pressed "Cancel" or closed the dialog, exit the script
 			echo "Operation cancelled by the user."
-			exit 1
+			# exit 1
 		elif [ -z "$AUTHOR" ]; then
 			whiptail --title "[!!] Warning" --msgbox "You must provide the name of the author in your script." 8 78
 			$0
@@ -1605,6 +1655,46 @@ gui() {
 		fi	
 	done
 	info "Author: $AUTHOR"			
+
+
+	# Description
+	DESCRIPTION=$(whiptail --inputbox "Please enter the description about your script. \n\nThe description is useful for the user to know what the script is and the purpose of the shell script. This is to ensure that the user knows how to use the script properly on their system." 11 160 --title "[!] Set up description" 3>&1 1>&2 2>&3)
+
+	EXIT_STATUS=$?
+
+	if [ $EXIT_STATUS -ne 0 ]; then
+		# If the user pressed "Cancel" or closed the dialog, exit the script
+		echo "Operation cancelled by the user."
+		# exit 1
+	fi
+	info "Description: $DESCRIPTION"
+
+
+	# Notes
+	NOTES=$(whiptail --inputbox "Please enter notes about your script. \n\nNotes ensure the user the consideration before initializing the shell script. This may involve concerns such as incompatibility and/or the state of the script itself, contributed by the developer." 11 160 --title "[!] Set up notes" 3>&1 1>&2 2>&3)
+
+	EXIT_STATUS=$?
+
+	if [ $EXIT_STATUS -ne 0 ]; then
+		# If the user pressed "Cancel" or closed the dialog, exit the script
+		echo "Operation cancelled by the user."
+		# exit 1
+	fi
+	info "Notes: $NOTES"
+
+
+	# Dependencies
+	DEPENDENCIES=$(whiptail --inputbox "Please enter the required dependencies. \n\nDependencies are essential to inform the requirements and/or pre-requisites to the user before initializing and using the shell script. These examples may involve installing a package and/or running on specific Linux Distribution to avoid compatibility issues." 11 160 --title "[!] Set up dependencies requirements" 3>&1 1>&2 2>&3)
+
+	EXIT_STATUS=$?
+
+	if [ $EXIT_STATUS -ne 0 ]; then
+		# If the user pressed "Cancel" or closed the dialog, exit the script
+		echo "Operation cancelled by the user."
+		# exit 1
+	fi
+	info "Dependencies: $DEPENDENCIES"
+
 
 	while true; do
 		# License
@@ -1623,15 +1713,14 @@ gui() {
 			"Unlicense" "The Unlicense"
 		)
 
-		LICENSE=$(whiptail --title "[!] License Type" --menu "Choose License type" 25 78 16 \
-			"${OPTIONS[@]}" 3>&1 1>&2 2>&3)
+		LICENSE=$(whiptail --title "[!!] License selection" --menu "Please choose your preferred licensing type. \n\nLicensing is essential for defining how the code can be used, modified, and distributed by others. It is a crucial element of any open-source project as it governs how the code can be utilized and ensures that both the creators and users of the software understand their rights and responsibilities. \n\nRead more license types from the selection menu if you are unsure which to select." 45 80 16 "${OPTIONS[@]}" 3>&1 1>&2 2>&3)
 
 		EXIT_STATUS=$?
 
 		if [ $EXIT_STATUS -ne 0 ]; then
 			# If the user pressed "Cancel" or closed the dialog, exit the script
 			echo "Operation cancelled by the user."
-			exit 1
+			# exit 1
 		else
 			break
 		fi
@@ -1640,12 +1729,13 @@ gui() {
 
 
 	# ALL
-	if whiptail --title "[!] Append All" --yesno "Would you like to append all of the following functions to your script? This includes the following: \n
+	if whiptail --title "[!] Implement all" --yesno "Do you want to add all supported customized functions to your script? This includes the following: \n
 		* Supported color code escape sequences (RED, BLUE and etc)
 		* Supported font style (Bold & Italic fonts) 
 		* Supported background text colors (BLACK text with RED background)
-		* Supported customized message dialog functions (INFO, SUCCESS, WARNING & ERROR) \n
-		If you select NO, you will have to select your cutomizable preference for your own script." 20 100; then
+		* Supported customized message dialog functions (INFO, SUCCESS, WARNING & ERROR) 
+		* Supposed Command-Line Argument Interface (USAGE, HELP and CLI) \n
+		If you select NO, you will have to select your cutomizable preference for your own script." 30 100; then
 
 		COLOR=true
 		ALL_COLORS=true
@@ -1655,17 +1745,16 @@ gui() {
 		ALL_ITALIC_COLORS=true
 		MESSAGE=true
 
-		info "Enabled usage of ANSI Color Code Escape Sequences"
-		echo "User selected Yes, exit status was $?."
+		info "Enabling to add all supported customized functions"
+		# echo "User selected Yes, exit status was $?."
 	else
-		info "Enabled usage of ANSI Color Code Escape Sequences"
-		echo "User selected No, exit status was $?."
+		info "Disabling to add all supported customized functions"
+		# echo "User selected No, exit status was $?."
 	fi
-
-
 	
 	if [[ "$COLOR" == "false" ]]; then
-		if whiptail --title "[!] ANSI Color Support" --yesno "Would you like to enable the use of ANSI Color Code escape sequences in your script? (ANSI Color Code Escape Sequences is required for message dialogs)" 8 78; then
+		# Insert detailed description what ANSI color code escape sequence is 
+		if whiptail --title "[!] Implement ANSI color code support" --yesno "Do you want to add ANSI Color Code escape sequences to your script? (ANSI Color Code Escape Sequences is required for message dialogs)" 8 78; then
 			COLOR=true
 			info "Enabled usage of ANSI Color Code Escape Sequences"
 			echo "User selected Yes, exit status was $?."
@@ -1677,10 +1766,9 @@ gui() {
 		info "Enabled ANSI color code escape sequences"
 	fi
 
-
 	if [[ "$COLOR" == "true" ]]; then
 		if [[ "$ALL_COLORS" == "false" ]]; then
-			if whiptail --title "[!] All ANSI Color Escape Sequences" --yesno "Add all colors from ANSI escape sequences?" 8 78; then
+			if whiptail --title "[!] Implement all color codes" --yesno "Do you want to add all color codes from ANSI escape sequences?" 8 78; then
 				ALL_COLORS=true
 				info "Enabled usage of ANSI Color Code Escape Sequences"
 				echo "User selected Yes, exit status was $?."
@@ -1691,43 +1779,41 @@ gui() {
 
 			if [[ "$ALL_COLORS" == "false" ]]; then
 				OPTIONS=(
-					"BLACK" ""
-					"GREEN" ""
-					"YELLOW" ""
-					"BLUE" ""
-					"MAGENTA" ""
-					"CYAN" ""
-					"LIGHT_GRAY" ""
-					"GRAY" ""
-					"LIGHT_RED" ""
-					"LIGHT_GREEN" ""
-					"LIGHT_YELLOW" ""
-					"LIGHT_BLUE" ""
-					"LIGHT_MAGENTA" ""
-					"LIGHT_CYAN" ""
-					"LIGHT_WHITE" ""
+					"BLACK" "" ON \
+					"GREEN" "" OFF \
+					"YELLOW" "" OFF \
+					"BLUE" "" OFF \
+					"MAGENTA" "" OFF \
+					"CYAN" "" OFF \
+					"LIGHT_GRAY" "" OFF \
+					"GRAY" "" OFF \
+					"LIGHT_RED" "" OFF \
+					"LIGHT_GREEN" "" OFF \
+					"LIGHT_YELLOW" "" OFF \
+					"LIGHT_BLUE" "" OFF \
+					"LIGHT_MAGENTA" "" OFF \
+					"LIGHT_CYAN" "" OFF \
+					"LIGHT_WHITE" "" OFF 
 				)
 
-				COLORS=$(whiptail --title "[!] ANSI Color Selection" --checklist \
-				"Select ANSI color code escape sequences you want to insert to your script" 20 78 12 \
-				"${OPTIONS[@]}" 3>&1 1>&2 2>&3)
+				COLORS=$(whiptail --title "[!] Select the color" --checklist "Select ANSI color code escape sequences you want to insert to your script" 20 78 12 "${OPTIONS[@]}" 3>&1 1>&2 2>&3)
 
 				EXIT_STATUS=$?
 
 				if [ $EXIT_STATUS -ne 0 ]; then
 					# If the user pressed "Cancel" or closed the dialog, exit the script
 					echo "Operation cancelled by the user."
-					exit 1
+					# exit 1
 				else
 					echo "You choice:" $COLORS
-					append_escape_sequences "$COLORS" "color"
+					COLORS=$(echo "$COLORS" | tr -d '"' | tr ' ' ',')						
 				fi
 				info "Colors: $COLORS"
 			fi
 		fi
 
 		if [[ "$ALL_BG_COLORS" == "false" ]]; then
-			if whiptail --title "[!] All ANSI Background Color Support" --yesno "Add all ANSI Background Color Code Escape Sequences?" 8 78; then
+			if whiptail --title "[!] Implement all background code" --yesno "Add all ANSI Background Color Code Escape Sequences?" 8 78; then
 				ALL_BG_COLORS=true
 				info "Enabled usage of ANSI Color Code Escape Sequences"
 				echo "User selected Yes, exit status was $?."
@@ -1738,36 +1824,34 @@ gui() {
 
 			if [[ "$ALL_BG_COLORS" == "false" ]]; then
 				OPTIONS=(
-					"BLACK_BG" "" 
-					"RED_BG" "" 
-					"GREEN_BG" ""
-					"YELLOW_BG" ""
-					"BLUE_BG" ""
-					"MAGENTA_BG" ""
-					"CYAN_BG" ""
-					"WHITE_BG" ""
+					"BLACK_BG" "" ON \
+					"RED_BG" "" OFF \
+					"GREEN_BG" "" OFF \
+					"YELLOW_BG" "" OFF \
+					"BLUE_BG" "" OFF \
+					"MAGENTA_BG" "" OFF \
+					"CYAN_BG" "" OFF \
+					"WHITE_BG" "" OFF 
 				)
 
-				BG_COLORS=$(whiptail --title "[!] ANSI Color Code Escape Sequences" --checklist \
-				"Select Background ANSI text color code escape sequences" 20 78 12 \
-				"${OPTIONS[@]}" 3>&1 1>&2 2>&3)
+				BG_COLORS=$(whiptail --title "[!] Select the background text color" --checklist "Select Background ANSI text color code escape sequences" 20 78 12 "${OPTIONS[@]}" 3>&1 1>&2 2>&3)
 
 				EXIT_STATUS=$?
 
 				if [ $EXIT_STATUS -ne 0 ]; then
 					# If the user pressed "Cancel" or closed the dialog, exit the script
 					echo "Operation cancelled by the user."
-					exit 1
+					# exit 1
 				else
 					echo "You choice:" $BG_COLORS
-					append_escape_sequences "$BG_COLORS" "bg"
+					BG_COLORS=$(echo "$BG_COLORS" | tr -d '"' | tr ' ' ',')						
 				fi
 				info "Background Colors: $BG_COLORS"
 			fi
 		fi
 
 		if [[ "$ALL_FONT_STYLES" == "false" ]]; then
-			if whiptail --title "[!] All ANSI Font Style Support" --yesno "Add all ANSI Font Style Escape Sequences?" 8 78; then
+			if whiptail --title "[!] Implement ANSI font styles" --yesno "Do you want to add all ANSI Font Styles Escape Sequences?" 8 78; then
 				ALL_FONT_STYLES=true
 				info "Enabled usage of ANSI Color Code Escape Sequences"
 				echo "User selected Yes, exit status was $?."
@@ -1779,23 +1863,21 @@ gui() {
 
 			if [[ "$ALL_FONT_STYLES" == "false" ]]; then
 				OPTIONS=(
-					"Bold" ""
-					"Italic" ""
+					"Bold" "" ON \
+					"Italic" "" OFF
 				)
 
-				FONT_STYLES=$(whiptail --title "[!] ANSI Font Styles" --checklist \
-					"Select Font Styles" 20 78 4 \
-					"${OPTIONS[@]}" 3>&1 1>&2 2>&3)
+				FONT_STYLES=$(whiptail --title "[!] ANSI Font Styles" --checklist "Select Font Styles" 20 78 4 "${OPTIONS[@]}" 3>&1 1>&2 2>&3)
 				
 				EXIT_STATUS=$?
 
 				if [ $EXIT_STATUS -ne 0 ]; then
 					# If the user pressed "Cancel" or closed the dialog, exit the script
 					echo "Operation cancelled by the user."
-					exit 1
+					# exit 1
 				else
 					echo "You choice:" $FONT_STYLES
-					append_escape_sequences "$FONT_STYLES" "font_styles"
+					FONT_STYLES=$(echo "$FONT_STYLES" | tr -d '"' | tr ' ' ',')						
 				fi
 				info "Font Styles: $FONT_STYLES"
 			fi
@@ -1803,7 +1885,7 @@ gui() {
 	fi
 
 	if [[ "$MESSAGE" == "false" ]]; then
-		if whiptail --title "[!] Customized Message Functions Support" --yesno "Would you like to use customized message functions on your script?" 8 78; then
+		if whiptail --title "[!] Implement message functions" --yesno "Would you like to add message functions on your script?" 8 78; then
 			MESSAGE=true
 			info "Enabled usage of message dialogs"
 			echo "User selected Yes, exit status was $?."
@@ -1814,28 +1896,61 @@ gui() {
 
 		if [[ "$MESSAGE" == "true" ]]; then
 			OPTIONS=(
-				"Info" "Allow info messages"
-				"Success" "Allow success messages"
-				"Warning" "Allow warning messages"
-				"Error" "Allow error messages"
+				"Info" "Allow info messages" ON \
+				"Success" "Allow success messages" OFF \
+				"Warning" "Allow warning messages" OFF \
+				"Error" "Allow error messages" OFF
 			)
 			
-			MESSAGE_TYPES=$(whiptail --title "[!] Message Types" --checklist \
-				"Select dialog message types" 20 100 12 \
-				"${OPTIONS[@]}" 3>&1 1>&2 2>&3)
+			MESSAGE_TYPES=$(whiptail --title "[!] Message Types" --checklist "Select dialog message types" 20 100 12 "${OPTIONS[@]}" 3>&1 1>&2 2>&3)
 
 			EXIT_STATUS=$?
-
 
 			if [ $EXIT_STATUS -ne 0 ]; then
 				# If the user pressed "Cancel" or closed the dialog, exit the script
 				echo "Operation cancelled by the user."
-				exit 1
+				# exit 1
 			else
 				echo "You choice:" $MESSAGE_TYPES
-				append_messages
 			fi
 			info "Message Types: $MESSAGE_TYPES"
+		fi
+	fi
+
+	# Usage section
+	if [[ "$USAGE" == "false" ]]; then
+		if whiptail --title "[!] Implement usage" --yesno "Would you like to add USAGE function to your script?" 20 100; then
+			USAGE=true
+
+			info "Enabled USAGE function on $SCRIPT_NAME.sh"
+			# echo "User selected Yes, exit status was $?."
+		else
+			info "Disabled USAGE function on $SCRIPT_NAME.sh"
+			# echo "User selected No, exit status was $?."
+		fi
+	fi
+
+	if [[ "$HELP" == "false" ]]; then
+		if whiptail --title "[!] Implement help" --yesno "Would you like to add HELP function to your script?" 20 100; then
+			HELP=true
+
+			info "Enabled HELP function on $SCRIPT_NAME.sh"
+			# echo "User selected Yes, exit status was $?."
+		else
+			info "Disabled HELP function on $SCRIPT_NAME.sh"
+			# echo "User selected No, exit status was $?."
+		fi
+	fi
+
+	if [[ "$CL_ARGUMENTS" == "false" ]]; then
+		if whiptail --title "[!] Implement command line argument interface" --yesno "Would you like to add command line argument interface to your script?" 20 100; then
+			CL_ARGUMENTS=true
+
+			info "Enabled Command-Line Argument Interface on $SCRIPT_NAME.sh"
+			# echo "User selected Yes, exit status was $?."
+		else
+			info "Disabled Command-Line Argument Interface on $SCRIPT_NAME.sh"
+			# echo "User selected No, exit status was $?."
 		fi
 	fi
 
@@ -1860,7 +1975,11 @@ while [[ "$#" -gt 0 ]]; do
 		--usage) usage ;;
 		-h|--help) help ;;
 		-n|--name) SCRIPT_NAME="$2"; shift ;;
+		-t|--title) SCRIPT_TITLE="$2"; shift ;;
 		-a|--author) AUTHOR="$2"; shift ;;
+		-d|--description) DESCRIPTION="$2"; shift ;;
+		-ns|--notes) NOTES="$2"; shift ;;
+		-dp|--dependencies) DEPENDENCIES="$2"; shift ;;	
 		-l|--license) LICENSE="$2"; shift ;;
 		--all) ALL=true ;;
 		--color) COLOR=true ;;
