@@ -228,7 +228,7 @@ BG_COLORS=""
 BOLD_COLORS="" 
 ITALIC_COLORS="" 
 FONT_STYLES=""
-MESSAGE_TYPES="" 
+LOG_MESSAGE_TYPES="" 
 COMMAND_LINE_INTERFACE=false 
 
 #================================================================
@@ -953,14 +953,9 @@ generate_script() {
 #     None
 #================================================================
 usage() {
-	echo "	____ _  _ ____ _    _       ___ ____ _  _ ___  _    ____ ___ ____ "
-	echo "	[__  |__| |___ |    |        |  |___ |\/| |__] |    |__|  |  |___ "
-	echo "	___] |  | |___ |___ |___     |  |___ |  | |    |___ |  |  |  |___ "
-	echo "	                                                                  "
-	echo " "
         echo "Shell Script Template Generator"
 	echo " "
-	echo "Usage: ./template [options]"
+	echo "Usage: ./template [modes] [options]"
 	exit 0
 }
 
@@ -974,10 +969,6 @@ usage() {
 #     None
 #================================================================
 help() {
-	echo "____ _  _ ____ _    _       ___ ____ _  _ ___  _    ____ ___ ____ "
-	echo "[__  |__| |___ |    |        |  |___ |\/| |__] |    |__|  |  |___ "
-	echo "___] |  | |___ |___ |___     |  |___ |  | |    |___ |  |  |  |___ "
-	echo "                                                                  "
         echo "Shell Script Template Generator"
 	echo " "
 	echo "Usage: ./template.sh [modes] [options]"
@@ -1008,7 +999,7 @@ help() {
 	printf "  ${BOLD}-afs, --all-font-styles${ENDCOLOR}				Implement all font styles (BOLD & ITALIC)\n"
 	echo " "
         echo "Message Options:"
-        printf "  ${BOLD}-mt, --message-types <MESSAGE_TYPES>${ENDCOLOR}			Specify type of messages\n"
+        printf "  ${BOLD}-mt, --message-types <LOG_MESSAGE_TYPES>${ENDCOLOR}		Specify log message types\n"
        	printf "  ${BOLD}--show-messages${ENDCOLOR}					Display a list of messages as functions to use in script\n"
 	echo " "
         echo "Command-Line Interface Option:"
@@ -1119,7 +1110,7 @@ display_licenses() {
 #     ITALIC_COLORS - Specieis italic ANSI color code escape sequences
 #     BOLD_COLORS - Specifies bold ANSI color code escape sequences
 #     FONT_STYLES - Specifies ANSI font style color code escape sequences
-#     MESSAGE_TYPES - Specifies types of message
+#     LOG_MESSAGE_TYPES - Specifies types of message
 #     COMMAND_LINE_INTERFACE - Implements command-line interface (USAGE, HELP & parsing argument interface)
 # PARAMETERS:
 #     None
@@ -1136,7 +1127,7 @@ all() {
 	FONT_STYLES="BOLD,ITALIC"	
 
 	# Message Types
-	MESSAGE_TYPES="Info,Success,Warning,Error"
+	LOG_MESSAGE_TYPES="Info,Success,Warning,Error"
 
 	# Command Line Interface
 	COMMAND_LINE_INTERFACE=true
@@ -1161,7 +1152,7 @@ all_font_styles() {
 #================================================================
 # FUNCTION: display_messages
 # DESCRIPTION:
-#     Prints all message types.
+#     Prints all log message types.
 # PARAMETERS:
 #     None
 # RETURNS:
@@ -1187,7 +1178,7 @@ display_messages() {
 #     None
 #================================================================
 append_messages() {
-	IFS="," read -r -a SELECTED_OPTIONS <<< "$MESSAGE_TYPES"
+	IFS="," read -r -a SELECTED_OPTIONS <<< "$LOG_MESSAGE_TYPES"
 
 	for OPTION in "${SELECTED_OPTIONS[@]}"; do
 		case $OPTION in
@@ -1459,21 +1450,21 @@ input_check() {
 	fi
 
 	# Message Types
-	if [ -n "$MESSAGE_TYPES" ]; then
+	if [ -n "$LOG_MESSAGE_TYPES" ]; then
 		# Check color and bold to express message arrays
 		message_array=("Info" "Success" "Warning" "Error")
 		match=false	
 		for MS in ${message_array[@]}; do
-			if [[ "$MESSAGE_TYPES" == *"$MS"* ]]; then
+			if [[ "$LOG_MESSAGE_TYPES" == *"$MS"* ]]; then
 				match=true
 				break
 			fi
 		done
 		if [[ "$match" == "false" ]]; then
-			error "Unknown message types for the following: $MESSAGE_TYPES"
+			error "Unknown message types for the following: $LOG_MESSAGE_TYPES"
 			exit 1
 		fi	
-		info "Message Types: $MESSAGE_TYPES"
+		info "Message Types: $LOG_MESSAGE_TYPES"
 	fi
 }
 
@@ -1484,6 +1475,21 @@ input_check() {
 # FUNCTION: gui
 # DESCRIPTION:
 #     Displays Graphical User Interface mode in Bash.
+# GLOBALS:
+#     SCRIPT_NAME - Specifies script file name
+#     SCRIPT_TITLE - Specifies official title of the script
+#     AUTHOR - Specifies name of the author
+#     DESCRIPTION - Specifies description
+#     NOTES - Specifies notes
+#     DEPENDENCIES - Specifies required dependencies
+#     LICENSE - Specifies license type
+#     COLORS - Specifies standard ANSI color code escape sequences
+#     BG_COLORS - Specifies background ANSI color code escape sequences
+#     BOLD_COLORS - Specifies bold ANSI color code escape sequences
+#     ITALIC_COLORS - Specifies italic ANSI color code escape sequences
+#     FONT_STYLES - Specifies ANSI font style color code escape sequences
+#     LOG_MESSAGE_TYPES - Specifies type of messages
+#     COMMAND_LINE_INTERFACE - Implements Command-Line interface (USAGE, HELP & parsing argument menu)
 # PARAMETERS:
 #     None
 # RETURNS:
@@ -1504,7 +1510,7 @@ gui() {
 	BOLD_COLORS="" 
 	ITALIC_COLORS="" 
 	FONT_STYLES=""
-	MESSAGE_TYPES="" 
+	LOG_MESSAGE_TYPES="" 
 	COMMAND_LINE_INTERFACE=false 
 
 	# Check if whiptail is installed on user's system.
@@ -1512,7 +1518,7 @@ gui() {
 	if ! "$check_whiptail" | grep -q "whiptail"; then
 		info "Whiptail has been detected to be installed on your system"
 	else 
-		important_error "Your system does not have Whiptail installed."
+		bold_error "Your system does not have Whiptail installed."
 		exit 1
 	fi	
 
@@ -1534,7 +1540,7 @@ gui() {
 	SCRIPT_TITLE=$(whiptail --inputbox "Please enter the title of the script" 8 75 --title "[!] Set up script title" 3>&1 1>&2 2>&3)
 	EXIT_STATUS=$?
 	if [ $EXIT_STATUS -ne 0 ]; then
-		echo "Operation cancelled by the user."
+		info "Operation cancelled by the user."
 	fi	
 	info "Title: $SCRIPT_TITLE"
 
@@ -1542,31 +1548,31 @@ gui() {
 	AUTHOR=$(whiptail --inputbox "Please enter the name of the author of the script" 8 75 --title "[!] Set up author name" 3>&1 1>&2 2>&3)
 	EXIT_STATUS=$?
 	if [ $EXIT_STATUS -ne 0 ]; then
-		echo "Operation cancelled by the user."
+		info "Operation cancelled by the user."
 	fi	
 	info "Author: $AUTHOR"			
 
 	# Description
-	DESCRIPTION=$(whiptail --inputbox "Please enter the description about your script. \n\nThe description is useful for the user to know what the script is and the purpose of the shell script. This is to ensure that the user knows how to use the script properly on their system." 11 160 --title "[!] Set up description" 3>&1 1>&2 2>&3)
+	DESCRIPTION=$(whiptail --inputbox "Please enter the description about your script. \n\nThe description is useful for the user to know what the script is and the purpose behind the development of the project. This is to inform the user the script they are executing that would affect their system." 11 160 --title "[!] Set up description" 3>&1 1>&2 2>&3)
 	EXIT_STATUS=$?
 	if [ $EXIT_STATUS -ne 0 ]; then
-		echo "Operation cancelled by the user."
+		info "Operation cancelled by the user."
 	fi
 	info "Description: $DESCRIPTION"
 
 	# Notes
-	NOTES=$(whiptail --inputbox "Please enter notes about your script. \n\nNotes ensure the user the consideration before initializing the shell script. This may involve concerns such as incompatibility and/or the state of the script itself, contributed by the developer." 11 160 --title "[!] Set up notes" 3>&1 1>&2 2>&3)
+	NOTES=$(whiptail --inputbox "Please enter notes about your script. \n\nNotes informs the user of any additional information that would be useful for understanding the script. This is to provide clarity and guidance on how to use the script" 11 160 --title "[!] Set up notes" 3>&1 1>&2 2>&3)
 	EXIT_STATUS=$?
 	if [ $EXIT_STATUS -ne 0 ]; then
-		echo "Operation cancelled by the user."
+		info "Operation cancelled by the user."
 	fi
 	info "Notes: $NOTES"
 
 	# Dependencies
-	DEPENDENCIES=$(whiptail --inputbox "Please enter the required dependencies. \n\nDependencies are essential to inform the requirements and/or pre-requisites to the user before initializing and using the shell script. These examples may involve installing a package and/or running on specific Linux Distribution to avoid compatibility issues." 11 160 --title "[!] Set up dependencies requirements" 3>&1 1>&2 2>&3)
+	DEPENDENCIES=$(whiptail --inputbox "Please enter the required dependencies. \n\nDependencies are essential for listing software, libraries or scripts to run the script properly." 11 160 --title "[!] Set up dependencies requirements" 3>&1 1>&2 2>&3)
 	EXIT_STATUS=$?
 	if [ $EXIT_STATUS -ne 0 ]; then
-		echo "Operation cancelled by the user."
+		info "Operation cancelled by the user."
 	fi
 	info "Dependencies: $DEPENDENCIES"
 
@@ -1586,7 +1592,7 @@ gui() {
 			"MPL-2.0" "Mozilla Public License 2.0"
 			"Unlicense" "The Unlicense"
 		)
-		LICENSE=$(whiptail --title "[!!] License selection" --menu "Please choose your preferred licensing type. \n\nLicensing is essential for defining how the code can be used, modified, and distributed by others. It is a crucial element of any open-source project as it governs how the code can be utilized and ensures that both the creators and users of the software understand their rights and responsibilities. \n\nRead more license types from the selection menu if you are unsure which to select." 45 80 16 "${OPTIONS[@]}" 3>&1 1>&2 2>&3)
+		LICENSE=$(whiptail --title "[!!] License selection" --menu "Please choose your preferred licensing type. \n\nLicensing is essential for defining how the code can be used, modified, and distributed by others. It is critical as it governs hwo the code can be utilized to ensure that both the developers and users of the software understand their rights and responsibilities." 45 80 16 "${OPTIONS[@]}" 3>&1 1>&2 2>&3)
 		EXIT_STATUS=$?
 		if [ $EXIT_STATUS -ne 0 ]; then
 			echo "Operation cancelled by the user."
@@ -1598,32 +1604,31 @@ gui() {
 	info "License Type: $LICENSE"
 
 	# ALL - Adds all functions (ANSI escape sequences, message functions & Command Line Interface)
-	if whiptail --title "[!] Implement all" --yesno "Do you want to add all supported customized functions to your script? This includes the following: \n
-		* Supported color code escape sequences (RED, BLUE and etc)
-		* Supported font style (Bold & Italic fonts) 
-		* Supported background text colors (BLACK text with RED background)
-		* Supported customized message dialog functions (INFO, SUCCESS, WARNING & ERROR) 
-		* Supported Command-Line Interface (USAGE, HELP and CLI) \n\n
-		If you select NO, you will have to select your cutomizable preference for your own executable script." 30 100; then
+	if whiptail --title "[!] Implement all" --yesno "Do you want to add all custom functionalities to your script? The list are as follows: \n
+		* All standard ANSI color code escape sequences
+		* All background ANSI color code escape sequences
+		* All ANSI font style escape sequences (Bold & Italic)
+		* All custom log level messages (INFO, SUCCESS, WARNING & ERROR) 
+		* Complete custom Command-Line argument parsing Interface (USAGE, HELP and CLI) \n\n
+		If you select NO, you will have to individually select your own preference for how you want your script to be formatted." 30 100; then
 
 		# Implements all functionality into the following method
 		all 
 
-		info "Enabling to add all supported customized functions"
+		info "Enabling implementation of all custom functionalities to $SCRIPT_NAME.sh"
 	else
-		info "Disabling to add all supported customized functions"
+		info "Disabling implementation of all custom functionalities to $SCRIPT_NAME.sh"
 	fi
 
 	# COLOR
 	local STANDARD_ANSI_COLOR=false
 	if [ -z "$COLOR" ]; then
-		if whiptail --title "[!] Implement standard ANSI color code escape sequences" --yesno "Do you want to add standard ANSI Color Code escape sequences to your script? (ANSI Color Code Escape Sequences is required for message dialogs)" 8 78; then
+		if whiptail --title "[!] Implement standard ANSI color code escape sequences" --yesno "Do you want to add standard ANSI color code escape sequences to your script? (ANSI Color Code Escape Sequences is required for custom log level messages)" 8 78; then
 			STANDARD_ANSI_COLOR=true
-			info "Enabled implementation of standard ANSI Color Code Escape Sequences"
+			info "Enabled implementation of standard ANSI color code escape sequences"
 		else
-			info "Disabled implementation of standard ANSI Color Code Escape Sequences"
+			info "Disabled implementation of standard ANSI color code escape sequences"
 		fi
-		info "Enabled ANSI color code escape sequences"
 	fi
 
 	if [[ "$STANDARD_ANSI_COLOR" == "true"  ]]; then
@@ -1644,13 +1649,12 @@ gui() {
 			"LIGHT_CYAN" "" OFF \
 			"LIGHT_WHITE" "" OFF 
 		)
-		COLORS=$(whiptail --title "[!] Select the color" --checklist "Select ANSI color code escape sequences you want to insert to your script" 20 78 12 "${OPTIONS[@]}" 3>&1 1>&2 2>&3)
+		COLORS=$(whiptail --title "[!] Select ANSI color code escape sequences" --checklist "Select ANSI color code escape sequences you want to implement to your script" 20 78 12 "${OPTIONS[@]}" 3>&1 1>&2 2>&3)
 		EXIT_STATUS=$?
 		if [ $EXIT_STATUS -ne 0 ]; then
-			echo "Operation cancelled by the user."
+			info "Operation cancelled by the user."
 		else
-			echo "You choice:" $COLORS
-			COLORS=$(echo "$COLORS" | tr -d '"' | tr ' ' ',')						
+			COLORS=$(echo "$COLORS" | tr -d '"' | tr ' ' ',')
 		fi
 		info "Colors: $COLORS"
 	fi
@@ -1658,11 +1662,11 @@ gui() {
 	# BG COLOR Mode
 	local BACKGROUND_ANSI_COLOR=false
 	if [ -z "$BG_COLOR" ]; then
-		if whiptail --title "[!] Implement all background ANSI color code escape sequences" --yesno "Add all ANSI Background Color Code Escape Sequences?" 8 78; then
+		if whiptail --title "[!] Implement background ANSI color code escape sequences" --yesno "Do you want to implement all background ANSI color code escape sequences?" 8 78; then
 			BACKGROUND_ANSI_COLOR=true	
-			info "Enabled usage of ANSI Color Code Escape Sequences"
+			info "Enabled implementation of background ANSI color code escape sequences"
 		else
-			info "Enabled usage of ANSI Color Code Escape Sequences"
+			info "Disabled implementation of background ANSI color code escape sequences"
 		fi
 	fi
 
@@ -1677,13 +1681,12 @@ gui() {
 			"CYAN_BG" "" OFF \
 			"WHITE_BG" "" OFF 
 		)
-		BG_COLORS=$(whiptail --title "[!] Select the background text color" --checklist "Select Background ANSI text color code escape sequences" 20 78 12 "${OPTIONS[@]}" 3>&1 1>&2 2>&3)
+		BG_COLORS=$(whiptail --title "[!] Select background ANSI color code escape sequences" --checklist "Select background ANSI color code escape sequences" 20 78 12 "${OPTIONS[@]}" 3>&1 1>&2 2>&3)
 		EXIT_STATUS=$?
 		if [ $EXIT_STATUS -ne 0 ]; then
-			echo "Operation cancelled by the user."
+			info "Operation cancelled by the user."
 		else
-			echo "You choice:" $BG_COLORS
-			BG_COLORS=$(echo "$BG_COLORS" | tr -d '"' | tr ' ' ',')						
+			BG_COLORS=$(echo "$BG_COLORS" | tr -d '"' | tr ' ' ',')
 		fi
 		info "Background Colors: $BG_COLORS"
 	fi
@@ -1691,13 +1694,11 @@ gui() {
 	# Font Styles
 	local ANSI_FONT_STYLES=false
 	if [ -z "$FONT_STYLES" ]; then
-		if whiptail --title "[!] Implement ANSI font styles" --yesno "Do you want to add ANSI Font Styles Escape Sequences?" 8 78; then
+		if whiptail --title "[!] Implement ANSI font style escape sequences" --yesno "Do you want to add ANSI font styles escape sequences?" 8 78; then
 			ANSI_FONT_STYLES=true
-			info "Enabled usage of ANSI Color Code Escape Sequences"
-			echo "User selected Yes, exit status was $?."
+			info "Enabled implementation of ANSI font style escape sequences"
 		else
-			info "Enabled usage of ANSI Color Code Escape Sequences"
-			echo "User selected No, exit status was $?."
+			info "Disabled implementation of ANSI font style escape sequences"
 		fi
 	fi
 
@@ -1706,52 +1707,49 @@ gui() {
 			"Bold" "" ON \
 			"Italic" "" OFF
 		)
-		FONT_STYLES=$(whiptail --title "[!] Implement ANSI font styles escape sequences" --checklist "Select font style escape sequences" 20 78 4 "${OPTIONS[@]}" 3>&1 1>&2 2>&3)
+		FONT_STYLES=$(whiptail --title "[!] Select ANSI font styles escape sequences" --checklist "Select ANSI font style escape sequences" 20 78 4 "${OPTIONS[@]}" 3>&1 1>&2 2>&3)
 		EXIT_STATUS=$?
 		if [ $EXIT_STATUS -ne 0 ]; then
-			echo "Operation cancelled by the user."
+			info "Operation cancelled by the user."
 		else
-			echo "You choice:" $FONT_STYLES
-			FONT_STYLES=$(echo "$FONT_STYLES" | tr -d '"' | tr ' ' ',')						
+			FONT_STYLES=$(echo "$FONT_STYLES" | tr -d '"' | tr ' ' ',')
 		fi
 		info "Font Styles: $FONT_STYLES"
 	fi
 
 	# Message
 	local MESSAGE=false
-	if [ -z "$MESSAGE_TYPES" ]; then
-		if whiptail --title "[!] Implement message functions" --yesno "Would you like to add message functions on your script?" 8 78; then
+	if [ -z "$LOG_MESSAGE_TYPES" ]; then
+		if whiptail --title "[!] Implement custom log level messages" --yesno "Do you want to add custom log level messages to your script?" 8 78; then
 			MESSAGE=true
-			info "Enabled usage of message dialogs"
+			info "Enabled implementation of custom log level messages"
 		else
-			info "Diabled usage of message dialogs"
+			info "Disabled implementation of custom log level messages"
 		fi
 	fi
 
 	if [[ "$MESSAGE" == "true" ]]; then
 		OPTIONS=(
-			"Info" "Allow info messages" ON \
-			"Success" "Allow success messages" OFF \
-			"Warning" "Allow warning messages" OFF \
-			"Error" "Allow error messages" OFF
+			"Info" "Provides normal insight during operation of the state of the application" ON \
+			"Success" "Operation or process has completed successfully" OFF \
+			"Warning" "Indicating a potential issue or unexpected problem while running" OFF \
+			"Error" "Indicating serious problem that causes the script to fail" OFF
 		)
-		MESSAGE_TYPES=$(whiptail --title "[!] Message Types" --checklist "Select dialog message types" 20 100 12 "${OPTIONS[@]}" 3>&1 1>&2 2>&3)
+		LOG_MESSAGE_TYPES=$(whiptail --title "[!] Select log types" --checklist "Select the log level message types" 20 100 12 "${OPTIONS[@]}" 3>&1 1>&2 2>&3)
 		EXIT_STATUS=$?
 		if [ $EXIT_STATUS -ne 0 ]; then
-			echo "Operation cancelled by the user."
-		else
-			echo "You choice:" $MESSAGE_TYPES
+			info "Operation cancelled by the user."
 		fi
-		info "Message Types: $MESSAGE_TYPES"
+		info "Message Types: $LOG_MESSAGE_TYPES"
 	fi
 
 	# Command Line Interface	
 	if [[ "$COMMAND_LINE_INTERFACE" == "false" ]]; then
-		if whiptail --title "[!] Implement command line argument interface" --yesno "Would you like to add command line argument interface to your script?" 20 100; then
+		if whiptail --title "[!] Implement command line argument interface" --yesno "Do you want to add command line argument interface to your script?" 20 100; then
 			COMAMND_LINE_INTERFACE=true
-			info "Enabled Command-Line Argument Interface on $SCRIPT_NAME.sh"
+			info "Enabled implementation of command-line interface"
 		else
-			info "Disabled Command-Line Argument Interface on $SCRIPT_NAME.sh"
+			info "Disabled implementation of command-line interface"
 		fi
 	fi
 
@@ -1802,7 +1800,7 @@ while [[ "$#" -gt 0 ]]; do
 			BOLD_COLORS="BOLD_BLACK,BOLD_RED,BOLD_GREEN,BOLD_YELLOW,BOLD_BLUE,BOLD_MAGENTA,BOLD_CYAN,BOLD_LIGHT_GRAY,BOLD_GRAY,BOLD_LIGHT_RED,BOLD_LIGHT_GREEN,BOLD_LIGHT_YELLOW,BOLD_LIGHT_BLUE,BOLD_LIGHT_MAGENTA,BOLD_LIGHT_CYAN,BOLD_WHITE" 
 			;;
 		-fs|--font-styles) FONT_STYLES="$2"; shift ;;
-		-mt|--message-types) MESSAGE_TYPES="$2"; shift ;;
+		-mt|--message-types) LOG_MESSAGE_TYPES="$2"; shift ;;
 		--show-messages) display_messages ;;
 		-cli|--command-line-interface) COMMAND_LINE_INTERFACE=true ;;
 		-gui|--graphical-interface) gui ;;
