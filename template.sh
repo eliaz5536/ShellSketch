@@ -1147,6 +1147,99 @@ all_font_styles() {
 }
 
 #================================================================
+# FUNCTION: show_ansi
+# DESCRIPTION:
+#     Prints all ANSI escape sequences available from this script.
+# PARAMETERS:
+#     None
+# RETURNS:
+#     None
+#================================================================
+show_ansi() {
+	echo "Shell Script Template Generator"
+	echo " " 
+	echo "ANSI color code escape sequences"
+	echo ""
+	printf "${BOLD}Standard${ENDCOLOR}\n"
+	printf "BLACK			${BLACK}BLACK${ENDCOLOR}\n"
+	printf "RED			${RED}RED${ENDCOLOR}\n"
+	printf "GREEN			${GREEN}GREEN${ENDCOLOR}\n"
+	printf "YELLOW			${YELLOW}YELLOW${ENDCOLOR}\n"
+	printf "BLUE			${BLUE}BLUE${ENDCOLOR}\n"
+	printf "MAGENTA			${MAGENTA}MAGENTA${ENDCOLOR}\n"
+	printf "CYAN			${CYAN}CYAN${ENDCOLOR}\n"
+	printf "LIGHT_GRAY		${LIGHT_GRAY}LIGHT_GRAY${ENDCOLOR}\n"
+	printf "GRAY			${GRAY}GRAY${ENDCOLOR}\n"
+	printf "LIGHT_RED		${LIGHT_RED}LIGHT_RED${ENDCOLOR}\n"
+	printf "LIGHT_GREEN		${LIGHT_GREEN}LIGHT_GREEN${ENDCOLOR}\n"
+	printf "LIGHT_YELLOW		${LIGHT_YELLOW}LIGHT_YELLOW${ENDCOLOR}\n"
+	printf "LIGHT_BLUE		${LIGHT_BLUE}LIGHT_BLUE${ENDCOLOR}\n"
+	printf "LIGHT_MAGENTA		${LIGHT_MAGENTA}LIGHT_MAGENTA${ENDCOLOR}\n"
+	printf "LIGHT_CYAN		${LIGHT_CYAN}LIGHT_CYAN${ENDCOLOR}\n"
+	printf "WHITE			${WHITE}WHITE${ENDCOLOR}\n"
+	echo ""
+
+	# Bold
+	printf "${BOLD}Bold${ENDCOLOR}\n"
+	printf "BOLD_BLACK		${BOLD_BLACK}BOLD_BLACK${ENDCOLOR}\n"
+	printf "BOLD_RED		${BOLD_RED}BOLD_RED${ENDCOLOR}\n"
+	printf "BOLD_GREEN		${BOLD_GREEN}BOLD_GREEN${ENDCOLOR}\n"
+	printf "BOLD_YELLOW		${BOLD_YELLOW}BOLD_YELLOW${ENDCOLOR}\n"
+	printf "BOLD_BLUE		${BOLD_BLUE}BOLD_BLUE${ENDCOLOR}\n"
+	printf "BOLD_MAGENTA		${BOLD_MAGENTA}BOLD_MAGENTA${ENDCOLOR}\n"
+	printf "BOLD_CYAN		${BOLD_CYAN}BOLD_CYAN${ENDCOLOR}\n"
+	printf "BOLD_LIGHT_GRAY		${BOLD_LIGHT_GRAY}BOLD_LIGHT_GRAY${ENDCOLOR}\n"
+	printf "BOLD_GRAY		${BOLD_GRAY}BOLD_GRAY${ENDCOLOR}\n"
+	printf "BOLD_LIGHT_RED		${BOLD_LIGHT_RED}BOLD_LIGHT_RED${ENDCOLOR}\n"
+	printf "BOLD_LIGHT_GREEN	${BOLD_LIGHT_GREEN}BOLD_LIGHT_GREEN${ENDCOLOR}\n"
+	printf "BOLD_LIGHT_YELLOW	${BOLD_LIGHT_YELLOW}BOLD_LIGHT_YELLOW${ENDCOLOR}\n"
+	printf "BOLD_LIGHT_BLUE		${BOLD_LIGHT_BLUE}BOLD_LIGHT_BLUE${ENDCOLOR}\n"
+	printf "BOLD_LIGHT_MAGENTA	${BOLD_LIGHT_MAGENTA}BOLD_LIGHT_MAGENTA${ENDCOLOR}\n"
+	printf "BOLD_LIGHT_CYAN		${BOLD_LIGHT_CYAN}BOLD_LIGHT_CYAN${ENDCOLOR}\n"
+	printf "BOLD_WHITE		${BOLD_WHTIE}BOLD_WHITE${ENDCOLOR}\n"
+	echo ""
+
+	# Italic
+	printf "${BOLD}Italic${ENDCOLOR}\n"
+	printf "ITALIC_BLACK		${ITALIC_BLACK}ITALIC_BLACK${ENDCOLOR}\n"
+	printf "ITALIC_RED		${ITALIC_RED}ITALIC_RED${ENDCOLOR}\n"
+	printf "ITALIC_GREEN		${ITALIC_GREEN}ITALIC_GREEN${ENDCOLOR}\n"
+	printf "ITALIC_YELLOW		${ITALIC_YELLOW}ITALIC_YELLOW${ENDCOLOR}\n"
+	printf "ITALIC_BLUE		${ITALIC_BLUE}ITALIC_BLUE${ENDCOLOR}\n"
+	printf "ITALIC_MAGENTA		${ITALIC_MAGENTA}ITALIC_MAGENTA${ENDCOLOR}\n"
+	printf "ITALIC_CYAN		${ITALIC_CYAN}ITALIC_CYAN${ENDCOLOR}\n"
+	printf "ITALIC_LIGHT_GRAY	${ITALIC_LIGHT_GRAY}ITALIC_LIGHT_GRAY${ENDCOLOR}\n"
+	printf "ITALIC_GRAY		${ITALIC_GRAY}ITALIC_GRAY${ENDCOLOR}\n"
+	printf "ITALIC_LIGHT_RED	${ITALIC_LIGHT_RED}ITALIC_LIGHT_RED${ENDCOLOR}\n"
+	printf "ITALIC_LIGHT_GREEN	${ITALIC_LIGHT_GREEN}ITALIC_LIGHT_GREEN${ENDCOLOR}\n"
+	printf "ITALIC_LIGHT_YELLOW	${ITALIC_LIGHT_YELLOW}ITALIC_LIGHT_YELLOW${ENDCOLOR}\n"
+	printf "ITALIC_LIGHT_BLUE	${ITALIC_LIGHT_BLUE}ITALIC_LIGHT_BLUE${ENDCOLOR}\n"
+	printf "ITALIC_LIGHT_MAGENTA	${ITALIC_LIGHT_MAGENTA}ITALIC_LIGHT_MAGENTA${ENDCOLOR}\n"
+	printf "ITALIC_LIGHT_CYAN	${ITALIC_LIGHT_CYAN}ITALIC_LIGHT_CYAN${ENDCOLOR}\n"
+	printf "ITALIC_WHITE		${ITALIC_WHITE}ITALIC_WHITE${ENDCOLOR}\n"
+	echo ""
+
+	# Background Color
+	printf "${BOLD}Background${ENDCOLOR}\n"
+	printf "BLACK_BG		${BLACK_BG}BLACK_BG${ENDCOLOR}\n"
+	printf "RED_BG			${RED_BG}RED_BG${ENDCOLOR}\n"
+	printf "GREEN_BG		${GREEN_BG}GREEN_BG${ENDCOLOR}\n"
+	printf "YELLOW_BG		${YELLOW_BG}YELLOW_BG${ENDCOLOR}\n"
+	printf "BLUE_BG			${BLUE_BG}BLUE_BG${ENDCOLOR}\n"
+	printf "MAGENTA_BG		${MAGENTA_BG}MAGENTA_BG${ENDCOLOR}\n"
+	printf "CYAN_BG			${CYAN_BG}CYAN_BG${ENDCOLOR}\n"
+	printf "WHITE_BG		${WHITE_BG}WHITE_BG${ENDCOLOR}\n"
+	echo ""
+	
+	# Styles
+	printf "${BOLD}Styles${ENDCOLOR}\n"
+	printf "BOLD			${BOLD}BOLD${ENDCOLOR}\n"
+	printf "ITALIC			${ITALIC}ITALIC${ENDCOLOR}\n"
+
+	exit 0
+}
+
+#================================================================
 # Message Types
 #================================================================
 #================================================================
@@ -1159,11 +1252,25 @@ all_font_styles() {
 #     None
 #================================================================
 display_messages() {
+        echo "Shell Script Template Generator"
+	echo " " 
+	echo "Log Level Message Types"
+	echo ""
+	printf "${BOLD}INFO${ENDCOLOR}\n"
+	printf "${ITALIC}Provides normal insight during operation fo the state of the application${ENDCOLOR}\n"
+	info "This is an info log message"
+	echo ""
+	printf "${BOLD}SUCCESS${ENDCOLOR}\n"
+	printf "${ITALIC}Alerts whether an operation or process has completed successfully${ENDCOLOR}\n"
+	success "This is a success log message"
+	echo ""
+	printf "${BOLD}WARNING${ENDCOLOR}\n"
+	printf "${ITALIC}Indicates a potential issue or unexpected problem while running the application${ENDCOLOR}\n"
+	warning "This is a warning log message"
 	echo "" 
-	info "This is an info message"
-	success "This is a success message"
-	warning "This is a warning message"
-	error "This is an error message"
+	printf "${BOLD}ERROR${ENDCOLOR}\n"
+	printf "${ITALIC}Critically indicates a serious problem that causes the script or application to fail${ENDCOLOR}\n"
+	error "This is an error log message"
 	exit 0
 }
 
@@ -1800,10 +1907,11 @@ while [[ "$#" -gt 0 ]]; do
 			BOLD_COLORS="BOLD_BLACK,BOLD_RED,BOLD_GREEN,BOLD_YELLOW,BOLD_BLUE,BOLD_MAGENTA,BOLD_CYAN,BOLD_LIGHT_GRAY,BOLD_GRAY,BOLD_LIGHT_RED,BOLD_LIGHT_GREEN,BOLD_LIGHT_YELLOW,BOLD_LIGHT_BLUE,BOLD_LIGHT_MAGENTA,BOLD_LIGHT_CYAN,BOLD_WHITE" 
 			;;
 		-fs|--font-styles) FONT_STYLES="$2"; shift ;;
+		--show-ansi) show_ansi ;;
 		-mt|--message-types) LOG_MESSAGE_TYPES="$2"; shift ;;
 		--show-messages) display_messages ;;
 		-cli|--command-line-interface) COMMAND_LINE_INTERFACE=true ;;
-		-gui|--graphical-interface) gui ;;
+		gui|--graphical-interface) gui ;;
 		*) error "Unknown parameter passed: $1"; exit 1 ;;
 	esac
 	shift
