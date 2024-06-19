@@ -53,7 +53,7 @@ Font Options:
   -afs, --all-font-styles                               Implement all font styles (BOLD & ITALIC)
  
 Message Options:
-  -mt, --message-types <MESSAGE_TYPES>                  Specify type of messages
+  -mt, --message-types <LOG_MESSAGE_TYPES>              Specify log message types
   --show-messages                                       Display a list of messages as functions to use in script
  
 Command-Line Interface Option:
