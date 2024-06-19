@@ -3,6 +3,17 @@
 
 Bash script template for ease of development & implementation for script development.
 
+## Demo
+### Command-Line Interface
+```
+<insert usage script over here>
+```
+
+### GUI
+```
+<insert demo over here
+```
+
 ## Usage
 ```
 <insert usage script over here>
