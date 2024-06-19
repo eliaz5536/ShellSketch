@@ -122,7 +122,7 @@ ITALIC="\e[3m"
 # DESCRIPTION:
 #     Prints info message using the provided parameter.
 # PARAMETERS:
-#     $1 - A message
+#     $1 - An info message
 # RETURNS:
 #     None
 #================================================================
@@ -136,7 +136,7 @@ info() {
 # DESCRIPTION:
 #     Prints bold info message using the provided parameter.
 # PARAMETERS:
-#     $1 - A message
+#     $1 - A bold info message
 # RETURNS:
 #     None
 #================================================================
@@ -150,7 +150,7 @@ bold_info() {
 # DESCRIPTION:
 #     Prints success message using the provided parameter.
 # PARAMETERS:
-#     $1 - A message
+#     $1 - A success message
 # RETURNS:
 #     None
 #================================================================
@@ -164,7 +164,7 @@ success() {
 # DESCRIPTION:
 #     Prints warning message using the provided parameter.
 # PARAMETERS:
-#     $1 - A message
+#     $1 - A warning message
 # RETURNS:
 #     None
 #================================================================
@@ -178,7 +178,7 @@ warning() {
 # DESCRIPTION:
 #     Prints bold warning message using the provided parameter.
 # PARAMETERS:
-#     $1 - A message
+#     $1 - A bold warning message
 # RETURNS:
 #     None
 #================================================================
@@ -192,7 +192,7 @@ bold_warning() {
 # DESCRIPTION:
 #     Prints error message using the provided parameter.
 # PARAMETERS:
-#     $1 - A message
+#     $1 - An error message
 # RETURNS:
 #     None
 #================================================================
@@ -206,7 +206,7 @@ error() {
 # DESCRIPTION:
 #     Prints bold error message using the provided parameter.
 # PARAMETERS:
-#     $1 - A message
+#     $1 - A bold error message
 # RETURNS:
 #     None
 #================================================================
@@ -259,9 +259,9 @@ matchingElement() {
 #================================================================
 # FUNCTION: append_license
 # DESCRIPTION:
-#     Appends selected license type on top of the header of a script.
+#     Appends specified license type to the top header based on user's input.
 # PARAMETERS:
-#     $1 - A string that stores 'License Type'
+#     $1 - A string inputted by the user that stores 'License Type'
 # RETURNS:
 #     None
 #================================================================
@@ -530,7 +530,7 @@ append_license() {
 #================================================================
 # FUNCTION: append_escape_sequences
 # DESCRIPTION:
-#     Appends specified ANSI escape sequences to a script.
+#     Appends specified ANSI escape sequence on the top of the script.
 # PARAMETERS:
 #     None
 # RETURNS:
@@ -824,11 +824,8 @@ append_escape_sequences() {
 #================================================================
 # FUNCTION: append_cl_argument_parsing
 # DESCRIPTION:
-#     Generates basic input arguments, options (also known as flags),
-#     help and usage message to guide the user how to use the script. 
-#     Interprets and processes the arguments and options passed from
-#     the command line, allowing users to customize the behaviour of
-#     the script by specifying different parameters when they run it.
+#     Implements command line argument parsing interface if 
+#     boolean value COMMAND_LINE_INTERFACE is true.
 # PARAMETERS:
 #     None
 # RETURNS:
@@ -913,7 +910,7 @@ append_cl_argument_parsing() {
 #================================================================
 # FUNCTION: generate_script
 # DESCRIPTION:
-#     Generates shell script from user's options.
+#     Generates complete shell script.
 # PARAMETERS:
 #     None
 # RETURNS:
@@ -983,7 +980,7 @@ help() {
 	echo "                                                                  "
         echo "Shell Script Template Generator"
 	echo " "
-	echo "Usage: ./template.sh [options]"
+	echo "Usage: ./template.sh [modes] [options]"
 	echo " "
         echo "Options:"
        	printf "  ${BOLD}--usage${ENDCOLOR}						Show usage information\n"
@@ -996,7 +993,7 @@ help() {
         printf "  ${BOLD}-dp, --dependencies <DEPENDENCIES>${ENDCOLOR}			Specify required dependencies\n"
         printf "  ${BOLD}-l, --license <LICENSE_TYPE>${ENDCOLOR}				Specify license type\n"
 	echo " "
-        echo "Color Options:"
+        echo "ANSI Color Code Options:"
         printf "  ${BOLD}-c, --colors <STANDARD_COLORS>${ENDCOLOR}			Specify standard ANSI color code escape sequences\n"
        	printf "  ${BOLD}-ac, --all-colors${ENDCOLOR}					Implement all standard ANSI color code escape sequences\n"
        	printf "  ${BOLD}-bgc, --bg-colors <BACKGROUND_COLORS>${ENDCOLOR}			Specify background ANSI color code escape sequences\n"
@@ -1017,7 +1014,7 @@ help() {
         echo "Command-Line Interface Option:"
 	printf "  ${BOLD}-cli, --command-line-interface${ENDCOLOR}			Implements Command-Line interface (USAGE, HELP & parsing argument menu)\n"
         echo " "
-        echo "Modes:"
+        echo "Mode:"
 	printf "  ${BOLD}gui${ENDCOLOR}							Enters GUI mode (Whiptail) \n"
         echo " "
         echo "Help Options:"
@@ -1033,13 +1030,11 @@ help() {
 #================================================================
 # FUNCTION: append_description
 # DESCRIPTION:
-#     Appends specified description (notes, dependencies & description) 
-#     on the header formatted properly to ensure it can be displayed
-#     and formatted properly to demonstrate the purpose of the 
-#     script
+#     Appends and formats paragraph (notes, dependencies & description) 
+#     to explain what is and the purpose of the script.
 # PARAMETERS:
-#     $1 - Option type of description
-#     $2 - Basic specified description 
+#     $1 - Type of paragraph
+#     $2 - Basic specified description
 # RETURNS:
 #     None
 #================================================================
@@ -1115,18 +1110,31 @@ display_licenses() {
 #================================================================
 # FUNCTION: all
 # DESCRIPTION:
-#     Enables all components required for the script at once
+#     Implements and enables all components for complete version of shell script.
+#     This includes all ANSI color code escape sequences, message types 
+#     and its command-line interface.
+# GLOBALS:
+#     COLORS - Specifies standard ANSI color code escape sequences
+#     BG_COLORS - Specifies background ANSI color code escape sequences
+#     ITALIC_COLORS - Specieis italic ANSI color code escape sequences
+#     BOLD_COLORS - Specifies bold ANSI color code escape sequences
+#     FONT_STYLES - Specifies ANSI font style color code escape sequences
+#     MESSAGE_TYPES - Specifies types of message
+#     COMMAND_LINE_INTERFACE - Implements command-line interface (USAGE, HELP & parsing argument interface)
 # PARAMETERS:
 #     None
 # RETURNS:
 #     None
 #================================================================
 all() {
-	# Font Styles
+	# Colors
 	COLORS="BLACK,GREEN,YELLOW,BLUE,MAGENTA,CYAN,LIGHT_GRAY,GRAY,LIGHT_RED,LIGHT_GREEN,LIGHT_YELLOW,LIGHT_BLUE,LIGHT_MAGENTA,LIGHT_CYAN,LIGHT_WHITE" 
 	BG_COLORS="BLACK_BG,RED_BG,GREEN_BG,YELLOW_BG,BLUE_BG,MAGENTA_BG,CYAN_BG,WHITE_BG" 
 	ITALIC_COLORS="ITALIC_BLACK,ITALIC_RED,ITALIC_GREEN,ITALIC_YELLOW,ITALIC_BLUE,ITALIC_MAGENTA,ITALIC_CYAN,ITALIC_LIGHT_GRAY,ITALIC_GRAY,ITALIC_LIGHT_RED,ITALIC_LIGHT_GREEN,ITALIC_LIGHT_YELLOW,ITALIC_LIGHT_BLUE,ITALIC_LIGHT_MAGENTA,ITALIC_LIGHT_CYAN,ITALIC_WHITE" 
 	BOLD_COLORS="BOLD_BLACK,BOLD_RED,BOLD_GREEN,BOLD_YELLOW,BOLD_BLUE,BOLD_MAGENTA,BOLD_CYAN,BOLD_LIGHT_GRAY,BOLD_GRAY,BOLD_LIGHT_RED,BOLD_LIGHT_GREEN,BOLD_LIGHT_YELLOW,BOLD_LIGHT_BLUE,BOLD_LIGHT_MAGENTA,BOLD_LIGHT_CYAN,BOLD_WHITE" 
+	# Font Styles
+	FONT_STYLES="BOLD,ITALIC"	
+
 	# Message Types
 	MESSAGE_TYPES="Info,Success,Warning,Error"
 
@@ -1134,22 +1142,17 @@ all() {
 	COMMAND_LINE_INTERFACE=true
 }
 
-
 #================================================================
 # FUNCTION: all_font_styles
 # DESCRIPTION:
-#     Enables all font styles from ANSI escape sequences to be added.
+#     Implements and enables all ANSI font style escape sequences.
 # PARAMETERS:
 #     None
 # RETURNS:
 #     None
 #================================================================
 all_font_styles() {
-	# Font Styles
-	COLORS="BLACK,GREEN,YELLOW,BLUE,MAGENTA,CYAN,LIGHT_GRAY,GRAY,LIGHT_RED,LIGHT_GREEN,LIGHT_YELLOW,LIGHT_BLUE,LIGHT_MAGENTA,LIGHT_CYAN,LIGHT_WHITE" 
-	BG_COLORS="BLACK_BG,RED_BG,GREEN_BG,YELLOW_BG,BLUE_BG,MAGENTA_BG,CYAN_BG,WHITE_BG" 
-	ITALIC_COLORS="ITALIC_BLACK,ITALIC_RED,ITALIC_GREEN,ITALIC_YELLOW,ITALIC_BLUE,ITALIC_MAGENTA,ITALIC_CYAN,ITALIC_LIGHT_GRAY,ITALIC_GRAY,ITALIC_LIGHT_RED,ITALIC_LIGHT_GREEN,ITALIC_LIGHT_YELLOW,ITALIC_LIGHT_BLUE,ITALIC_LIGHT_MAGENTA,ITALIC_LIGHT_CYAN,ITALIC_WHITE" 
-	BOLD_COLORS="BOLD_BLACK,BOLD_RED,BOLD_GREEN,BOLD_YELLOW,BOLD_BLUE,BOLD_MAGENTA,BOLD_CYAN,BOLD_LIGHT_GRAY,BOLD_GRAY,BOLD_LIGHT_RED,BOLD_LIGHT_GREEN,BOLD_LIGHT_YELLOW,BOLD_LIGHT_BLUE,BOLD_LIGHT_MAGENTA,BOLD_LIGHT_CYAN,BOLD_WHITE" 
+	FONT_STYLES="BOLD,ITALIC"	
 }
 
 #================================================================
@@ -1176,7 +1179,8 @@ display_messages() {
 #================================================================
 # FUNCTION: append_messages
 # DESCRIPTION:
-#     Appends selected types of messages to a shell script by the user.
+#     Appends selected types of messages to the script based on 
+#     user's option.
 # PARAMETERS:
 #     None
 # RETURNS:
@@ -1305,7 +1309,8 @@ append_messages() {
 #================================================================
 # FUNCTION: input_check
 # DESCRIPTION:
-#     Checks global variables that are specified before scan
+#     Checks and verifies all user inputs from global variables to ensure
+#     it meets the requirements by format.
 # PARAMETERS:
 #     None
 # RETURNS:
@@ -1478,7 +1483,7 @@ input_check() {
 #================================================================
 # FUNCTION: gui
 # DESCRIPTION:
-#     Displays graphical menu interface in Bash and follows process for generating script.
+#     Displays Graphical User Interface mode in Bash.
 # PARAMETERS:
 #     None
 # RETURNS:
@@ -1487,7 +1492,6 @@ input_check() {
 gui() {
 	info "Enabled GUI mode"
 
-	# Reset global values to none
 	SCRIPT_NAME="" 
 	SCRIPT_TITLE=""
 	AUTHOR="" 
@@ -1765,6 +1769,7 @@ gui() {
 	exit 0
 }
 
+# Command-Line Argument Parsing Interface
 while [[ "$#" -gt 0 ]]; do
 	case $1 in
 		--usage) usage ;;
