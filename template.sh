@@ -542,6 +542,7 @@ append_escape_sequences() {
 	echo "#################################################################" >> $SCRIPT_NAME.sh
 
 	if [[ -n "$COLORS" ]]; then
+		echo "" >> $SCRIPT_NAME.sh
 		echo "# Colors" >> $SCRIPT_NAME.sh
 		IFS="," read -r -a SELECTED_OPTIONS <<< "$COLORS"
 		for OPTION in "${SELECTED_OPTIONS[@]}"; do
@@ -615,6 +616,7 @@ append_escape_sequences() {
 	fi
 
 	if [[ -n "$BG_COLORS" ]]; then
+		echo "" >> $SCRIPT_NAME.sh
 		echo "# Background Colors" >> $SCRIPT_NAME.sh
 		IFS="," read -r -a SELECTED_OPTIONS <<< "$BG_COLORS"
 		for OPTION in "${SELECTED_OPTIONS[@]}"; do
@@ -656,6 +658,7 @@ append_escape_sequences() {
 	fi
 
 	if [[ -n "$BOLD_COLORS" ]]; then
+		echo "" >> $SCRIPT_NAME.sh
 		echo "# Bold" >> $SCRIPT_NAME.sh
 		IFS="," read -r -a SELECTED_OPTIONS <<< "$BOLD_COLORS"
 		for OPTION in "${SELECTED_OPTIONS[@]}"; do
@@ -729,6 +732,7 @@ append_escape_sequences() {
 	fi
 
 	if [[ -n "$ITALIC_COLORS" ]]; then
+		echo "" >> $SCRIPT_NAME.sh
 		echo "# Italic" >> $SCRIPT_NAME.sh
 		IFS="," read -r -a SELECTED_OPTIONS <<< "$ITALIC_COLORS"
 		for OPTION in "${SELECTED_OPTIONS[@]}"; do
@@ -802,6 +806,7 @@ append_escape_sequences() {
 	fi
 
 	if [[ -n "$FONT_STYLES" ]]; then
+		echo "" >> $SCRIPT_NAME.sh
 		echo "# Styles" >> $SCRIPT_NAME.sh
 		IFS="," read -r -a SELECTED_OPTIONS <<< "$FONT_STYLES"
 		for OPTION in "${SELECTED_OPTIONS[@]}"; do
@@ -818,6 +823,7 @@ append_escape_sequences() {
 		done
 	fi
 
+	echo "" >> $SCRIPT_NAME.sh
 	echo 'ENDCOLOR="\e[0m"' >> $SCRIPT_NAME.sh
 }
 
@@ -1730,7 +1736,7 @@ gui() {
 	# COLOR
 	local STANDARD_ANSI_COLOR=false
 	if [ -z "$COLOR" ]; then
-		if whiptail --title "[!] Implement standard ANSI color code escape sequences" --yesno "Do you want to add standard ANSI color code escape sequences to your script? (ANSI Color Code Escape Sequences is required for custom log level messages)" 8 78; then
+		if whiptail --title "[!] Implement standard ANSI color code escape sequences" --yesno "Do you want to add standard ANSI color code escape sequences to your script? (ANSI Color Code Escape Sequences is required for custom log level messages)" 8 85; then
 			STANDARD_ANSI_COLOR=true
 			info "Enabled implementation of standard ANSI color code escape sequences"
 		else
@@ -1769,7 +1775,7 @@ gui() {
 	# BG COLOR Mode
 	local BACKGROUND_ANSI_COLOR=false
 	if [ -z "$BG_COLOR" ]; then
-		if whiptail --title "[!] Implement background ANSI color code escape sequences" --yesno "Do you want to implement all background ANSI color code escape sequences?" 8 78; then
+		if whiptail --title "[!] Implement background ANSI color code escape sequences" --yesno "Do you want to add background ANSI color code escape sequences?" 8 78; then
 			BACKGROUND_ANSI_COLOR=true	
 			info "Enabled implementation of background ANSI color code escape sequences"
 		else
@@ -1809,7 +1815,7 @@ gui() {
 		fi
 	fi
 
-	if [[ "$ANSI_FONT_STYLES" == "false" ]]; then
+	if [[ "$ANSI_FONT_STYLES" == "true" ]]; then
 		OPTIONS=(
 			"Bold" "" ON \
 			"Italic" "" OFF
@@ -1846,6 +1852,8 @@ gui() {
 		EXIT_STATUS=$?
 		if [ $EXIT_STATUS -ne 0 ]; then
 			info "Operation cancelled by the user."
+		else 
+			LOG_MESSAGE_TYPES=$(echo "$LOG_MESSAGE_TYPES" | tr -d '"' | tr ' ' ',')
 		fi
 		info "Message Types: $LOG_MESSAGE_TYPES"
 	fi
