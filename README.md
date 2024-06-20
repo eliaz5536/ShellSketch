@@ -18,7 +18,7 @@ Bash script template for ease of development & implementation for script develop
 ```
 Shell Script Template Generator
  
-Usage: ./template [options]
+Usage: ./template [mode] [options]
 ```
 
 ## Help
