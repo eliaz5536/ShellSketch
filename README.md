@@ -38,7 +38,7 @@ Options:
   -t, --title <SCRIPT_TITLE>                            Specify official title of the script
   -a, --author <AUTHOR>                                 Specify name of the author
   -d, --description <DESCRIPTION>                       Specify description
-  -n, --notes <NOTES>                                   Specify notes
+  -ns, --notes <NOTES>                                  Specify notes
   -dp, --dependencies <DEPENDENCIES>                    Specify required dependencies
   -l, --license <LICENSE_TYPE>                          Specify license type
  
