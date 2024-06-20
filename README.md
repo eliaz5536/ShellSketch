@@ -10,9 +10,7 @@ Bash script template for ease of development & implementation for script develop
 ```
 
 ### GUI - Whiptail
-```
-<insert demo over here>
-```
+[![asciicast](https://asciinema.org/a/T9InMdkBqD0PxWGbazoe8cA6B.svg)](https://asciinema.org/a/T9InMdkBqD0PxWGbazoe8cA6B)
 
 ### GtkDialog
 ```
