@@ -73,15 +73,3 @@ Other:
 
 ```
 
-## Examples
-```
-<insert first example over here>
-```
-
-```
-<insert second example over here>
-```
-
-```
-<insert third example over here>
-```
