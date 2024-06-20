@@ -825,6 +825,7 @@ append_escape_sequences() {
 
 	echo "" >> $SCRIPT_NAME.sh
 	echo 'ENDCOLOR="\e[0m"' >> $SCRIPT_NAME.sh
+	echo "" >> $SCRIPT_NAME.sh
 }
 
 #================================================================
@@ -851,13 +852,13 @@ append_cl_argument_parsing() {
 		echo "#================================================================" >> $SCRIPT_NAME.sh
 		echo "usage() {" >> $SCRIPT_NAME.sh
 
-		if [ -z "$SCRIPT_TITLE"] || [ "$SCRIPT_TITLE" == " "]; then
+		if [ -z "$SCRIPT_TITLE" ] || [ "$SCRIPT_TITLE" == " " ]; then
 			echo "	echo \"$SCRIPT_NAME\"" >> $SCRIPT_NAME.sh
 		else 
 			echo "	echo \"$SCRIPT_TITLE\"" >> $SCRIPT_NAME.sh
 		fi
 
-		echo "  echo \" \"" >> $SCRIPT_NAME.sh
+		echo "  	echo \" \"" >> $SCRIPT_NAME.sh
 		echo "	echo \"Usage: ./$SCRIPT_NAME.sh [options]\"" >> $SCRIPT_NAME.sh
 	        echo "	exit 0" >> $SCRIPT_NAME.sh
 		echo "}" >> $SCRIPT_NAME.sh
@@ -875,7 +876,7 @@ append_cl_argument_parsing() {
 		echo "#================================================================" >> $SCRIPT_NAME.sh
 		echo "help() {" >> $SCRIPT_NAME.sh
 
-		if [ -z "$SCRIPT_TITLE"] || [ "$SCRIPT_TITLE" == " "]; then
+		if [ -z "$SCRIPT_TITLE" ] || [ "$SCRIPT_TITLE" == " " ]; then
 			echo "	echo \"$SCRIPT_NAME\"" >> $SCRIPT_NAME.sh
 		else 
 			echo "	echo \"$SCRIPT_TITLE\"" >> $SCRIPT_NAME.sh
@@ -885,10 +886,8 @@ append_cl_argument_parsing() {
 		echo "	echo \"Usage: ./$SCRIPT_NAME.sh [options]\"" >> $SCRIPT_NAME.sh
 		echo "	echo \" \"" >> $SCRIPT_NAME.sh
 		echo "	echo \"Options:\"" >> $SCRIPT_NAME.sh
-	        echo "  printf \"  ${BOLD}--usage${ENDCOLOR}						Show usage information\n\"" >> $SCRIPT_NAME.sh
-	        echo "	printf \"  ${BOLD}-h, --help${ENDCOLOR}						Show help message\n\"" >> $SCRIPT_NAME.sh
-	        echo "	printf \"  ${BOLD}--value${ENDCOLOR}						Show list of license types\n\"" >> $SCRIPT_NAME.sh
-	        echo "	printf \"  ${BOLD}--boolean${ENDCOLOR}						Show list of license types\n\"" >> $SCRIPT_NAME.sh
+	        echo "  	printf \"  \${BOLD}--usage\${ENDCOLOR}						Show usage information\n\"" >> $SCRIPT_NAME.sh
+	        echo "	printf \"  \${BOLD}-h, --help\${ENDCOLOR}						Show help message\n\"" >> $SCRIPT_NAME.sh
 	        echo "	echo \" \"" >> $SCRIPT_NAME.sh
 		echo "	exit 0" >> $SCRIPT_NAME.sh
 		echo "}" >> $SCRIPT_NAME.sh
@@ -897,12 +896,12 @@ append_cl_argument_parsing() {
 
 		echo "VARIABLE=\"\"" >> $SCRIPT_NAME.sh
 		echo "VERBOSE=false" >> $SCRIPT_NAME.sh
-
-		echo "while [[ \"$#\" -gt 0 ]]; do" >> $SCRIPT_NAME.sh
+		echo " " >> $SCRIPT_NAME.sh
+		echo "while [[ \"\$#\" -gt 0 ]]; do" >> $SCRIPT_NAME.sh
 	        echo "	case $1 in" >> $SCRIPT_NAME.sh
 		echo "		-u|--usage) usage ;;" >> $SCRIPT_NAME.sh
 		echo "		-h|--help) help ;;" >> $SCRIPT_NAME.sh
-		echo "		-v|--value) VALUE=\"$2\"; shift ;;" >> $SCRIPT_NAME.sh
+		echo "		-v|--variable) VARIABLE=\"\$2\"; shift ;;" >> $SCRIPT_NAME.sh
 		echo "		--verbose) VERBOSE=true ;;" >> $SCRIPT_NAME.sh
 		echo "		*) error \"Unknown parameter passed: $1\"; exit 1 ;;" >> $SCRIPT_NAME.sh
 		echo "	esac" >> $SCRIPT_NAME.sh
@@ -986,7 +985,7 @@ help() {
         printf "  ${BOLD}-t, --title <SCRIPT_TITLE>${ENDCOLOR}				Specify official title of the script\n"
         printf "  ${BOLD}-a, --author <AUTHOR>${ENDCOLOR}					Specify name of the author\n"
         printf "  ${BOLD}-d, --description <DESCRIPTION>${ENDCOLOR}			Specify description\n"
-        printf "  ${BOLD}-n, --notes <NOTES>${ENDCOLOR}					Specify notes\n"
+        printf "  ${BOLD}-ns, --notes <NOTES>${ENDCOLOR}					Specify notes\n"
         printf "  ${BOLD}-dp, --dependencies <DEPENDENCIES>${ENDCOLOR}			Specify required dependencies\n"
         printf "  ${BOLD}-l, --license <LICENSE_TYPE>${ENDCOLOR}				Specify license type\n"
 	echo " "
@@ -1303,12 +1302,12 @@ append_messages() {
 				echo "# DESCRIPTION:" >> $SCRIPT_NAME.sh
 				echo "#     Prints info message using the provided parameter." >> $SCRIPT_NAME.sh
 				echo "# PARAMETERS:" >> $SCRIPT_NAME.sh
-				echo "#     $1 - A message" >> $SCRIPT_NAME.sh
+				echo "#     \$1 - A message" >> $SCRIPT_NAME.sh
 				echo "# RETURNS:" >> $SCRIPT_NAME.sh
 				echo "#     None" >> $SCRIPT_NAME.sh
 				echo "#================================================================" >> $SCRIPT_NAME.sh
 				echo "info() {" >> $SCRIPT_NAME.sh
-				echo "	local message=$1" >> $SCRIPT_NAME.sh
+				echo "	local message=\$1" >> $SCRIPT_NAME.sh
 				echo '	printf "${WHITE}[${ENDCOLOR}${CYAN}$current_time${ENDCOLOR}${WHITE}]${ENDCOLOR} ${WHITE}[${ENDCOLOR}${GREEN}INFO${ENDCOLOR}${WHITE}]${ENDCOLOR} ${WHITE}$1${ENDCOLOR}\n' >> $SCRIPT_NAME.sh
 				echo "}" >> $SCRIPT_NAME.sh
 				echo "" >> $SCRIPT_NAME.sh
@@ -1316,16 +1315,17 @@ append_messages() {
 				echo "#================================================================" >> $SCRIPT_NAME.sh
 				echo "# FUNCTION: bold_info" >> $SCRIPT_NAME.sh
 				echo "# DESCRIPTION:" >> $SCRIPT_NAME.sh
-				echo "#     Prints important info message using the provided parameter." >> $SCRIPT_NAME.sh
+				echo "#     Prints bold info message using the provided parameter." >> $SCRIPT_NAME.sh
 				echo "# PARAMETERS:" >> $SCRIPT_NAME.sh
-				echo "#     $1 - A message" >> $SCRIPT_NAME.sh
+				echo "#     \$1 - A message" >> $SCRIPT_NAME.sh
 				echo "# RETURNS:" >> $SCRIPT_NAME.sh
 				echo "#     None" >> $SCRIPT_NAME.sh
 				echo "#================================================================" >> $SCRIPT_NAME.sh
 				echo "bold_info() {" >> $SCRIPT_NAME.sh
-				echo "	local message=$1" >> $SCRIPT_NAME.sh
+				echo "	local message=\$1" >> $SCRIPT_NAME.sh
 				echo '	printf "${WHITE}[${ENDCOLOR}${CYAN}$current_time${ENDCOLOR}${WHITE}]${ENDCOLOR} ${WHITE}[${ENDCOLOR}${BOLD_GREEN}INFO${ENDCOLOR}${WHITE}]${ENDCOLOR} ${BOLD_WHITE}$1${ENDCOLOR}\n"' >> $SCRIPT_NAME.sh
 				echo "}" >> $SCRIPT_NAME.sh
+				echo "" >> $SCRIPT_NAME.sh
 				;;
 			"Success")
 				info "Implementing success message function to $SCRIPT_NAME.sh"
@@ -1333,14 +1333,15 @@ append_messages() {
 				echo "# FUNCTION: success" >> $SCRIPT_NAME.sh
 				echo "# DESCRIPTION:" >> $SCRIPT_NAME.sh
 				echo "#     Prints success message using the provided parameter." >> $SCRIPT_NAME.sh
-				echo "#     $1 - A message" >> $SCRIPT_NAME.sh
+				echo "#     \$1 - A message" >> $SCRIPT_NAME.sh
 				echo "# RETURNS:" >> $SCRIPT_NAME.sh
 				echo "#     None" >> $SCRIPT_NAME.sh
 				echo "#================================================================" >> $SCRIPT_NAME.sh
 				echo "success() {" >> $SCRIPT_NAME.sh
-				echo "	local message=$1" >> $SCRIPT_NAME.sh
+				echo "	local message=\$1" >> $SCRIPT_NAME.sh
 				echo '	printf "${WHITE}[${ENDCOLOR}${CYAN}$current_time${ENDCOLOR}${WHITE}]${ENDCOLOR} ${WHITE}[${ENDCOLOR}${BOLD_GREEN}SUCCESS${ENDCOLOR}${WHITE}]${ENDCOLOR} ${BOLD_WHITE}$1${ENDCOLOR}\n' >> $SCRIPT_NAME.sh
 				echo "}" >> $SCRIPT_NAME.sh
+				echo "" >> $SCRIPT_NAME.sh
 				;;
 			"Warning")
 				info "Implementing warning message function to $SCRIPT_NAME.sh"
@@ -1349,12 +1350,12 @@ append_messages() {
 				echo "# DESCRIPTION:" >> $SCRIPT_NAME.sh
 				echo "#     Prints warning message using the provided parameter." >> $SCRIPT_NAME.sh
 				echo "# PARAMETERS:" >> $SCRIPT_NAME.sh
-				echo "#     $1 - A message" >> $SCRIPT_NAME.sh
+				echo "#     \$1 - A message" >> $SCRIPT_NAME.sh
 				echo "# RETURNS:" >> $SCRIPT_NAME.sh
 				echo "#     None" >> $SCRIPT_NAME.sh
 				echo "#================================================================" >> $SCRIPT_NAME.sh
 				echo "warning() {" >> $SCRIPT_NAME.sh
-				echo "	local message=$1" >> $SCRIPT_NAME.sh
+				echo "	local message=\$1" >> $SCRIPT_NAME.sh
 				echo '	printf "${WHITE}[${ENDCOLOR}${CYAN}$current_time${ENDCOLOR}${WHITE}]${ENDCOLOR} ${WHITE}[${ENDCOLOR}${YELLOW}WARNING${ENDCOLOR}${WHITE}]${ENDCOLOR} ${WHITE}$1${ENDCOLOR}\n"' >> $SCRIPT_NAME.sh
 				echo "}" >> $SCRIPT_NAME.sh
 				echo "" >> $SCRIPT_NAME.sh
@@ -1362,14 +1363,14 @@ append_messages() {
 				echo "#================================================================" >> $SCRIPT_NAME.sh
 				echo "# FUNCTION: bold_warning" >> $SCRIPT_NAME.sh
 				echo "# DESCRIPTION:" >> $SCRIPT_NAME.sh
-				echo "#     Prints important warning message using the provided parameter." >> $SCRIPT_NAME.sh
+				echo "#     Prints bold warning message using the provided parameter." >> $SCRIPT_NAME.sh
 				echo "# PARAMETERS:" >> $SCRIPT_NAME.sh
-				echo "#     $1 - A message" >> $SCRIPT_NAME.sh
+				echo "#     \$1 - A message" >> $SCRIPT_NAME.sh
 				echo "# RETURNS:" >> $SCRIPT_NAME.sh
 				echo "#     None" >> $SCRIPT_NAME.sh
 				echo "#================================================================" >> $SCRIPT_NAME.sh
 				echo "bold_warning() {" >> $SCRIPT_NAME.sh
-				echo "	local message=$1" >> $SCRIPT_NAME.sh
+				echo "	local message=\$1" >> $SCRIPT_NAME.sh
 				echo ' 	printf "${WHITE}[${ENDCOLOR}${CYAN}$current_time${ENDCOLOR}${WHITE}]${ENDCOLOR} ${WHITE}[${ENDCOLOR}${BOLD_YELLOW}WARNING${ENDCOLOR}${WHITE}]${ENDCOLOR} ${BOLD_WHITE}$1${ENDCOLOR}\n"' >> $SCRIPT_NAME.sh
 				echo "}" >> $SCRIPT_NAME.sh
 				echo "" >> $SCRIPT_NAME.sh
@@ -1381,12 +1382,12 @@ append_messages() {
 				echo "# DESCRIPTION:" >> $SCRIPT_NAME.sh
 				echo "#     Prints error message using the provided parameter." >> $SCRIPT_NAME.sh
 				echo "# PARAMETERS:" >> $SCRIPT_NAME.sh
-				echo "#     $1 - A message" >> $SCRIPT_NAME.sh
+				echo "#     \$1 - A message" >> $SCRIPT_NAME.sh
 				echo "# RETURNS:" >> $SCRIPT_NAME.sh
 				echo "#     None" >> $SCRIPT_NAME.sh
 				echo "#================================================================" >> $SCRIPT_NAME.sh
 				echo "error() {" >> $SCRIPT_NAME.sh	
-				echo "	local message=$1" >> $SCRIPT_NAME.sh
+				echo "	local message=\$1" >> $SCRIPT_NAME.sh
 				echo '	printf "${WHITE}[${ENDCOLOR}${CYAN}$current_time${ENDCOLOR}${WHITE}]${ENDCOLOR} ${WHITE}[${ENDCOLOR}${RED}ERROR${ENDCOLOR}${WHITE}]${ENDCOLOR} ${WHITE}$1${ENDCOLOR}\n"' >> $SCRIPT_NAME.sh
 				echo "}" >> $SCRIPT_NAME.sh
 				echo "" >> $SCRIPT_NAME.sh
@@ -1394,14 +1395,14 @@ append_messages() {
 				echo "#================================================================" >> $SCRIPT_NAME.sh
 				echo "# FUNCTION: bold_error" >> $SCRIPT_NAME.sh
 				echo "# DESCRIPTION:" >> $SCRIPT_NAME.sh
-				echo "#     Prints important error message using the provided parameter." >> $SCRIPT_NAME.sh
+				echo "#     Prints bold error message using the provided parameter." >> $SCRIPT_NAME.sh
 				echo "# PARAMETERS:" >> $SCRIPT_NAME.sh
-				echo "#     $1 - A message" >> $SCRIPT_NAME.sh
+				echo "#     \$1 - A message" >> $SCRIPT_NAME.sh
 				echo "# RETURNS:" >> $SCRIPT_NAME.sh
 				echo "#     None" >> $SCRIPT_NAME.sh
 				echo "#================================================================" >> $SCRIPT_NAME.sh
 				echo "bold_error() {" >> $SCRIPT_NAME.sh	
-				echo "	local message=$1" >> $SCRIPT_NAME.sh
+				echo "	local message=\$1" >> $SCRIPT_NAME.sh
 				echo '	printf "${WHITE}[${ENDCOLOR}${CYAN}$current_time${ENDCOLOR}${WHITE}]${ENDCOLOR} ${WHITE}[${ENDCOLOR}${BOLD_RED}ERROR${ENDCOLOR}${WHITE}]${ENDCOLOR} ${BOLD_WHITE}$1${ENDCOLOR}\n"' >> $SCRIPT_NAME.sh
 				echo "}" >> $SCRIPT_NAME.sh
 				echo "" >> $SCRIPT_NAME.sh
@@ -1479,7 +1480,7 @@ input_check() {
 
 		match=false	
 		for COL in ${input_colors[@]}; do
-			if containsElement "$COL" "${color_array[@]}"; then
+			if matchingElement "$COL" "${color_array[@]}"; then
 				match=true
 			fi
 		done
@@ -1497,7 +1498,7 @@ input_check() {
 
 		match=false	
 		for COL in ${input_bg_colors[@]}; do
-			if containsElement "$COL" "${bg_color_array[@]}"; then
+			if matchingElement "$COL" "${bg_color_array[@]}"; then
 				match=true
 			fi
 		done
@@ -1515,7 +1516,7 @@ input_check() {
 
 		match=false	
 		for COL in ${input_bold_colors[@]}; do
-			if containsElement "$COL" "${bold_color_array[@]}"; then
+			if matchingElement "$COL" "${bold_color_array[@]}"; then
 				match=true
 			fi
 		done
@@ -1533,7 +1534,7 @@ input_check() {
 
 		match=false	
 		for COL in ${input_italic_colors[@]}; do
-			if containsElement "$COL" "${italic_color_array[@]}"; then
+			if matchingElement "$COL" "${italic_color_array[@]}"; then
 				match=true
 			fi
 		done
@@ -1551,7 +1552,7 @@ input_check() {
 
 		match=false	
 		for COL in ${input_font_styles[@]}; do
-			if containsElement "$COL" "${font_styles_array[@]}"; then
+			if matchingElement "$COL" "${font_styles_array[@]}"; then
 				match=true
 			fi
 		done
@@ -1674,7 +1675,7 @@ gui() {
 	info "Description: $DESCRIPTION"
 
 	# Notes
-	NOTES=$(whiptail --inputbox "Please enter notes about your script. \n\nNotes informs the user of any additional information that would be useful for understanding the script. This is to provide clarity and guidance on how to use the script" 11 160 --title "[!] Set up notes" 3>&1 1>&2 2>&3)
+	NOTES=$(whiptail --inputbox "Please enter notes about your script. \n\nNotes informs the user of any additional information that would be useful for understanding the script. This is to provide clarity and guidance on how to use the script." 11 160 --title "[!] Set up notes" 3>&1 1>&2 2>&3)
 	EXIT_STATUS=$?
 	if [ $EXIT_STATUS -ne 0 ]; then
 		info "Operation cancelled by the user."
@@ -1817,8 +1818,8 @@ gui() {
 
 	if [[ "$ANSI_FONT_STYLES" == "true" ]]; then
 		OPTIONS=(
-			"Bold" "" ON \
-			"Italic" "" OFF
+			"BOLD" "" ON \
+			"ITALIC" "" OFF
 		)
 		FONT_STYLES=$(whiptail --title "[!] Select ANSI font styles escape sequences" --checklist "Select ANSI font style escape sequences" 20 78 4 "${OPTIONS[@]}" 3>&1 1>&2 2>&3)
 		EXIT_STATUS=$?
@@ -1897,7 +1898,7 @@ while [[ "$#" -gt 0 ]]; do
 		--licenses) display_licenses ;;
 		--all) all ;;
 		-afs|--all-font-styles) all_font_styles ;;
-		-c|--colors) COLORS="$2" ;;
+		-c|--colors) COLORS="$2"; shift ;;
 		--show-colors) display_colors ;;
 		-ac|--all-colors) 
 			COLORS="BLACK,GREEN,YELLOW,BLUE,MAGENTA,CYAN,LIGHT_GRAY,GRAY,LIGHT_RED,LIGHT_GREEN,LIGHT_YELLOW,LIGHT_BLUE,LIGHT_MAGENTA,LIGHT_CYAN,LIGHT_WHITE" 
