@@ -9,9 +9,14 @@ Bash script template for ease of development & implementation for script develop
 <insert usage script over here>
 ```
 
-### GUI
+### GUI - Whiptail
 ```
-<insert demo over here
+<insert demo over here>
+```
+
+### GtkDialog
+```
+<insert demo over here>
 ```
 
 ## Usage
