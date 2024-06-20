@@ -4,10 +4,8 @@
 Bash script template for ease of development & implementation for script development.
 
 ## Demo
-### Command-Line Interface
-```
-<insert usage script over here>
-```
+### Command-Line
+[![asciicast](https://asciinema.org/a/aXSdISgOUVbFwhSM3Q3gcNeSe.svg)](https://asciinema.org/a/aXSdISgOUVbFwhSM3Q3gcNeSe)
 
 ### GUI 
 #### Whiptail
