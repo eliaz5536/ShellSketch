@@ -11,7 +11,7 @@ Bash script template for ease of development & implementation for script develop
 #### Whiptail
 [![asciicast](https://asciinema.org/a/T9InMdkBqD0PxWGbazoe8cA6B.svg)](https://asciinema.org/a/T9InMdkBqD0PxWGbazoe8cA6B)
 
-#### GtkDialog
+#### YAD
 ```
 <insert demo over here>
 ```
