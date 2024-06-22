@@ -17,6 +17,11 @@ Bash script template for ease of development & implementation for script develop
   <img src="https://github.com/eliaz5536/ShellSketch/assets/5835036/b4cfbeec-70e6-4823-9331-7f6d07ccc04b" alt="Description of the GIF">
 </div>
 
+![Screenshot 2024-06-22 181316](https://github.com/eliaz5536/ShellSketch/assets/5835036/14749cd9-7112-4558-88b6-79efdfc439aa)
+
+
+
+
 ### License
 
 
