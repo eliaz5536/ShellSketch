@@ -5,8 +5,6 @@ Bash script template for ease of development & implementation for script develop
 
 ## Demo
 ### Command-Line
-<img src="https://github.com/eliaz5536/ShellSketch/assets/5835036/b7ea6d21-6216-422b-a090-72cc0870b812" width=150% height=150%>
-
 ![ezgif-4-4da6238cac](https://github.com/eliaz5536/ShellSketch/assets/5835036/fe6d7b66-c9ef-4cdf-9710-67202bc9edcc)
 
 ### GUI 
