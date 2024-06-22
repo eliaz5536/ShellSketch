@@ -27,11 +27,10 @@ Bash script template for ease of development & implementation for script develop
 
 
 ### Color
-![ezgif-2-2d7d63e99f](https://github.com/eliaz5536/ShellSketch/assets/5835036/21205f77-71ee-46d3-8c6b-c98fb7c4c4f4)
-
+![ezgif-2-478cc29e43](https://github.com/eliaz5536/ShellSketch/assets/5835036/77782224-1448-4d89-bb18-581f2b124f92)
 
 ### Background Color
-
+![ezgif-2-0edbce8211](https://github.com/eliaz5536/ShellSketch/assets/5835036/b3b21dd5-e2a3-454b-8352-1090a48b229d)
 
 ### Italic Color
 
