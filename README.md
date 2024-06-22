@@ -37,7 +37,7 @@ sudo apt-get install whiptail yad
 # Clone the following repository
 git clone https://github.com/eliaz5536/ShellSketch
 
-# Access the repository and change file permission to be executable
+# Change directory to repository folder and modify file permission to be executable
 cd ShellSketch
 chmod +x template.sh
 
