@@ -13,9 +13,8 @@ This involves implementation of the following features:
 - Custom Log Level Messaging types (INFO, SUCCESS, WARNING & ERROR)
 - Customized Command-Line Interface menu, with the addition of USAGE and HELP function
 
-_ShellSketch_ can be interacted through both modes, CLI (terminal) and GUI (Graphical User Interface) using 
-YAD (Yet Another Dialog) that displays GTK+ dialog boxes and Whiptail for usability and accessability of 
-inputting values through simple user interface.
+_ShellSketch_ offers **CLI and GUI support** using YAD (Yet Another Dialog) that displays GTK+ dialog boxes and 
+Whiptail for usability and accessability of inputting values through simple user interface.
 
 # Requirements
 It is highly recommended that you run this script on **Debian** or **Debian-based distribution machine** (_Ubuntu_, _Linux Mint_, _Zorin OS_ & _Kali Linux_)
