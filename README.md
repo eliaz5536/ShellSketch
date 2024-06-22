@@ -7,6 +7,11 @@ Bash script template for ease of development & implementation for script develop
 ### Command-Line
 ![ezgif-4-4da6238cac](https://github.com/eliaz5536/ShellSketch/assets/5835036/fe6d7b66-c9ef-4cdf-9710-67202bc9edcc)
 
+
+![new](https://github.com/eliaz5536/ShellSketch/assets/5835036/2221b658-5354-49b0-ae53-d073fb85adaa)
+
+
+
 ### GUI 
 #### Whiptail
 [![asciicast](https://asciinema.org/a/T9InMdkBqD0PxWGbazoe8cA6B.svg)](https://asciinema.org/a/T9InMdkBqD0PxWGbazoe8cA6B)
