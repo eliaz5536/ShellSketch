@@ -33,7 +33,7 @@ Bash script template for ease of development & implementation for script develop
 ![ezgif-2-0edbce8211](https://github.com/eliaz5536/ShellSketch/assets/5835036/b3b21dd5-e2a3-454b-8352-1090a48b229d)
 
 ### Italic Color
-
+![ezgif-2-c1f4ba98b6](https://github.com/eliaz5536/ShellSketch/assets/5835036/b53ccab8-6a7f-4477-ac88-e281861dd3d0)
 
 ### Font Styles
 
