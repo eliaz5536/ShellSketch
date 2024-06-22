@@ -7,24 +7,24 @@ Blueprint Bash & Shell script template for the ease of development & implementat
 ShellSketch is a complete customizable blueprint bash script template that provides the control
 to generate formatted shell scripts as a template by automation.
 
-This involves implementation of the following essentials:
-- Formatted header format
+This involves implementation of the following features:
+- Strict HEADER & FUNCTION format 
 - Description, notes and required dependencies of your project
 - License type
 - Selected ANSI Escape sequences (for custom shell scripts that require displaying color)
 - Custom Log Level Messaging types (INFO, SUCCESS, WARNING & ERROR)
 - Customized Command-Line Interface menu, with the addition of USAGE and HELP function.
 
-
-
-
+ShellSketch can be interacted through both modes, CLI (terminal) and GUI (Graphical User Interface) using 
+YAD (Yet Another Dialog) that displays GTK+ dialog boxes and Whiptail for usability and accessability of 
+inputting values through simple user interface.
 
 # Requirements
-It is recommended that you are on a **Debian** or **debian-based machine** (Ubuntu, Linux Mint, Zorin OS, Kali Linux and etc)
-to ensure that the machine is supported from the package manager, **apt**.
+It is highly recommended to run this script on **Debian** or **Debian-based distribution machine** (_Ubuntu_, _Linux Mint_, _Zorin OS_ & _Kali Linux_)
+to avoid compatibility and software issues since packages are installed from the default package manager of Debian **apt**.
 
-If you want to access GUI mode (Whiptail & YAD) for instance, you will need to install whiptail and yad through apt package manager to access 
-simplistic gui menu.
+Interacting with ShellSketch through GUI through usability requires the installation of YAD and Whiptail using apt package manager,
+which can be performed by executing the following on Debian / Debian-based distribution machine:
 ```
 sudo apt-get install whiptail
 sudo apt-get install yad
@@ -115,7 +115,6 @@ Other:
 
 ### YAD (Yet Another Dialog)
 ![ezgif-7-899ea4d197](https://github.com/eliaz5536/ShellSketch/assets/5835036/7b7fa045-5b85-446d-bfb6-9d498f8c7c3e)
-
 
 #### Standard ANSI Color Selection
 ![ezgif-2-478cc29e43](https://github.com/eliaz5536/ShellSketch/assets/5835036/77782224-1448-4d89-bb18-581f2b124f92)
