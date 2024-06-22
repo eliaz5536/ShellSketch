@@ -13,19 +13,21 @@ Bash script template for ease of development & implementation for script develop
 
 #### YAD
 
-<div align="center">
+<!-- <div align="center">
   <img src="https://github.com/eliaz5536/ShellSketch/assets/5835036/b4cfbeec-70e6-4823-9331-7f6d07ccc04b" alt="Description of the GIF">
-</div>
+</div> 
+--> 
 
 ![Screenshot 2024-06-22 181316](https://github.com/eliaz5536/ShellSketch/assets/5835036/14749cd9-7112-4558-88b6-79efdfc439aa)
-
-
 
 
 ### License
 
 
+
+
 ### Color
+![ezgif-2-2d7d63e99f](https://github.com/eliaz5536/ShellSketch/assets/5835036/21205f77-71ee-46d3-8c6b-c98fb7c4c4f4)
 
 
 ### Background Color
