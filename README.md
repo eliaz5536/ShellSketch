@@ -47,7 +47,7 @@ Usage: ./template.sh [mode] [options]
 ```
 Shell Script Template Generator
  
-Usage: ./template.sh [modes] [options]
+Usage: ./template.sh [mode] [options]
  
 Options:
   --usage                                               Show usage information
