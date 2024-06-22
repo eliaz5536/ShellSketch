@@ -4,9 +4,19 @@
 Blueprint Bash & Shell script template for the ease of development & implementation for shell scripting development.
 
 # ShellSketch
-ShellSketch is a complete customizable blueprint template bash script generator that allows you to build your own 
-script template by the selection of your choice instead of relying on building the bash script for scratch, for any
-large-scale projects that involve shell-scripting and dealing with automation tasks to support such systems.
+ShellSketch is a complete customizable blueprint bash script template that provides the control
+to generate formatted shell scripts as a template by automation.
+
+This involves implementation of the following essentials:
+	- Formatted header format
+	- Description, notes and required dependencies of your project
+	- License type
+	- Selected ANSI Escape sequences (for custom shell scripts that require displaying color)
+	- Custom Log Level Messaging types (INFO, SUCCESS, WARNING & ERROR)
+	- Customized Command-Line Interface menu, with the addition of USAGE and HELP function.
+
+
+
 
 # Requirements
 It is recommended that you are on a **Debian** or **debian-based machine** (Ubuntu, Linux Mint, Zorin OS, Kali Linux and etc)
