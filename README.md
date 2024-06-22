@@ -2,7 +2,7 @@
 ![ShellSketch](https://github.com/eliaz5536/ShellSketch/assets/5835036/3c052d7c-4981-4159-8ca9-22b6bb8d0c85)
 
 # ShellSketch
-_ShellSketch_ is a complete customizable blueprint bash script template that provides the control
+**_ShellSketch_** is a complete customizable blueprint bash script template that provides the control
 to generate formatted shell scripts as a template by automation.
 
 This involves implementation of the following features:
@@ -13,14 +13,14 @@ This involves implementation of the following features:
 - Custom Log Level Messaging types (INFO, SUCCESS, WARNING & ERROR)
 - Customized Command-Line Interface menu, with the addition of USAGE and HELP function
 
-_ShellSketch_ offers **CLI and GUI support** using YAD (Yet Another Dialog) that displays GTK+ dialog boxes and 
+**_ShellSketch_** offers **CLI and GUI support** using YAD (Yet Another Dialog) that displays GTK+ dialog boxes and 
 Whiptail for usability and accessability of inputting values through simple user interface.
 
 # Requirements
 It is highly recommended that you run this script on **Debian** or **Debian-based distribution machine** (_Ubuntu_, _Linux Mint_, _Zorin OS_ & _Kali Linux_)
 to avoid compatibility and software issues since packages are installed from the default package manager of Debian **apt**.
 
-Interacting with _ShellSketch_ through GUI through usability requires the installation of YAD and Whiptail using apt package manager,
+Interacting with **_ShellSketch_** through GUI through usability requires the installation of YAD and Whiptail using apt package manager,
 which can be performed by executing the following commands:
 ```
 sudo apt-get install whiptail
