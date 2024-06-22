@@ -22,7 +22,7 @@ It is highly recommended that you run this script on **Debian** or **Debian-base
 to avoid compatibility and software issues since packages are installed from the default package manager of Debian **apt**.
 
 Interacting with ShellSketch through GUI through usability requires the installation of YAD and Whiptail using apt package manager,
-which can be performed by executing the following on Debian / Debian-based distribution machine:
+which can be performed by executing the following commands:
 ```
 sudo apt-get install whiptail
 sudo apt-get install yad
