@@ -18,7 +18,7 @@ YAD (Yet Another Dialog) that displays GTK+ dialog boxes and Whiptail for usabil
 inputting values through simple user interface.
 
 # Requirements
-It is highly recommended to run this script on **Debian** or **Debian-based distribution machine** (_Ubuntu_, _Linux Mint_, _Zorin OS_ & _Kali Linux_)
+It is highly recommended that you run this script on **Debian** or **Debian-based distribution machine** (_Ubuntu_, _Linux Mint_, _Zorin OS_ & _Kali Linux_)
 to avoid compatibility and software issues since packages are installed from the default package manager of Debian **apt**.
 
 Interacting with ShellSketch through GUI through usability requires the installation of YAD and Whiptail using apt package manager,
