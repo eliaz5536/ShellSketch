@@ -20,7 +20,6 @@ Bash script template for ease of development & implementation for script develop
 
 ![Screenshot 2024-06-22 181316](https://github.com/eliaz5536/ShellSketch/assets/5835036/14749cd9-7112-4558-88b6-79efdfc439aa)
 
-
 ### License
 
 
@@ -36,10 +35,10 @@ Bash script template for ease of development & implementation for script develop
 ![ezgif-2-c1f4ba98b6](https://github.com/eliaz5536/ShellSketch/assets/5835036/b53ccab8-6a7f-4477-ac88-e281861dd3d0)
 
 ### Font Styles
-
+![ezgif-5-d7b6329a4c](https://github.com/eliaz5536/ShellSketch/assets/5835036/93cce564-09f1-443f-a57f-bc0a699f3823)
 
 ### Log Message Types
-
+![ezgif-5-f7957f8193](https://github.com/eliaz5536/ShellSketch/assets/5835036/9846fb2a-4310-464d-a038-df210cfaa824)
 
 ## Usage
 ```
