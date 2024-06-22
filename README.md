@@ -38,7 +38,9 @@ Bash script template for ease of development & implementation for script develop
 ![ezgif-5-d7b6329a4c](https://github.com/eliaz5536/ShellSketch/assets/5835036/93cce564-09f1-443f-a57f-bc0a699f3823)
 
 ### Log Message Types
-![ezgif-5-f7957f8193](https://github.com/eliaz5536/ShellSketch/assets/5835036/9846fb2a-4310-464d-a038-df210cfaa824)
+![ezgif-5-0016655ff0](https://github.com/eliaz5536/ShellSketch/assets/5835036/8ff01914-bc71-40f9-8371-5bb1d570cdaf)
+
+
 
 ## Usage
 ```
