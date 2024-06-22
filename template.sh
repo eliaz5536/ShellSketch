@@ -1894,9 +1894,14 @@ gui() {
 #     None
 #================================================================
 colors_yad() {
-	COLORS=$(yad --list --title="Standard ANSI color code escape sequences" --checklist --multiple \
-	    --column="Select" \
-	    --column="Standard ANSI" \
+	COLORS=$(yad \
+		--list \
+		--title="Standard ANSI color code escape sequences" \
+		--window-icon="$(pwd)/logo.png" \
+		--checklist \
+		--multiple \
+	    	--column="Select" \
+	    	--column="Color" \
 		FALSE "BLACK" \
 		FALSE "RED" \
 		FALSE "GREEN" \
@@ -1936,9 +1941,14 @@ colors_yad() {
 #     None
 #================================================================
 bold_colors_yad() {
-	BOLD_COLORS=$(yad --list --title="Bold ANSI color code escape sequences" --checklist --multiple \
-	    --column="Select" \
-	    --column="Bold ANSI" \
+	BOLD_COLORS=$(yad \
+		--list \
+		--title="Bold ANSI color code escape sequences" \
+		--checklist \
+		--multiple \
+		--window-icon="$(pwd)/logo.png" \
+	    	--column="Select" \
+	    	--column="Bold ANSI" \
 		FALSE "BOLD_BLACK" \
 		FALSE "BOLD_RED" \
 		FALSE "BOLD_GREEN" \
@@ -1978,9 +1988,13 @@ bold_colors_yad() {
 #     None
 #================================================================
 italic_colors_yad() {
-	ITALIC_COLORS=$(yad --list --title="Italic ANSI color code escape sequences" --checklist \
-	    --column="Select" \
-	    --column="Italic ANSI" \
+	ITALIC_COLORS=$(yad \
+		--list \
+		--title="Italic ANSI color code escape sequences" \
+		--window-icon="$(pwd)/logo.png" \
+		--checklist \
+	    	--column="Select" \
+	    	--column="Italic Color" \
 		FALSE "ITALIC_BLACK" \
 		FALSE "ITALIC_RED" \
 		FALSE "ITALIC_GREEN" \
@@ -2020,9 +2034,13 @@ italic_colors_yad() {
 #     None
 #================================================================
 background_colors_yad() {
-	BG_COLORS=$(yad --list --title="Background ANSI color code escape sequences" --checklist \
-	    --column="Select" \
-	    --column="Background ANSI" \
+	BG_COLORS=$(yad \
+		--list \
+		--title="Background ANSI color code escape sequences" \
+		--window-icon="$(pwd)/logo.png" \
+		--checklist \
+	    	--column="Select" \
+	    	--column="Background Color" \
 		FALSE "BLACK_BG" \
 		FALSE "RED_BG" \
 		FALSE "GREEN_BG" \
@@ -2054,9 +2072,13 @@ background_colors_yad() {
 #     None
 #================================================================
 font_styles_yad() {
-	FONT_STYLES=$(yad --list --title="Font style ANSI escape sequences" --checklist \
-	    --column="Select" \
-	    --column="Font Styles" \
+	FONT_STYLES=$(yad \
+		--list \
+		--title="Font style ANSI escape sequences" \
+		--window-icon="$(pwd)/logo.png" \
+		--checklist \
+	    	--column="Select" \
+	    	--column="Font Style" \
 		FALSE "BOLD" \
 		FALSE "ITALIC" \
 		--button="gtk-ok:0" --button="gtk-cancel:1" \
@@ -2082,10 +2104,14 @@ font_styles_yad() {
 #     None
 #================================================================
 log_yad() {
-	LOG_MESSAGE_TYPES=$(yad --list --title="Log Message Types" --checklist \
-	    --column="Select" \
-	    --column="Log" \
-	    --column="Description" \
+	LOG_MESSAGE_TYPES=$(yad \
+	    	--list \
+	    	--title="Log Message Types" \
+		--window-icon="$(pwd)/logo.png" \
+	    	--checklist \
+	    	--column="Select" \
+	    	--column="Log" \
+	    	--column="Description" \
 		FALSE "Info" "Provides normal insight during operation of the state of the application" \
 		FALSE "Success" "Operation or process has completed successfully" \
 		FALSE "Warning" "Indicating a potential issue or unexpected problem while running" \
