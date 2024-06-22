@@ -19,8 +19,6 @@ Bash script template for ease of development & implementation for script develop
 #### YAD
 ![ezgif-7-899ea4d197](https://github.com/eliaz5536/ShellSketch/assets/5835036/7b7fa045-5b85-446d-bfb6-9d498f8c7c3e)
 
-### License
-
 ### Color
 ![ezgif-2-478cc29e43](https://github.com/eliaz5536/ShellSketch/assets/5835036/77782224-1448-4d89-bb18-581f2b124f92)
 
@@ -42,6 +40,17 @@ Bash script template for ease of development & implementation for script develop
 ShellSketch is a complete customizable blueprint template bash script generator that allows you to build your own 
 script template by the selection of your choice instead of relying on building the bash script for scratch, for any
 large-scale projects that involve shell-scripting and dealing with automation tasks to support such systems.
+
+# Requirements
+It is recommended that you are running on **Debian** or **debian-based machine** (Ubuntu, Linux Mint, Zorin OS, Kali Linux and etc)
+to ensure that the machine is supported from the package manager, **apt**.
+
+If you want to access GUI mode (Whiptail & YAD) for instance, you will need to install whiptail and yad through apt package manager to access 
+simplistic gui menu.
+```
+sudo apt-get install whiptail
+sudo apt-get install yad
+```
 
 ## Usage
 ```
