@@ -5,7 +5,7 @@ Bash script template for ease of development & implementation for script develop
 
 ## Demo
 ### Command-Line
-![ezgif-6-26ca62e4a4](https://github.com/eliaz5536/ShellSketch/assets/5835036/b7ea6d21-6216-422b-a090-72cc0870b812)
+![ezgif-6-26ca62e4a4](https://github.com/eliaz5536/ShellSketch/assets/5835036/b7ea6d21-6216-422b-a090-72cc0870b812 | width=100)
 
 
 
