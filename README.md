@@ -13,7 +13,7 @@ This involves implementation of the following features:
 - Custom Log Level Messaging types (INFO, SUCCESS, WARNING & ERROR)
 - Customized Command-Line Interface menu, with the addition of USAGE and HELP function
 
-**_ShellSketch_** offers **CLI and GUI support** using YAD (Yet Another Dialog) that displays GTK+ dialog boxes and 
+**_ShellSketch_** additionally offers **CLI and GUI support** using YAD (Yet Another Dialog) that displays GTK+ dialog boxes and 
 Whiptail for usability and accessability of inputting values through simple user interface.
 
 # Requirements
