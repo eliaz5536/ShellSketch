@@ -8,7 +8,7 @@ to generate formatted shell scripts as a template by automation.
 This involves implementation of the following features:
 - Strict HEADER & FUNCTION format 
 - Description, notes and required dependencies of your project
-- License type
+- License type (GPL v3, MIT and etc)
 - Custom ANSI Escape sequences (for shell scripts that require displaying color)
 - Custom Log Level Messaging types (INFO, SUCCESS, WARNING & ERROR)
 - Customized Command-Line Interface menu, with the addition of USAGE and HELP function
