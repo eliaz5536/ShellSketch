@@ -15,7 +15,9 @@ Bash script template for ease of development & implementation for script develop
 ### Main
 ![example](https://github.com/eliaz5536/ShellSketch/assets/5835036/b4cfbeec-70e6-4823-9331-7f6d07ccc04b)
 
-
+<div align="center">
+  <img src="https://github.com/eliaz5536/ShellSketch/assets/5835036/b4cfbeec-70e6-4823-9331-7f6d07ccc04b" alt="Description of the GIF">
+</div>
 
 
 
