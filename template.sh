@@ -1883,6 +1883,415 @@ gui() {
 	exit 0
 }
 
+#================================================================
+# FUNCTION: colors_yad
+# DESCRIPTION:
+#     Displays YAD Graphical User Interface mode for 
+#     stnadard ANSI color code escape sequences in Bash.
+# PARAMETERS:
+#     None
+# RETURNS:
+#     None
+#================================================================
+colors_yad() {
+	COLORS=$(yad --list --title="Standard ANSI color code escape sequences" --checklist --multiple \
+	    --column="Select" \
+	    --column="Standard ANSI" \
+		FALSE "BLACK" \
+		FALSE "RED" \
+		FALSE "GREEN" \
+		FALSE "YELLOW" \
+		FALSE "BLUE" \
+		FALSE "MAGENTA" \
+		FALSE "CYAN" \
+		FALSE "LIGHT_GRAY" \
+		FALSE "GRAY" \
+		FALSE "LIGHT_RED" \
+		FALSE "LIGHT_GREEN" \
+		FALSE "LIGHT_YELLOW" \
+		FALSE "LIGHT_BLUE" \
+		FALSE "LIGHT_MAGENTA" \
+		FALSE "LIGHT_CYAN" \
+		FALSE "WHITE" \
+		--button="gtk-ok:0" --button="gtk-cancel:1" \
+		--width=700 --height=300)
+
+	response=$?
+
+	if [ $response -eq 0 ]; then
+		echo "$COLORS" | sed 's/|/ /g'
+	else 
+		echo ""
+	fi
+}
+
+#================================================================
+# FUNCTION: bold_colors_yad
+# DESCRIPTION:
+#     Displays YAD Graphical User Interface mode for 
+#     bold ANSI color code escape sequences in Bash.
+# PARAMETERS:
+#     None
+# RETURNS:
+#     None
+#================================================================
+bold_colors_yad() {
+	BOLD_COLORS=$(yad --list --title="Bold ANSI color code escape sequences" --checklist --multiple \
+	    --column="Select" \
+	    --column="Bold ANSI" \
+		FALSE "BOLD_BLACK" \
+		FALSE "BOLD_RED" \
+		FALSE "BOLD_GREEN" \
+		FALSE "BOLD_YELLOW" \
+		FALSE "BOLD_BLUE" \
+		FALSE "BOLD_MAGENTA" \
+		FALSE "BOLD_CYAN" \
+		FALSE "BOLD_LIGHT_GRAY" \
+		FALSE "BOLD_GRAY" \
+		FALSE "BOLD_LIGHT_RED" \
+		FALSE "BOLD_LIGHT_GREEN" \
+		FALSE "BOLD_LIGHT_YELLOW" \
+		FALSE "BOLD_LIGHT_BLUE" \
+		FALSE "BOLD_LIGHT_MAGENTA" \
+		FALSE "BOLD_LIGHT_CYAN" \
+		FALSE "BOLD_WHITE" \
+		--button="gtk-ok:0" --button="gtk-cancel:1" \
+		--width=700 --height=300)
+
+	response=$?
+
+	if [ $response -eq 0 ]; then
+		echo "$BOLD_COLORS" | sed 's/|/ /g'
+	else 
+		echo ""
+	fi
+}
+
+#================================================================
+# FUNCTION: italic_colors_yald
+# DESCRIPTION:
+#     Displays YAD Graphical User Interface mode for 
+#     italic ANSI color code escape sequences in Bash.
+# PARAMETERS:
+#     None
+# RETURNS:
+#     None
+#================================================================
+italic_colors_yad() {
+	ITALIC_COLORS=$(yad --list --title="Italic ANSI color code escape sequences" --checklist \
+	    --column="Select" \
+	    --column="Italic ANSI" \
+		FALSE "ITALIC_BLACK" \
+		FALSE "ITALIC_RED" \
+		FALSE "ITALIC_GREEN" \
+		FALSE "ITALIC_YELLOW" \
+		FALSE "ITALIC_BLUE" \
+		FALSE "ITALIC_MAGENTA" \
+		FALSE "ITALIC_CYAN" \
+		FALSE "ITALIC_LIGHT_GRAY" \
+		FALSE "ITALIC_GRAY" \
+		FALSE "ITALIC_LIGHT_RED" \
+		FALSE "ITALIC_LIGHT_GREEN" \
+		FALSE "ITALIC_LIGHT_YELLOW" \
+		FALSE "ITALIC_LIGHT_BLUE" \
+		FALSE "ITALIC_LIGHT_MAGENTA" \
+		FALSE "ITALIC_LIGHT_CYAN" \
+		FALSE "ITALIC_WHITE" \
+		--button="gtk-ok:0" --button="gtk-cancel:1" \
+		--width=700 --height=300)
+
+	response=$?
+
+	if [ $response -eq 0 ]; then
+		echo "$ITALIC_COLORS" | sed 's/|/ /g'
+	else 
+		echo ""
+	fi
+}
+
+#================================================================
+# FUNCTION: background_colors_yald
+# DESCRIPTION:
+#     Displays YAD Graphical User Interface mode for 
+#     italic ANSI color code escape sequences in Bash.
+# PARAMETERS:
+#     None
+# RETURNS:
+#     None
+#================================================================
+background_colors_yad() {
+	BG_COLORS=$(yad --list --title="Background ANSI color code escape sequences" --checklist \
+	    --column="Select" \
+	    --column="Background ANSI" \
+		FALSE "BLACK_BG" \
+		FALSE "RED_BG" \
+		FALSE "GREEN_BG" \
+		FALSE "YELLOW_BG" \
+		FALSE "BLUE_BG" \
+		FALSE "MAGENTA_BG" \
+		FALSE "CYAN_BG" \
+		FALSE "WHITE_BG" \
+		--button="gtk-ok:0" --button="gtk-cancel:1" \
+		--width=700 --height=300)
+
+	response=$?
+
+	if [ $response -eq 0 ]; then
+		echo "$BG_COLORS" | sed 's/|/ /g'
+	else 
+		echo ""
+	fi
+}
+
+#================================================================
+# FUNCTION: font_styles_yald
+# DESCRIPTION:
+#     Displays YAD Graphical User Interface mode for 
+#     italic ANSI color code escape sequences in Bash.
+# PARAMETERS:
+#     None
+# RETURNS:
+#     None
+#================================================================
+font_styles_yad() {
+	FONT_STYLES=$(yad --list --title="Font style ANSI escape sequences" --checklist \
+	    --column="Select" \
+	    --column="Font Styles" \
+		FALSE "BOLD" \
+		FALSE "ITALIC" \
+		--button="gtk-ok:0" --button="gtk-cancel:1" \
+		--width=700 --height=300)
+
+	response=$?
+
+	if [ $response -eq 0 ]; then
+		echo "$FONT_STYLES" | sed 's/|/ /g'
+	else 
+		echo ""
+	fi
+}
+
+#================================================================
+# FUNCTION: log_yald
+# DESCRIPTION:
+#     Displays YAD Graphical User Interface mode for 
+#     italic ANSI color code escape sequences in Bash.
+# PARAMETERS:
+#     None
+# RETURNS:
+#     None
+#================================================================
+log_yad() {
+	LOG_MESSAGE_TYPES=$(yad --list --title="Log Message Types" --checklist \
+	    --column="Select" \
+	    --column="Log" \
+	    --column="Description" \
+		FALSE "Info" "Provides normal insight during operation of the state of the application" \
+		FALSE "Success" "Operation or process has completed successfully" \
+		FALSE "Warning" "Indicating a potential issue or unexpected problem while running" \
+		FALSE "Error" "Indicating serious problem that causes the script to fail" \
+		--button="gtk-ok:0" --button="gtk-cancel:1" \
+		--width=700 --height=300)
+
+	response=$?
+
+	if [ $response -eq 0 ]; then
+		echo "$LOG_MESSAGE_TYPES" | sed 's/|/ /g'
+	else 
+		echo ""
+	fi
+}
+
+#================================================================
+# FUNCTION: gui_yad
+# DESCRIPTION:
+#     Displays YAD Graphical User Interface mode in Bash.
+# GLOBALS:
+#     SCRIPT_NAME - Specifies script file name
+#     SCRIPT_TITLE - Specifies official title of the script
+#     AUTHOR - Specifies name of the author
+#     DESCRIPTION - Specifies description
+#     NOTES - Specifies notes
+#     DEPENDENCIES - Specifies required dependencies
+#     LICENSE - Specifies license type
+#     COLORS - Specifies standard ANSI color code escape sequences
+#     BG_COLORS - Specifies background ANSI color code escape sequences
+#     BOLD_COLORS - Specifies bold ANSI color code escape sequences
+#     ITALIC_COLORS - Specifies italic ANSI color code escape sequences
+#     FONT_STYLES - Specifies ANSI font style color code escape sequences
+#     LOG_MESSAGE_TYPES - Specifies type of messages
+#     COMMAND_LINE_INTERFACE - Implements Command-Line interface (USAGE, HELP & parsing argument menu)
+# PARAMETERS:
+#     None
+# RETURNS:
+#     None
+#================================================================
+gui_yad() {
+	licenses_array=("Apache-2.0" "GPL-3.0" "MIT" "BSD-2-Clause" "BSD-3-Clause" "BSL-1.0" "CC0-1.0" "EPL-2.0" "AGPL-3.0" "LGPL-2.1" "MPL-2.0" "Unlicense")	
+	license_options=$(printf "!%s" "${licenses_array[@]}")
+
+	result=$(yad \
+		--title="ShellSketch" \
+		--text="Blueprint Shell Script Template Generator" \
+		--form \
+		--field="File Name" "${SCRIPT_NAME}" \
+		--field="Script Title" "${SCRIPT_TITLE}" \
+		--field="Author" "${AUTHOR}" \
+		--field="Description" "${DESCRIPTION}" \
+		--field="Notes" "${NOTES}" \
+		--field="Dependencies" "${DEPENDENCIES}" \
+		--field="License":CB "${license_options[@]}" \
+		--button="Colors:2" \
+		--button="Bold Colors:4" \
+		--button="Italic Colors:6" \
+		--button="Background Colors:8" \
+		--button="Font Styles:10" \
+		--button="Log Message Types:12" \
+		--field="Command Line Interface":CHK "" \
+		--buttons-layout=center \
+		--button="gtk-ok:0" --button="gtk-cancel:1" )
+
+	response=$?
+
+	case $response in
+		0)
+			# Handle OK button
+			echo "OK button"
+
+			# Internal file separator
+			IFS='|'
+			read -ra parts <<< "$result"
+
+			SCRIPT_NAME="${parts[0]}"
+			SCRIPT_TITLE="${parts[1]}"
+			AUTHOR="${parts[2]}"
+			DESCRIPTION="${parts[3]}"
+			NOTES="${parts[4]}"
+			DEPENDENCIES="${parts[5]}"
+			LICENSE="${parts[6]}"
+			COLORS=$(echo "$COLORS" | grep -o '[A-Z]\+' | grep -v 'TRUE\|FALSE' | paste -sd ',' -)	
+			BG_COLORS=$(echo "$BG_COLORS" | grep -o '[A-Z]\+_BG' | grep -v 'TRUE\|FALSE' | paste -sd ',' -)	
+			BOLD_COLORS=$(echo "$BOLD_COLORS" | grep -o 'BOLD_[A-Z]\+' | grep -v 'TRUE\|FALSE' | paste -sd ',' -)	
+			ITALIC_COLORS=$(echo "$ITALIC_COLORS" | grep -o 'ITALIC_[A-Z]\+' | grep -v 'TRUE\|FALSE' | paste -sd ',' -)	
+			FONT_STYLES=$(echo "$FONT_STYLES" | grep -o '[A-Z]\+' | grep -v 'TRUE\|FALSE' | paste -sd ',' -)	
+			LOG_MESSAGE_TYPES=$(echo "$LOG_MESSAGE_TYPES" | grep -o '\b\(INFO\|WARNING\|SUCCESS\|ERROR\)\b' | grep -v 'TRUE\|FALSE' | paste -sd ',' -)	
+			COMMAND_LINE_INTERFACE=$(echo "$COMMAND_LINE_INTERFACE" | tr '[:upper:]' '[:lower:]')
+
+			if [ -z "$SCRIPT_NAME" ]; then
+				ERROR=$(yad --title="Error" --text="Invalid script name. The file name of the script must be specified." --button="OK:1" --image=dialog-error)
+				exit 1	
+			fi
+
+			input_check
+
+			SUCCESS=$(yad --title="Success" --text="The following script $SCRIPT_NAME.sh has been successfully generated in your system." --button="OK:1" --image=dialog-information)
+			exit 0
+			;;
+		1)
+			exit 0
+			;;
+		2)
+			# Internal file separator
+			IFS='|'
+			read -ra parts <<< "$result"
+
+			SCRIPT_NAME="${parts[0]}"
+			SCRIPT_TITLE="${parts[1]}"
+			AUTHOR="${parts[2]}"
+			DESCRIPTION="${parts[3]}"
+			NOTES="${parts[4]}"
+			DEPENDENCIES="${parts[5]}"
+			LICENSE="${parts[6]}"
+
+			COLORS=$(colors_yad)
+			gui_yad
+			;;
+		4)
+			# Internal file separator
+			IFS='|'
+			read -ra parts <<< "$result"
+
+			SCRIPT_NAME="${parts[0]}"
+			SCRIPT_TITLE="${parts[1]}"
+			AUTHOR="${parts[2]}"
+			DESCRIPTION="${parts[3]}"
+			NOTES="${parts[4]}"
+			DEPENDENCIES="${parts[5]}"
+			LICENSE="${parts[6]}"
+
+			BOLD_COLORS=$(bold_colors_yad)
+			gui_yad
+			;;
+		6)
+			# Internal file separator
+			IFS='|'
+			read -ra parts <<< "$result"
+
+			SCRIPT_NAME="${parts[0]}"
+			SCRIPT_TITLE="${parts[1]}"
+			AUTHOR="${parts[2]}"
+			DESCRIPTION="${parts[3]}"
+			NOTES="${parts[4]}"
+			DEPENDENCIES="${parts[5]}"
+			LICENSE="${parts[6]}"
+
+			ITALIC_COLORS=$(italic_colors_yad)
+			gui_yad
+			;;
+		8)
+			# Internal file separator
+			IFS='|'
+			read -ra parts <<< "$result"
+
+			SCRIPT_NAME="${parts[0]}"
+			SCRIPT_TITLE="${parts[1]}"
+			AUTHOR="${parts[2]}"
+			DESCRIPTION="${parts[3]}"
+			NOTES="${parts[4]}"
+			DEPENDENCIES="${parts[5]}"
+			LICENSE="${parts[6]}"
+
+			BG_COLORS=$(background_colors_yad)
+			gui_yad
+			;;
+		10)
+			# Internal file separator
+			IFS='|'
+			read -ra parts <<< "$result"
+
+			SCRIPT_NAME="${parts[0]}"
+			SCRIPT_TITLE="${parts[1]}"
+			AUTHOR="${parts[2]}"
+			DESCRIPTION="${parts[3]}"
+			NOTES="${parts[4]}"
+			DEPENDENCIES="${parts[5]}"
+			LICENSE="${parts[6]}"
+
+			FONT_STYLES=$(font_styles_yad)
+			gui_yad
+			;;
+		12)
+			# Internal file separator
+			IFS='|'
+			read -ra parts <<< "$result"
+
+			SCRIPT_NAME="${parts[0]}"
+			SCRIPT_TITLE="${parts[1]}"
+			AUTHOR="${parts[2]}"
+			DESCRIPTION="${parts[3]}"
+			NOTES="${parts[4]}"
+			DEPENDENCIES="${parts[5]}"
+			LICENSE="${parts[6]}"
+
+			LOG_MESSAGE_TYPES=$(log_yad)
+			gui_yad
+			;;
+		252)
+			exit 0
+			;;
+	esac
+}
+
 # Command-Line Argument Parsing Interface
 while [[ "$#" -gt 0 ]]; do
 	case $1 in
@@ -1921,6 +2330,7 @@ while [[ "$#" -gt 0 ]]; do
 		--show-messages) display_messages ;;
 		-cli|--command-line-interface) COMMAND_LINE_INTERFACE=true ;;
 		gui|--graphical-interface) gui ;;
+		gui-yad|--graphical-interface-yad) gui_yad ;;
 		*) error "Unknown parameter passed: $1"; exit 1 ;;
 	esac
 	shift
