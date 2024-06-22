@@ -1,7 +1,7 @@
 # ShellSketch - Blueprint Shell Script Template Generator
 ![ShellSketch](https://github.com/eliaz5536/ShellSketch/assets/5835036/3c052d7c-4981-4159-8ca9-22b6bb8d0c85)
 
-Blueprint Bash & Shell script template for ease of development & implementation for script development.
+Blueprint Bash & Shell script template for the ease of development & implementation for shell scripting development.
 
 # ShellSketch
 ShellSketch is a complete customizable blueprint template bash script generator that allows you to build your own 
