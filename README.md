@@ -95,6 +95,7 @@ Other:
 
 # Demo
 ## CLI Terminal
+![terminal](https://github.com/eliaz5536/ShellSketch/assets/5835036/7329aa49-7c60-4241-9323-2cc11440aa5b)
 ![new](https://github.com/eliaz5536/ShellSketch/assets/5835036/2221b658-5354-49b0-ae53-d073fb85adaa)
 
 ## GUI 
