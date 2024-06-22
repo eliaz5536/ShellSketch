@@ -17,6 +17,10 @@ simplistic gui menu.
 ```
 sudo apt-get install whiptail
 sudo apt-get install yad
+
+OR
+
+sudo apt-get install whiptail yad
 ```
 
 # Installation
