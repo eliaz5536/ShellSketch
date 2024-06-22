@@ -5,10 +5,6 @@ Bash script template for ease of development & implementation for script develop
 
 ## Demo
 ### Command-Line
-```
- [![asciicast](https://asciinema.org/a/aXSdISgOUVbFwhSM3Q3gcNeSe.svg)](https://asciinema.org/a/aXSdISgOUVbFwhSM3Q3gcNeSe)
-```
-
 ![ezgif-6-26ca62e4a4](https://github.com/eliaz5536/ShellSketch/assets/5835036/b7ea6d21-6216-422b-a090-72cc0870b812)
 
 
