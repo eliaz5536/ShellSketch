@@ -12,9 +12,7 @@ Bash script template for ease of development & implementation for script develop
 [![asciicast](https://asciinema.org/a/T9InMdkBqD0PxWGbazoe8cA6B.svg)](https://asciinema.org/a/T9InMdkBqD0PxWGbazoe8cA6B)
 
 #### YAD
-```
-<insert demo over here>
-```
+![example](https://github.com/eliaz5536/ShellSketch/assets/5835036/b4cfbeec-70e6-4823-9331-7f6d07ccc04b)
 
 ## Usage
 ```
