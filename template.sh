@@ -2132,6 +2132,7 @@ gui_yad() {
 
 	result=$(yad \
 		--title="ShellSketch" \
+		--window-icon="$(pwd)/logo.png" \
 		--text="Blueprint Shell Script Template Generator" \
 		--form \
 		--field="File Name" "${SCRIPT_NAME}" \
