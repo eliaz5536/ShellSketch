@@ -2,8 +2,8 @@
 ![ShellSketch](https://github.com/eliaz5536/ShellSketch/assets/5835036/3c052d7c-4981-4159-8ca9-22b6bb8d0c85)
 
 # ShellSketch
-**_ShellSketch_** is a versatile robust bash script template, with the aim of generating formatted shell scripts 
-by user selection through automation.
+**_ShellSketch_** is a versatile robust bash script template, with the aim of generating structred-formatted shell scripts 
+as preference by user selection through automation without manually creating scripts from scratch.
 
 This involves implementation of the following features:
 - Strict HEADER & FUNCTION format 
