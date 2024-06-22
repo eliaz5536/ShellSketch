@@ -42,7 +42,7 @@ script template by the selection of your choice instead of relying on building t
 large-scale projects that involve shell-scripting and dealing with automation tasks to support such systems.
 
 # Requirements
-It is recommended that you are running on **Debian** or **debian-based machine** (Ubuntu, Linux Mint, Zorin OS, Kali Linux and etc)
+It is recommended that you are on a **Debian** or **debian-based machine** (Ubuntu, Linux Mint, Zorin OS, Kali Linux and etc)
 to ensure that the machine is supported from the package manager, **apt**.
 
 If you want to access GUI mode (Whiptail & YAD) for instance, you will need to install whiptail and yad through apt package manager to access 
