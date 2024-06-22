@@ -33,11 +33,16 @@ Bash script template for ease of development & implementation for script develop
 
 
 
+# ShellSketch
+ShellSketch is a complete customizable blueprint template bash script generator that allows you to build your own 
+script template by the selection of your choice instead of relying on building the bash script for scratch, for any
+large-scale projects that involve shell-scripting and dealing with automation tasks to support such systems.
+
 ## Usage
 ```
 Shell Script Template Generator
  
-Usage: ./template [mode] [options]
+Usage: ./template.sh [mode] [options]
 ```
 
 ## Help
