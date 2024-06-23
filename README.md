@@ -17,7 +17,7 @@ as preference by user selection through automation without manually creating scr
 **_ShellSketch_** offers series of features designed to automate shell scripting:
 
 **Extensive Project Documentation Support**
-ShellSketch offers support for implementing documentation structure for headers and functions to provide readability and maintainability. It includes fields for a detailed description, notes and a list of required dependencies, ensuring comprehensive project documentation.
+* ShellSketch offers support for implementing documentation structure for headers and functions to provide readability and maintainability. It includes fields for a detailed description, notes and a list of required dependencies, ensuring comprehensive project documentation.
 
 **License Type Specification Support**
 ShellSketch offers a list of extensive license types that allow you the selection of specifying the appropriate license for your project, listed under the following:
