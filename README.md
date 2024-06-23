@@ -31,8 +31,7 @@ Whiptail for usability and accessability of inputting values through simple user
 It is highly recommended that you run this script on **Debian** or **Debian-based distribution machine** (_Ubuntu_, _Linux Mint_, _Zorin OS_ & _Kali Linux_)
 to avoid compatibility and software issues since packages are installed from the default package manager of Debian **apt**.
 
-Interacting with **_ShellSketch_** through GUI through usability requires the installation of YAD and Whiptail using apt package manager,
-which can be performed by executing the following commands:
+Interacting with **_ShellSketch_** in GUI mode through requires the installation of YAD and Whiptail using apt package manager, which can be performed by executing the following commands:
 ```
 sudo apt-get install whiptail
 sudo apt-get install yad
