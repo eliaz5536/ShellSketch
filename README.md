@@ -147,4 +147,4 @@ Other:
 ![ezgif-5-0016655ff0](https://github.com/eliaz5536/ShellSketch/assets/5835036/8ff01914-bc71-40f9-8371-5bb1d570cdaf)
 
 # License
-This project is licensed under the GNU General Public License v3.0. See the **LICENSE** file for details.
+This project is licensed under the GNU General Public License v3.0. See the [LICENSE](LICENSE) file for details.
