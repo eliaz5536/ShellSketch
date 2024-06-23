@@ -85,7 +85,7 @@ as preference by user selection through automation without manually creating scr
 * ShellSketch supports the creation of customized CLI menu that allow for the creation of customized command-line interface menus to make your scripts interactive. This also involves generating USAGE and HELP functions to produce your scripts effectively.
 
 **CLI and GUI Support**
-**_ShellSketch_** in GUI mode uses **YAD (Yet Another Dialog)** that displays GTK+ dialog boxes and **Whiptail** for usability and accessability of inputting values through simple user interface.
+* **_ShellSketch_** in GUI mode uses **YAD (Yet Another Dialog)** that displays GTK+ dialog boxes and **Whiptail** for usability and accessability of inputting values through simple user interface.
 
 # Requirements
 It is highly recommended that you run this script on **Debian** or **Debian-based distribution machine** (_Ubuntu_, _Linux Mint_, _Zorin OS_ & _Kali Linux_)
