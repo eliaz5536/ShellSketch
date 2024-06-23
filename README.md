@@ -24,8 +24,8 @@ as preference by user selection through automation without manually creating scr
 
 <table align="center">
  <tr>
-  <th>License</th>
-  <th>Description</th>
+  <th width="500px">License</th>
+  <th width="500px">Description</th>
  </tr>
  <tr>
   <td>Apache-2.0</td>
