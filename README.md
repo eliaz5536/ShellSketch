@@ -91,7 +91,7 @@ ShellSketch offers a list of extensive license types from GitHub itself that all
 ![whiptail](https://github.com/eliaz5536/ShellSketch/assets/5835036/afb4f3b6-416a-4235-899f-b6072c1b51d1)
 
 # Requirements
-It is highly recommended that you run this script on **Debian** or **Debian-based distribution machine** (_Ubuntu_, _Linux Mint_, _Zorin OS_ & _Kali Linux_)
+It is highly recommended that you run this script on **Debian** or **Debian-based distribution machine** (_Ubuntu_, _Linux Mint_, _Zorin OS_ or _Kali Linux_)
 to avoid compatibility and software issues since packages are installed from the default package manager of Debian **apt**.
 
 Interacting with **_ShellSketch_** in GUI mode through requires the installation of YAD and Whiptail using apt package manager, which can be performed by executing the following commands:
