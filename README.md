@@ -139,4 +139,6 @@ Other:
 #### Log Message Types
 ![ezgif-5-0016655ff0](https://github.com/eliaz5536/ShellSketch/assets/5835036/8ff01914-bc71-40f9-8371-5bb1d570cdaf)
 
+# License
+This project is licensed under GPL v3 License - see the file <INSERT_FILE_NAME> for details 
 
