@@ -19,8 +19,8 @@ as preference by user selection through automation without manually creating scr
 **Extensive Project Documentation Support**
 * ShellSketch offers support for implementing documentation structure for headers and functions to provide readability and maintainability. It includes fields for a detailed description, notes and a list of required dependencies, ensuring comprehensive project documentation.
 
-****License Type Specification Support**
-*** ShellSketch offers a list of extensive license types from GitHub itself that allow you the selection of specifying the appropriate license for your project, listed under the following:
+**License Type Specification Support** 
+* ShellSketch offers a list of extensive license types from GitHub itself that allow you the selection of specifying the appropriate license for your project, listed under the following:
 
 <table align="center">
  <tr>
