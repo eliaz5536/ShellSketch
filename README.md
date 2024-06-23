@@ -5,6 +5,14 @@
 **_ShellSketch_** is a versatile robust bash script template, with the aim of generating structred-formatted shell scripts 
 as preference by user selection through automation without manually creating scripts from scratch.
 
+## Table of Contents
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Demo](#demo)
+- [Configuration](#configuration)
+- [License](#license)
+
 # Features
 ShellSketch offers a comprehensive set of features designed to enhance your shell scripting experience:
 
