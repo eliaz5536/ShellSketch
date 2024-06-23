@@ -22,6 +22,60 @@ as preference by user selection through automation without manually creating scr
 **License Type Specification Support**
 * ShellSketch offers a list of extensive license types from GitHub itself that allow you the selection of specifying the appropriate license for your project, listed under the following:
 
+<table align="center">
+ <tr>
+  <th>License</th>
+  <th>Description</th>
+ </tr>
+ <tr>
+  <td>Apache-2.0</td>
+  <td>Apache License 2.0</td>
+ </tr>
+ <tr>
+  <td>GPL-3.0</td>
+  <td>GNU General Public License v3.0</td>
+ </tr>
+ <tr>
+  <td>MIT</td>
+  <td>MIT License</td>
+ </tr>
+ <tr>
+  <td>BSD-2-Clause</td>
+  <td>BSD 2-clause 'simplified' license</td>
+ </tr>
+ <tr>
+  <td>BSD-3-Clause</td>
+  <td>BSD 3-clause 'New' or 'Revised' license</td>
+ </tr>
+ <tr>
+  <td>BSL-1.0</td>
+  <td>Boost Software License 1.0</td>
+ </tr>
+ <tr>
+  <td>CC0-1.0</td>
+  <td>Creative Commons Zero v1.0 Universal</td>
+ </tr>
+ <tr>
+  <td>EPL-2.0</td>
+  <td>Eclipse Public License 2.0</td>
+ </tr>
+ <tr>
+  <td>AGPL-3.0</td>
+  <td>GNU Affero General Public License v3.0</td>
+ </tr>
+ <tr>
+  <td>LGPL-2.1</td>
+  <td>GNU Lesser General Public License v2.1</td>
+ </tr>
+ <tr>
+  <td>MPL-2.0</td>
+  <td>Mozilla Public License 2.0</td>
+ </tr>
+ <tr>
+  <td>Unlicense</td>
+  <td>The Unlicense</td>
+ </tr> 
+</table>
 
 | License | Description |
 | --- | ----------- |
