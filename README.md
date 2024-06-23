@@ -77,7 +77,7 @@ as preference by user selection through automation without manually creating scr
  </tr> 
 </table>
 
-**Customization and Display**
+**ANSI Escape Sequence Customization**
 * ShellSketch supports **Custom ANSI Escape Sequences** to display colors in shell scripts during development, ideal for improving user experience through visual output.
 * Furthermore, it supports **Custom Log Level Messaging** which provide predefined log levels (INFO, SUCCESS, WARNING, ERROR) to clarify script output messages, which can be customized for better visual output.
 
