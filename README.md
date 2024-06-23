@@ -17,10 +17,10 @@ as preference by user selection through automation without manually creating scr
 **_ShellSketch_** offers series of features designed to automate shell and bash scripting:
 
 ### **Extensive Project Documentation Support**
-* ShellSketch offers support for implementing documentation structure for headers and functions to provide readability and maintainability. It includes fields for a detailed description, notes and a list of required dependencies, ensuring comprehensive project documentation.
+ShellSketch offers support for implementing documentation structure for headers and functions to provide readability and maintainability. It includes fields for a detailed description, notes and a list of required dependencies, ensuring comprehensive project documentation.
 
 ### **License Type Specification Support** 
-* ShellSketch offers a list of extensive license types from GitHub itself that allow you the selection of specifying the appropriate license for your project, listed under the following:
+ShellSketch offers a list of extensive license types from GitHub itself that allow you the selection of specifying the appropriate license for your project, listed under the following:
 
 <table align="center">
  <tr>
@@ -82,12 +82,12 @@ as preference by user selection through automation without manually creating scr
 * Furthermore, it supports **Custom Log Level Messaging** which provide predefined log levels (INFO, SUCCESS, WARNING, ERROR) to clarify script output messages, which can be customized for better visual output.
 
 ### **Customized Command-Line Interface**
-* **_ShellSketch_** supports the creation of customized CLI menu that allow for the creation of customized command-line interface menus to make your scripts interactive. This also involves generating USAGE and HELP functions to produce your scripts effectively.
+**_ShellSketch_** supports the creation of customized CLI menu that allow for the creation of customized command-line interface menus to make your scripts interactive. This also involves generating USAGE and HELP functions to produce your scripts effectively.
 ![terminal](https://github.com/eliaz5536/ShellSketch/assets/5835036/7329aa49-7c60-4241-9323-2cc11440aa5b)
 ![new](https://github.com/eliaz5536/ShellSketch/assets/5835036/2221b658-5354-49b0-ae53-d073fb85adaa)
 
 ### **CLI and GUI Support**
-* **_ShellSketch_** supports GUI mode which uses **YAD (Yet Another Dialog)** that displays GTK+ dialog boxes and **Whiptail** for usability and accessability of inputting values through simple user interface, which Whiptail is included by default on _Debian_.
+**_ShellSketch_** supports GUI mode which uses **YAD (Yet Another Dialog)** that displays GTK+ dialog boxes and **Whiptail** for usability and accessability of inputting values through simple user interface, which Whiptail is included by default on _Debian_.
 ![ezgif-7-899ea4d197](https://github.com/eliaz5536/ShellSketch/assets/5835036/7b7fa045-5b85-446d-bfb6-9d498f8c7c3e)
 ![whiptail](https://github.com/eliaz5536/ShellSketch/assets/5835036/afb4f3b6-416a-4235-899f-b6072c1b51d1)
 
