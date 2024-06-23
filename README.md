@@ -97,7 +97,7 @@ ShellSketch offers a list of extensive license types from GitHub itself that all
 **_ShellSketch_** supports GUI mode which uses **YAD (Yet Another Dialog)** that displays GTK+ dialog boxes and **Whiptail** for usability and accessability of inputting values through simple user interface, which Whiptail is included by default on _Debian_.
 
 <p align="center">
- **YAD (Yet Another Dialog)**
+ <strong>YAD (Yet Another Dialog)</strong>
 <p align="center"/>
 <div align="center">
  <img src="https://github.com/eliaz5536/ShellSketch/assets/5835036/7b7fa045-5b85-446d-bfb6-9d498f8c7c3e" alt="ezgif-7-899ea4d197" />
@@ -106,7 +106,7 @@ ShellSketch offers a list of extensive license types from GitHub itself that all
 <br>
 
 <p align="center">
- **Whiptail**
+ <strong>Whiptail</strong>
 <p align="center"/>
 <div align="center">
   <img src="https://github.com/eliaz5536/ShellSketch/assets/5835036/afb4f3b6-416a-4235-899f-b6072c1b51d1" alt="whiptail" />
