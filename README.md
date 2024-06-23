@@ -14,7 +14,7 @@ as preference by user selection through automation without manually creating scr
 - [License](#license)
 
 # Features
-ShellSketch offers a comprehensive set of features designed to enhance your shell scripting experience:
+**_ShellSketch_** offers a comprehensive set of features designed to enhance your shell scripting experience:
 
 **Code Structure and Documentation**
 * **Srict HEADER & FUNCTION Format**: Enforces a consistent structure for headers and functions in your scripts, promoting
