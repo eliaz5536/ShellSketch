@@ -13,7 +13,26 @@ This involves implementation of the following features:
 - Custom Log Level Messaging types (INFO, SUCCESS, WARNING & ERROR)
 - Customized Command-Line Interface menu, with the addition of USAGE and HELP function
 
-**_ShellSketch_** additionally offers **CLI and GUI support** using YAD (Yet Another Dialog) that displays GTK+ dialog boxes and 
+# Features
+ShellSketch offers a comprehensive set of features designed to enhance your shell scripting experience:
+
+**Code Structure and Documentation**
+* **Srict HEADER & FUNCTION Format**: Enforces a consistent structure for headers and functions in your scripts, promoting
+readability and maintainability.
+* **Project documentation**: Includes fields for a detailed description, notes and a list of required dependencies, ensuring comprehensive project documentation.
+
+**Licensing**
+* **License Type Specification**: Supports various license types, such as GPL v3, MIT and more, allowing you specify the appropriate license for your project.
+
+**Customization and Display**
+* **Custom ANSI Escape Sequences**: Enables the use of ANSI escape sequences to display colors in shell scripts, enhancing the visual output for better user experience.
+* **Custom Log Level Messaging**: Provides predefined log levels (INFO, SUCCESS, WARNING, ERROR) to standardize and clarify script output messages.
+
+**Command-Line Interface**
+* **Customized CLI Menu**: Allows for the creation of customized command-line interface menus, making your scripts more interactive and user-friendly.
+* **Usage and Help Functions**: Automatically generates USAGE and HELP functions to assist users in udnerstanding and using your scripts effectively.
+
+Because of **CLI and GUI support**, **_ShellSketch_** uses YAD (Yet Another Dialog) that displays GTK+ dialog boxes and 
 Whiptail for usability and accessability of inputting values through simple user interface.
 
 # Requirements
