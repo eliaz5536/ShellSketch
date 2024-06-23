@@ -14,26 +14,34 @@ as preference by user selection through automation without manually creating scr
 - [License](#license)
 
 # Features
-**_ShellSketch_** offers a comprehensive set of features designed to enhance your shell scripting experience:
+**_ShellSketch_** offers series of features designed to automate shell scripting:
 
-**Code Structure and Documentation**
-* **Srict HEADER & FUNCTION Format**: Enforces a consistent structure for headers and functions in your scripts, promoting
-readability and maintainability.
-* **Project documentation**: Includes fields for a detailed description, notes and a list of required dependencies, ensuring comprehensive project documentation.
+**Extensive Project Documentation Support**
+ShellSketch offers support for implementing documentation structure for headers and functions to provide readability and maintainability. It includes fields for a detailed description, notes and a list of required dependencies, ensuring comprehensive project documentation.
 
-**Licensing**
-* **License Type Specification**: Supports various license types, such as GPL v3, MIT and more, allowing you specify the appropriate license for your project.
+**License Type Specification Support**
+ShellSketch offers a list of extensive license types that allow you the selection of specifying the appropriate license for your project, listed under the following:
+- Apache-2.0 - Apache License 2.0
+- GPL-3.0 - GNU General Public License v3.0
+- MIT - MIT License
+- BSD-2-Clause - BSD 2-clause 'simplified' license
+- BSD-3-Clause - BSD 3-clause 'New' or 'Revised' license
+- BSL-1.0 - Boost Software License 1.0
+- CC0-1.0 - Creative Commons Zero v1.0 Universal
+- EPL-2.0 - Eclipse Public License 2.0
+- AGPL-3.0 - GNU Affero General Public License v3.0
+- LGPL-2.1 - GNU Lesser General Public License v2.1
+- MPL-2.0 - Mozilla Public License 2.0
+- Unlicense - The Unlicense
 
 **Customization and Display**
-* **Custom ANSI Escape Sequences**: Enables the use of ANSI escape sequences to display colors in shell scripts, enhancing the visual output for better user experience.
-* **Custom Log Level Messaging**: Provides predefined log levels (INFO, SUCCESS, WARNING, ERROR) to standardize and clarify script output messages.
+ShellSketch supports **Custom ANSI Escape Sequences** to display colors in shell scripts during development, ideal for improving user experience through visual output. Furthermore, it supports **Custom Log Level Messaging** which provide predefined log levels (INFO, SUCCESS, WARNING, ERROR) to clarify script output messages, which can be customized for better visual output.
 
-**Command-Line Interface**
-* **Customized CLI Menu**: Allows for the creation of customized command-line interface menus, making your scripts more interactive and user-friendly.
-* **Usage and Help Functions**: Automatically generates USAGE and HELP functions to assist users in udnerstanding and using your scripts effectively.
+**Customized Command-Line Interface**
+ShellSketch supports the creation of customized CLI menu that allow for the creation of customized command-line interface menus to make your scripts interactive. This also involves generating USAGE and HELP functions to produce your scripts effectively.
 
-Because of **CLI and GUI support**, **_ShellSketch_** uses YAD (Yet Another Dialog) that displays GTK+ dialog boxes and 
-Whiptail for usability and accessability of inputting values through simple user interface.
+**CLI and GUI Support**
+**_ShellSketch_** in GUI mode uses **YAD (Yet Another Dialog)** that displays GTK+ dialog boxes and **Whiptail** for usability and accessability of inputting values through simple user interface.
 
 # Requirements
 It is highly recommended that you run this script on **Debian** or **Debian-based distribution machine** (_Ubuntu_, _Linux Mint_, _Zorin OS_ & _Kali Linux_)
