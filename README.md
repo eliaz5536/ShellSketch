@@ -151,14 +151,14 @@ chmod +x template.sh
 
 ## Usage
 ```
-Shell Script Template Generator
+ShellSketch - Blueprint Shell Script Template Generator
  
 Usage: ./template.sh [mode] [options]
 ```
 
 ## Help
 ```
-Shell Script Template Generator
+ShellSketch - Blueprint Shell Script Template Generator
  
 Usage: ./template.sh [mode] [options]
  
