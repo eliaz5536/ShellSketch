@@ -83,9 +83,13 @@ as preference by user selection through automation without manually creating scr
 
 **Customized Command-Line Interface**
 * **_ShellSketch_** supports the creation of customized CLI menu that allow for the creation of customized command-line interface menus to make your scripts interactive. This also involves generating USAGE and HELP functions to produce your scripts effectively.
+![terminal](https://github.com/eliaz5536/ShellSketch/assets/5835036/7329aa49-7c60-4241-9323-2cc11440aa5b)
+![new](https://github.com/eliaz5536/ShellSketch/assets/5835036/2221b658-5354-49b0-ae53-d073fb85adaa)
 
 **CLI and GUI Support**
 * **_ShellSketch_** supports GUI mode which uses **YAD (Yet Another Dialog)** that displays GTK+ dialog boxes and **Whiptail** for usability and accessability of inputting values through simple user interface, which Whiptail is included by default on _Debian_.
+![ezgif-7-899ea4d197](https://github.com/eliaz5536/ShellSketch/assets/5835036/7b7fa045-5b85-446d-bfb6-9d498f8c7c3e)
+![whiptail](https://github.com/eliaz5536/ShellSketch/assets/5835036/afb4f3b6-416a-4235-899f-b6072c1b51d1)
 
 # Requirements
 It is highly recommended that you run this script on **Debian** or **Debian-based distribution machine** (_Ubuntu_, _Linux Mint_, _Zorin OS_ & _Kali Linux_)
@@ -172,16 +176,10 @@ Other:
 ```
 
 # Demo
-## CLI Terminal
-![terminal](https://github.com/eliaz5536/ShellSketch/assets/5835036/7329aa49-7c60-4241-9323-2cc11440aa5b)
-![new](https://github.com/eliaz5536/ShellSketch/assets/5835036/2221b658-5354-49b0-ae53-d073fb85adaa)
+
 
 ## GUI 
-### Whiptail
-[![asciicast](https://asciinema.org/a/T9InMdkBqD0PxWGbazoe8cA6B.svg)](https://asciinema.org/a/T9InMdkBqD0PxWGbazoe8cA6B)
 
-### YAD (Yet Another Dialog)
-![ezgif-7-899ea4d197](https://github.com/eliaz5536/ShellSketch/assets/5835036/7b7fa045-5b85-446d-bfb6-9d498f8c7c3e)
 
 #### Standard ANSI Color Selection
 ![ezgif-2-478cc29e43](https://github.com/eliaz5536/ShellSketch/assets/5835036/77782224-1448-4d89-bb18-581f2b124f92)
