@@ -78,8 +78,7 @@ ShellSketch offers a list of extensive license types from GitHub itself that all
 </table>
 
 ### **Custom Visual Output**
-* **_ShellSketch_** supports **Custom ANSI Escape Sequences** to display colors in shell scripts during development, ideal for improving user experience through visual output.
-* Furthermore, it supports **Custom Log Level Messaging** which provide predefined log levels (INFO, SUCCESS, WARNING, ERROR) to clarify script output messages, which can be customized for better visual output.
+**_ShellSketch_** supports **Custom ANSI Escape Sequences** to display colors in shell scripts during development, ideal for improving user experience through visual output. Furthermore, it supports **Custom Log Level Messaging** which provide predefined log levels (INFO, SUCCESS, WARNING, ERROR) to clarify script output messages, which can be customized for better visual output.
 
 ### **Customized Command-Line Interface**
 **_ShellSketch_** supports the creation of customized CLI menu that allow for the creation of customized command-line interface menus to make your scripts interactive. This also involves generating USAGE and HELP functions to produce your scripts effectively.
