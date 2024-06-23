@@ -78,14 +78,14 @@ as preference by user selection through automation without manually creating scr
 </table>
 
 **ANSI Escape Sequence Customization**
-* ShellSketch supports **Custom ANSI Escape Sequences** to display colors in shell scripts during development, ideal for improving user experience through visual output.
+* **_ShellSketch_** supports **Custom ANSI Escape Sequences** to display colors in shell scripts during development, ideal for improving user experience through visual output.
 * Furthermore, it supports **Custom Log Level Messaging** which provide predefined log levels (INFO, SUCCESS, WARNING, ERROR) to clarify script output messages, which can be customized for better visual output.
 
 **Customized Command-Line Interface**
-* ShellSketch supports the creation of customized CLI menu that allow for the creation of customized command-line interface menus to make your scripts interactive. This also involves generating USAGE and HELP functions to produce your scripts effectively.
+* **_ShellSketch_** supports the creation of customized CLI menu that allow for the creation of customized command-line interface menus to make your scripts interactive. This also involves generating USAGE and HELP functions to produce your scripts effectively.
 
 **CLI and GUI Support**
-* **_ShellSketch_** in GUI mode uses **YAD (Yet Another Dialog)** that displays GTK+ dialog boxes and **Whiptail** for usability and accessability of inputting values through simple user interface.
+* **_ShellSketch_** supports GUI mode which uses **YAD (Yet Another Dialog)** that displays GTK+ dialog boxes and **Whiptail** for usability and accessability of inputting values through simple user interface, which Whiptail is included by default on _Debian_.
 
 # Requirements
 It is highly recommended that you run this script on **Debian** or **Debian-based distribution machine** (_Ubuntu_, _Linux Mint_, _Zorin OS_ & _Kali Linux_)
