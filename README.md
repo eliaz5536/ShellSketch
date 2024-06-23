@@ -77,23 +77,6 @@ as preference by user selection through automation without manually creating scr
  </tr> 
 </table>
 
-| License | Description |
-| --- | ----------- |
-| Apache-2.0 | Apache License 2.0 |
-| GPL-3.0 | GNU General Public License v3.0 |
-| MIT | MIT License |
-| BSD-2-Clause | BSD 2-clause 'simplified' license |
-| BSD-3-Clause | BSD 3-clause 'New' or 'Revised' license |
-| BSL-1.0 | Boost Software License 1.0 |
-| CC0-1.0 | Creative Commons Zero v1.0 Universal |
-| EPL-2.0 | Eclipse Public License 2.0 |
-| AGPL-3.0 | GNU Affero General Public License v3.0 |
-| LGPL-2.1 | GNU Lesser General Public License v2.1 |
-| MPL-2.0 | Mozilla Public License 2.0 |
-| Unlicense | The Unlicense |
-
-
-
 **Customization and Display**
 * ShellSketch supports **Custom ANSI Escape Sequences** to display colors in shell scripts during development, ideal for improving user experience through visual output. Furthermore, it supports **Custom Log Level Messaging** which provide predefined log levels (INFO, SUCCESS, WARNING, ERROR) to clarify script output messages, which can be customized for better visual output.
 
